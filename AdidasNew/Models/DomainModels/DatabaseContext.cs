@@ -10,11 +10,11 @@ namespace AdidasNew.Models.DomainModels
     {
         static DatabaseContext()
         {
-        //    Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext,Migrations.Configuration >());
-           Database.SetInitializer(new DropCreateDatabaseAlways<DatabaseContext>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext,AdidasNew.Migrations.Configuration >());
+         //  Database.SetInitializer(new DropCreateDatabaseAlways<DatabaseContext>());
 
         }
-
+        
         public DbSet<Person> People { get; set; }
         public DbSet<JobRecord> JobRecords { get; set; }
         public DbSet<RelationShip> RelationShips { get; set; }
