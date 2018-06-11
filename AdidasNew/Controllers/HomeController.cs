@@ -34,6 +34,7 @@ namespace AdidasNew.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult Register()
         {
             DateOfBirth date = new DateOfBirth();
@@ -47,6 +48,7 @@ namespace AdidasNew.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Register(PersonInfo per, HttpPostedFileBase UploadImage)
         {
             personId = 0;
