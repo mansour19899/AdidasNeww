@@ -1,0 +1,748 @@
+﻿@model AdidasNew.ViewModels.PersonInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hiiiiiii</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/myScript.js"></script>
+    <style>
+        body {
+            padding-top: 0px;
+    padding-bottom: 20px;
+        }
+
+    </style>
+
+
+
+</head>
+<body class="container-fluid">
+    @*<nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">One more separated link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Search" type="text">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
+    <div class="row text-center _Header">
+
+        <button type="button" id="hi" class="btn btn-primary text-center" style="position:absolute ;bottom: 10px;right: 150px;height: 75px;width: 200px;font-size: 20px;margin:10px;">فرم استخدام</button>
+    </div>
+    <div style="padding-top: 50px; padding-left: 20px; padding-right: 20px;" class="allcontentpage">
+
+        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+            {
+
+            Html.EnableClientValidation(true);
+
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title">اطلاعات فردی</h1>
+                </div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Name)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Name, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Name, new { @class = "form-control" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.LastName)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.LastName, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.LastName, new { @class = "form-control" })
+
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Father)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Father, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Father, new { @class = "form-control" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.NationalCode)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.NationalCode, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.NationalCode, new { @class = "form-control" })
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Gender)<span>*</span>
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.Gender, DropDown.GetGenderList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.MilitaryService)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.MilitaryService, DropDown.GetMilitaryList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.BirthDay)
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Date.Day, DropDown.GetDay(), new { @class = " _date form-control " })
+                                @Html.DropDownListFor(p => p.Date.Month, DropDown.GetMounth(), new { @class = " _date form-control " })
+                                @Html.DropDownListFor(p => p.Date.Year, DropDown.GetYear(), new { @class = " _date form-control " })
+
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Marriage)<span>*</span>
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.Marriage, DropDown.GetMarrigeList(), new { @class = "form-control _dropdown", style = " display: inline; " })
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Children)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.Children, DropDown.GetCountOfChildernList(), new { @class = "form-control _dropdown", style = " display: inline; ", disabled = "disabled" })
+
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Mobile)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Mobile, "", new { @class = "text-danger" })
+
+
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Mobile, new { @class = "form-control", placeholder = "----------0919" })
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Tell)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Tell, "", new { @class = "text-danger" })
+
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Tell, new { @class = "form-control" })
+                            </p>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Email)
+                                @Html.ValidationMessageFor(p => p.Person.Email, "", new { @class = "text-danger" })
+
+
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Email, new { @class = "form-control" })
+                            </p>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Address)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Address, "", new { @class = "text-danger" })
+
+
+
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Address, new { @class = "form-control", style = " max-width: 2000px;" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                          <p class="_label">
+                                @Html.LabelFor(p => p.Person.image)<span>*</span>
+                                <input type="file" name="UploadImage" class="input-files" />
+                                @Html.ValidationMessageFor(p => p.Person.image, "", new { @class = "text-danger" })
+                            </p>
+                        </div>
+
+
+
+
+                    </div>
+
+
+                    <div class="row">
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">اطلاعات تحصیلی و شغلی</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Degree)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.Degree, DropDown.GetDegreeList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Institute)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Institute, "", new { @class = "text-danger" })
+
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Institute, new { @class = "form-control" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Field)<span>*</span>
+                                @Html.ValidationMessageFor(p => p.Person.Field, "", new { @class = "text-danger" })
+
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Field, new { @class = "form-control" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.EnglishKnowledge)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.EnglishKnowledge, DropDown.GetKnowledgeList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-12 col-md-8 col-sm-12">
+                            <p class="_label">
+                                @Html.Label(" آیا دوره خاصی مانند کامپیوتر و تجهیزات را گذرانده اید؟(ذکر دوره)")
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.Skills, new { @class = "form-control" })
+                            </p>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @Html.Label("نرم افزارهایی که بر آن مسلط هستید")
+                        </div>
+                        <div class="col-lg-1">
+                            <p>
+                                @Html.LabelFor(p => p.Person.Excel)
+                                @Html.CheckBoxFor(m => m.Person.Excel, new { @class = "form-control _checkbox" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-1">
+                            <p>
+                                @Html.LabelFor(p => p.Person.Word)
+                                @Html.CheckBoxFor(m => m.Person.Word, new { @class = "form-control _checkbox" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <p>
+                                @Html.LabelFor(p => p.Person.PowerPoint)
+                                @Html.CheckBoxFor(m => m.Person.PowerPoint, new { @class = "form-control _checkbox" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <p>
+                                @Html.LabelFor(p => p.Person.Outlook)
+                                @Html.CheckBoxFor(m => m.Person.Outlook, new { @class = "form-control _checkbox" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <p>
+                                @Html.LabelFor(p => p.Person.Accounting)
+                                @Html.CheckBoxFor(m => m.Person.Accounting, new { @class = "form-control _checkbox" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            @Html.Label("سایر نرم افزار ها", new { @class = "_label" })
+                            @Html.TextBoxFor(p => p.Person.OtherSoftwer, new { @class = "form-control", style = " width:  70%;display: inline;" })
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+                        @Html.Label("لطفا مشخصات سوابق شغلی خود را ذکر کنید", new { @class = "_label" })
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-1 col-md-12">
+                            <div class="row" style="background-color:lightgray;height: 40px;position:relative;top:25px;margin-bottom: 40px;">
+                                <div class="col-lg-12 text-center  " style="margin-top: 10px;padding: 0px;">@Html.Label("ردیف 1", new { @class = "_label" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6 ">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">@Html.LabelFor(p => p.JobRecord1.Company, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord1.Company, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">@Html.LabelFor(p => p.JobRecord1.Title, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord1.Title, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="row ">
+                                <div class="col-lg-12 text-center">@Html.LabelFor(p => p.JobRecord1.Duration, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord1.Duration, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 text-center">@Html.LabelFor(p => p.JobRecord1.Disconnection, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord1.Disconnection, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-9 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-12">@Html.LabelFor(p => p.JobRecord1.Address, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord1.Address, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-1 col-md-12">
+                            <div class="row" style="background-color:lightgray;height: 40px;">
+                                <div class="col-lg-12 text-center " style="margin-top: 10px;padding: 0px;">@Html.Label("ردیف 2", new { @class = "_label" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6 ">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord2.Company, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord2.Company, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord2.Title, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord2.Title, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="row ">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord2.Duration, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord2.Duration, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord2.Disconnection, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord2.Disconnection, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-9 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord2.Address, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord2.Address, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-1 col-md-12">
+                            <div class="row" style="background-color:lightgray;height: 40px;">
+                                <div class="col-lg-12 text-center " style="margin-top: 10px;padding: 0px;">@Html.Label("ردیف 3", new { @class = "_label" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6 ">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord3.Company, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord3.Company, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord3.Title, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord3.Title, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="row ">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord3.Duration, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord3.Duration, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord3.Disconnection, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord3.Disconnection, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-9 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-12 hidden-lg">@Html.LabelFor(p => p.JobRecord3.Address, new { @class = "_label" })</div>
+                                <div class="col-lg-12">@Html.TextBoxFor(p => p.JobRecord3.Address, new { @class = "form-control" })</div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">اطلاعات و انتظارات شغلی</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+
+
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.JobStatus)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.JobStatus, DropDown.GetJobStatusList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-5 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.DaysNumber)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.DaysNumber, DropDown.GetDaysList(), new { @class = "form-control _dropdown", style = " display: inline;", disabled = "disabled" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.WorkingGuranty)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.WorkingGuranty, DropDown.GetYesOrNoList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-2 col-md-3 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.Duration)<span>*</span>
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.Duration, DropDown.GetDurationOfWorkList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-5 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.GurantyPayment)<span>*</span>
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.Person.GurantyPayment, DropDown.GetYesOrNoList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+
+
+
+                        <div class="col-lg-2 col-md-4 col-sm-6">
+                            <p class="_label">
+                                @Html.Label("دارای معرف هستید؟")
+
+                            </p>
+                            <p>
+                                @Html.DropDownListFor(p => p.RelationShip1.Moaref, DropDown.GetYesOrNoList(), new { @class = "form-control _dropdown", style = " display: inline;" })
+                            </p>
+                        </div>
+
+                        <div class="col-lg-4 col-md-3 col-sm-6">
+                            <p class="_label">
+                                @Html.LabelFor(p => p.Person.SalaryExpection)<span>*(برحسب ریال)</span>
+                                @Html.ValidationMessageFor(p => p.Person.SalaryExpection, "", new { @class = "text-danger" })
+                            </p>
+                            <p>
+                                @Html.TextBoxFor(p => p.Person.SalaryExpection, new { @class = "form-control" })
+                            </p>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 _label">
+                            @Html.Label("لطفا نام ، تلفن و آدرس سه نفر از کسانی که شما را می شناسند را قید بفرمایید");
+                        </div>
+                        <div class="row">
+
+                            <div class="col-lg-1 col-md-12">
+                                <div class="row" style="background-color:lightgray;height: 40px;position:relative;top:25px;margin-bottom: 40px;">
+                                    <div class="col-lg-12 text-center  " style="margin-top: 10px;padding: 0px;">@Html.Label("ردیف 1", new { @class = "_label", @id = "moaref" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip1.Name, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip1.Name, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip1.Relational, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip1.Relational, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="row ">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip1.Tell, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip1.Tell, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12 ">@Html.LabelFor(p => p.RelationShip1.Address, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip1.Address, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-1 col-md-12">
+                                <div class="row" style="background-color:lightgray;height: 40px;position:relative;top:25px;margin-bottom: 40px;">
+                                    <div class="col-lg-12 text-center  " style="margin-top: 10px;padding: 0px;">@Html.Label("ردیف 2", new { @class = "_label" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip2.Name, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip2.Name, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip2.Relational, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip2.Relational, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="row ">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip2.Tell, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip2.Tell, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12">@Html.LabelFor(p => p.RelationShip2.Address, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip2.Address, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-lg-1 col-md-12">
+                                <div class="row" style="background-color:lightgray;height: 40px;position:relative;top:25px;margin-bottom: 40px;">
+                                    <div class="col-lg-12 text-center  " style="margin-top: 10px;padding: 0px;">@Html.Label("ردیف 3", new { @class = "_label" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6 ">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip3.Name, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip3.Name, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip3.Relational, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip3.Relational, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-2 col-md-4 col-sm-6">
+                                <div class="row ">
+                                    <div class="col-lg-12 text-center">@Html.LabelFor(p => p.RelationShip3.Tell, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip3.Tell, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-5 col-md-12 col-sm-6">
+                                <div class="row">
+                                    <div class="col-lg-12 ">@Html.LabelFor(p => p.RelationShip3.Address, new { @class = "_label" })</div>
+                                    <div class="col-lg-12">@Html.TextBoxFor(p => p.RelationShip3.Address, new { @class = "form-control" })</div>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <input type="submit" value="Save" class="btn btn-primary" />
+        }
+    </div>
+
+
+
+
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryajax")
+    <script src="~/Scripts/AjaxForm/jquery.form.js"></script>
+    <script src="~/Scripts/Noty/jquery.noty.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myUploadForm').ajaxForm();
+        });
+    </script>
+</body>
+</html>
