@@ -51,6 +51,7 @@ namespace AdidasNew.Controllers
         [AllowAnonymous]
         public ActionResult Register(PersonInfo per, HttpPostedFileBase UploadImage)
         {
+            var yt = ModelState.IsValid;
             personId = 0;
             per.Person.BirthDay = (per.Date.Year + "/" + per.Date.Month + "/" + per.Date.Day).ToGeorgianDateTime();
             per.Person.RegPerson = DateTime.Now;
