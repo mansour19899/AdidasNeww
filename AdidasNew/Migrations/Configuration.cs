@@ -10,7 +10,7 @@ namespace AdidasNew.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            ContextKey = "Adidas.Models.DomainModels.DatabaseContext";
+            ContextKey = "AdidasNew.Models.DomainModels.DatabaseContext";
             AutomaticMigrationDataLossAllowed = true;
         }
 
