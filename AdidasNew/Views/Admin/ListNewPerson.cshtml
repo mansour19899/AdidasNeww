@@ -1,0 +1,21 @@
+﻿@model IEnumerable<AdidasNew.Models.DomainModels.Person>
+
+@{
+    ViewBag.Title = "Info1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row  text-center  ">
+        <h1>افراد بررسی نشده</h1>
+    </div>
+
+    <div class="row">
+        @Html.Partial("_TableOfPerson", Model)
+
+    </div>
+
+
+
+</div>

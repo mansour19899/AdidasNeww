@@ -7,33 +7,33 @@ using System.Web;
 using System.Web.Mvc;
 using AdidasNew.Models.DomainModels;
 
-namespace Adidas.Controllers
+namespace AdidasNew.Controllers
 {
-   
+
     public class AdminController : Controller
     {
-   
+
         // GET: Admin
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult ControlPanel ()
+        public ActionResult ControlPanel()
         {
             return View();
         }
 
-        //public ActionResult ListNewPerson()
-        //{
-        //    PersonRepository blPerson = new PersonRepository();
+        public ActionResult ListNewPerson()
+        {
+            PersonRepository blPerson = new PersonRepository();
 
-        //    var list = blPerson.Where(p=>p.Checked==false).ToList();
-         
-        //    return View(list);
-        //}
+            var list = blPerson.Where(p => p.Checked == false).ToList();
 
-        public ActionResult Info(int id = 1)
+            return View(list);
+        }
+
+        public ActionResult Info(int id =1)
         {
 
             PersonRepository blPerson = new PersonRepository();
@@ -41,10 +41,9 @@ namespace Adidas.Controllers
             RelationShipRepository blRelation = new RelationShipRepository();
 
             PersonInfo infoo = new PersonInfo();
-            AdidasNew.Models.DomainModels.DatabaseContext db = new DatabaseContext();
-            var y = db.People.ToList();
+
             var t = blPerson.Find(id);
-            if(t!=null)
+            if (t != null)
             {
                 var tt = blJob.Where(p => p.Person_FK == t.Id).ToList();
                 var ttt = blRelation.Where(p => p.Person_FK == t.Id).ToList();
@@ -64,26 +63,25 @@ namespace Adidas.Controllers
                 if (ttt.Count() > 2)
                     infoo.RelationShip3 = ttt.ElementAt(2);
 
-                return View(infoo);
+                return View("info1",infoo);
             }
             else
             {
 
-                //return View("ListNewPerson");
-                return View();
-               
+                return View("ListNewPerson");
+
             }
-           
+
         }
 
-        //[Authorize(Roles = "Admin")]
-        //public ActionResult ListCheckedPerson()
-        //{
-        //    PersonRepository blPerson = new PersonRepository();
+        [Authorize(Roles = "Admin")]
+        public ActionResult ListCheckedPerson()
+        {
+            PersonRepository blPerson = new PersonRepository();
 
-        //    var list = blPerson.Where(p=>p.Checked==true).ToList();
+            var list = blPerson.Where(p => p.Checked == true).ToList();
 
-        //    return View(list);
-        //}
+            return View(list);
+        }
     }
 }
