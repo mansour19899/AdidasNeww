@@ -83,5 +83,41 @@ namespace AdidasNew.Controllers
 
             return View(list);
         }
+
+    
+        public ActionResult DashBorad()
+        {
+
+
+            return View();
+        }
+
+        public ActionResult SetStatus(int id,int status)
+        {
+            PersonRepository blPerson = new PersonRepository();
+            var x = blPerson.Find(id);
+            x.Checked = true;
+            x.Status =(byte) status;
+            blPerson.Update(x);
+
+            return View("DashBorad");
+        }
+
+        public ActionResult ListConfirmedPerson()
+        {
+            PersonRepository blPerson = new PersonRepository();
+
+            var list = blPerson.Where(p => p.Checked == true&p.Status==1).ToList();
+
+            return View(list);
+        }
+        public ActionResult ListNotConfirmedPerson()
+        {
+            PersonRepository blPerson = new PersonRepository();
+
+            var list = blPerson.Where(p => p.Checked == true & p.Status == 2).ToList();
+
+            return View(list);
+        }
     }
 }

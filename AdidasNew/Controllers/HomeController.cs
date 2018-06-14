@@ -15,7 +15,8 @@ namespace AdidasNew.Controllers
         public static int personId;
         public ActionResult Index()
         {
-            return View();
+            
+            return View("");
         }
 
         [Authorize]

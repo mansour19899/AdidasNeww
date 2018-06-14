@@ -1,0 +1,89 @@
+﻿
+@{
+    ViewBag.Title = "DashBorad";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .label1{
+        height:100px;
+        margin:20px;
+        padding-top:40px;
+        font-family: 'B Titr';
+        color:whitesmoke;
+        font-size:20px;
+
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+            <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">
+                <div style="background-color:darkgreen" class="text-center label1">
+                    افراد تایید صلاحیت شده
+                </div>
+            </a>
+
+        </div>
+        <div class="col-lg-4">
+            <a href="/admin/listnewperson" style="text-decoration:none;">
+                <div style="background-color:darkorange" class="text-center label1">
+                    افراد بررسی نشده
+                </div>
+            </a>
+
+
+        </div>
+        <div class="col-lg-4">
+            <a href="/UsersAdmin/Index" style="text-decoration:none;">
+                <div style="background-color:rebeccapurple" class="text-center label1">
+                    ناظران
+                </div>
+            </a>
+
+
+        </div>
+
+        <div class="col-lg-4">
+            <a href="/admin/ListNotConfirmedPerson" style="text-decoration:none;">
+                <div style="background-color:darkred" class="text-center label1">
+                    افراد رد صلاحیت شده
+                </div>
+            </a>
+
+
+        </div>
+
+        <div class="col-lg-4">
+            <a href="#" style="text-decoration:none;">
+                <div style="background-color:darkblue" class="text-center label1">
+                    کارمندان
+                </div>
+            </a>
+
+
+        </div>
+
+        <div class="col-lg-4">
+            <a href="#" style="text-decoration:none;">
+                <div style="background-color:black" class="text-center label1">
+                    افراد مستعفی
+                </div>
+            </a>
+
+
+        </div>
+
+        <div class="col-lg-4">
+            <a href="#" style="text-decoration:none;">
+                <div style="background-color:red" class="text-center label1">
+                    اخراج شده
+                </div>
+            </a>
+
+
+        </div>
+
+    </div>
+</div>

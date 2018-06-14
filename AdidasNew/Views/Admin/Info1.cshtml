@@ -788,14 +788,22 @@
 
 
 
-                <div class="row">
 
-                </div>
 
 
 
             </div>
 
 
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6" style="text-align: left;padding-left: 50px;">
+                @Html.ActionLink("تایید صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id,status=1},new { @class= "btn btn-success" })
+            </div>
+            <div class="col-xs-6" style="padding-right: 50px;">
+                @Html.ActionLink("رد صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id, status = 2 }, new { @class = "btn btn-danger" })
+            </div>
         </div>
     </div>

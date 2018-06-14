@@ -262,6 +262,7 @@
     <Compile Include="Models\DomainModels\Person.cs" />
     <Compile Include="Models\DomainModels\RelationShip.cs" />
     <Compile Include="Models\EntityModels\DateOfBirth.cs" />
+    <Compile Include="Models\Enums\PersonStatus.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Repositores\JobRecordRepository.cs" />
@@ -317,6 +318,9 @@
     <Content Include="Views\Admin\ListNewPerson.cshtml" />
     <Content Include="Views\Admin\_TableOfPerson.cshtml" />
     <Content Include="Views\Admin\Info1.cshtml" />
+    <Content Include="Views\Admin\DashBorad.cshtml" />
+    <Content Include="Views\Admin\ListConfirmedPerson.cshtml" />
+    <Content Include="Views\Admin\ListNotConfirmedPerson.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
