@@ -5,10 +5,10 @@
 }
 
 <div style="direction:ltr">
-    <h2>Index</h2>
+    <h2>User Admin</h2>
 
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
     </p>
     <table  class="table table-striped table-hover table-bordered ">
         <tr style="background-color:darkgray;">
@@ -27,9 +27,9 @@
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-xs" }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-xs" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-xs" })
                 </td>
             </tr>
         }

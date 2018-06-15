@@ -6,24 +6,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AdidasNew.Models.DomainModels;
+using Microsoft.AspNet.Identity;
+
 
 namespace AdidasNew.Controllers
 {
-
+   
     public class AdminController : Controller
     {
 
         // GET: Admin
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult Index()
         {
+
             return View();
         }
 
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult ControlPanel()
         {
             return View();
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult ListNewPerson()
         {
             PersonRepository blPerson = new PersonRepository();
@@ -32,7 +37,7 @@ namespace AdidasNew.Controllers
 
             return View(list);
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult Info(int id =1)
         {
 
@@ -84,14 +89,14 @@ namespace AdidasNew.Controllers
             return View(list);
         }
 
-    
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult DashBorad()
         {
-
-
+            var strCurrentUserId = User.Identity.GetUserId();
+            var strCurrentUserIdd = User.Identity.GetUserName();
             return View();
         }
-
+        [Authorize(Roles = "Admin,Manager")]
         public ActionResult SetStatus(int id,int status)
         {
             PersonRepository blPerson = new PersonRepository();
@@ -102,7 +107,7 @@ namespace AdidasNew.Controllers
 
             return View("DashBorad");
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult ListConfirmedPerson()
         {
             PersonRepository blPerson = new PersonRepository();
@@ -111,6 +116,7 @@ namespace AdidasNew.Controllers
 
             return View(list);
         }
+        [Authorize(Roles = "Admin")]
         public ActionResult ListNotConfirmedPerson()
         {
             PersonRepository blPerson = new PersonRepository();

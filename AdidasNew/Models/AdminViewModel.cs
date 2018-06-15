@@ -17,8 +17,7 @@ namespace AdidasNew.Models
         public string Id { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "User name")]
         public string Email { get; set; }
 
         public IEnumerable<SelectListItem> RolesList { get; set; }

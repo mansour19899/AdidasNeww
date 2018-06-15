@@ -46,8 +46,7 @@ namespace AdidasNew.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
+        [Display(Name = "User name")]
         public string Email { get; set; }
 
         [Required]
@@ -62,8 +61,11 @@ namespace AdidasNew.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Full name")]
+        public string FullName { get; set; }
+
+        [Required]
+        [Display(Name = "UserName")]
         public string Email { get; set; }
 
         [Required]
