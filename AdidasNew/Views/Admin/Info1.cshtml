@@ -5,6 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row" style="margin-top: 20px;">
+    @{
+        if (Model.Person.Status == 1)
+        {
+            <div class="col-xs-4 col-xs-offset-5">
+                <img src="~/Models/Repositores/Fail-Stamp.png" style="height:100px;" />
+            </div>
+        }
+        if (Model.Person.Status == 2)
+        {
+            <div class="col-xs-4 col-xs-offset-5">
+                <img src="~/Models/Repositores/pass.png" style="height:100px;" />
+            </div>
+        }
+
+    }
+
+
+</div>
 <div style="padding-top: 50px; padding-left: 20px; padding-right: 20px;">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -800,10 +819,10 @@
 
         <div class="row">
             <div class="col-xs-6" style="text-align: left;padding-left: 50px;">
-                @Html.ActionLink("تایید صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id,status=1},new { @class= "btn btn-success" })
+                @Html.ActionLink("تایید صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id,status=2},new { @class= "btn btn-success" })
             </div>
             <div class="col-xs-6" style="padding-right: 50px;">
-                @Html.ActionLink("رد صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id, status = 2 }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("رد صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id, status = 1 }, new { @class = "btn btn-danger" })
             </div>
         </div>
     </div>

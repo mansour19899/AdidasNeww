@@ -1,4 +1,5 @@
 ﻿using AdidasNew.Models.Repositores;
+using AdidasNew.Models.EntityModels;
 using AdidasNew.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -14,21 +15,21 @@ namespace AdidasNew.Controllers
    
     public class AdminController : Controller
     {
-
-        // GET: Admin
-        [Authorize(Roles = "Admin,Manager")]
+        countLists count;
+       // GET: Admin
+       [Authorize(Roles = "Admin,Maneger")]
         public ActionResult Index()
         {
 
             return View();
         }
 
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin,Maneger")]
         public ActionResult ControlPanel()
         {
             return View();
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin,Maneger")]
         public ActionResult ListNewPerson()
         {
             PersonRepository blPerson = new PersonRepository();
@@ -37,7 +38,7 @@ namespace AdidasNew.Controllers
 
             return View(list);
         }
-        [Authorize(Roles = "Admin,Manager")]
+        [Authorize(Roles = "Admin,Maneger")]
         public ActionResult Info(int id =1)
         {
 
@@ -89,30 +90,41 @@ namespace AdidasNew.Controllers
             return View(list);
         }
 
-        [Authorize(Roles = "Admin,Manager")]
-        public ActionResult DashBorad()
+        [Authorize(Roles = "Admin,Maneger")]
+         public ActionResult DashBorad()
         {
             var strCurrentUserId = User.Identity.GetUserId();
             var strCurrentUserIdd = User.Identity.GetUserName();
-            return View();
+
+            count = new countLists();
+            
+
+            return View(count);
         }
-        [Authorize(Roles = "Admin,Manager")]
+
+
+        [Authorize(Roles = "Admin,Maneger")]
         public ActionResult SetStatus(int id,int status)
         {
             PersonRepository blPerson = new PersonRepository();
+            historyOfPersonRepository blHistory = new historyOfPersonRepository();
+
             var x = blPerson.Find(id);
             x.Checked = true;
             x.Status =(byte) status;
             blPerson.Update(x);
 
-            return View("DashBorad");
+            count = new countLists();
+
+            return View("DashBorad",count);
         }
         [Authorize(Roles = "Admin")]
         public ActionResult ListConfirmedPerson()
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == true&p.Status==1).ToList();
+
+            var list = blPerson.Where(p => p.Checked == true&p.Status==2).ToList();
 
             return View(list);
         }
@@ -121,7 +133,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == true & p.Status == 2).ToList();
+            var list = blPerson.Where(p => p.Checked == true & p.Status == 1).ToList();
 
             return View(list);
         }

@@ -1,41 +1,51 @@
-﻿
+﻿@model  AdidasNew.Models.EntityModels.countLists
+
 @{
     ViewBag.Title = "DashBorad";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style>
-    .label1{
-        height:100px;
-        margin:20px;
-        padding-top:40px;
+    .label1 {
+        height: 120px;
+        margin: 30px;
+        padding-top: 30px;
         font-family: 'B Titr';
-        color:whitesmoke;
-        font-size:20px;
-
+        color: whitesmoke;
+        font-size: 20px;
+        border-radius: 65px 0px 63px 0px;
+        -moz-border-radius: 65px 0px 63px 0px;
+        -webkit-border-radius: 65px 0px 63px 0px;
+        border: 3px none #000000;
+        -webkit-box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
+        -moz-box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
+        box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
     }
 </style>
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">
-                <div style="background-color:darkgreen" class="text-center label1">
-                    افراد تایید صلاحیت شده
+                <div style="background-color:darkgreen; " class="text-center label1 ">
+                    <p>  افراد تایید صلاحیت شده</p>
+                    <p>@Model.ConfirmedPerson نفر</p>
+                
                 </div>
             </a>
 
         </div>
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="/admin/listnewperson" style="text-decoration:none;">
                 <div style="background-color:darkorange" class="text-center label1">
-                    افراد بررسی نشده
+                    <p>افراد بررسی نشده</p>
+                    <p>@Model.NewPerson نفر</p>
                 </div>
             </a>
 
 
         </div>
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="/UsersAdmin/Index" style="text-decoration:none;">
                 <div style="background-color:rebeccapurple" class="text-center label1">
                     ناظران
@@ -45,17 +55,18 @@
 
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="/admin/ListNotConfirmedPerson" style="text-decoration:none;">
                 <div style="background-color:darkred" class="text-center label1">
-                    افراد رد صلاحیت شده
+                    <p>افراد رد صلاحیت شده</p>
+                    <p>@Model.NotConfirmedPerson نفر</p>
                 </div>
             </a>
 
 
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="#" style="text-decoration:none;">
                 <div style="background-color:darkblue" class="text-center label1">
                     کارمندان
@@ -65,7 +76,7 @@
 
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="#" style="text-decoration:none;">
                 <div style="background-color:black" class="text-center label1">
                     افراد مستعفی
@@ -75,7 +86,7 @@
 
         </div>
 
-        <div class="col-lg-4">
+        <div class="col-md-4 col-sm-6">
             <a href="#" style="text-decoration:none;">
                 <div style="background-color:red" class="text-center label1">
                     اخراج شده
