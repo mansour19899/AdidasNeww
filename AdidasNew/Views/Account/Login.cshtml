@@ -1,67 +1,91 @@
 ﻿@model AdidasNew.Models.LoginViewModel
 
 @{
-    ViewBag.Title = "Log in";
+    Layout = null;
 }
 
-<div style="direction: ltr;">
-    <h2>@ViewBag.Title.</h2>
-    <div class="row">
-       
-        <div class="col-md-offset-8 col-md-4">
-            <section id="loginForm">
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <h4>Use a local account to log in.</h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        <div class="col-md-10" style="text-align: right;">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2" style="text-align: right;">
-                            @Html.LabelFor(m => m.Email)
-                        </div>
-   
+<!DOCTYPE html>
 
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10"style="text-align: right;">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                        <div class="col-md-2"style="text-align: right;">
-                            @Html.LabelFor(m => m.Password)
-                        </div>
-                        
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/myScript.js"></script>
+</head>
+<body>
 
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-10">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe,new { style = "padding-left: 20px;" })
+
+    <div style="direction: ltr;">
+        <h2 style="text-align: center;" >LOGIN</h2>
+        <div class="row">
+
+            <div class="col-md-offset-4 col-md-4">
+                <section id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<h4>Use a local account to log in.</h4>*@
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <div class="col-xs-8" style="text-align: right;">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-4" style="text-align: right;">
+                                @Html.LabelFor(m => m.Email)
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-8" style="text-align: right;">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-xs-4" style="text-align: right;">
+                                @Html.LabelFor(m => m.Password)
+                            </div>
+
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe, new { style = "padding-left: 20px;" })
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <div class=" col-md-10" style="direction: rtl;">
-                            <input type="submit" value="Log in" class="btn btn-default" />
+                        <div class="form-group">
+                            <div class=" col-md-10" style="direction: rtl;">
+                                <input type="submit" value="Log in" class="btn btn-default" />
+                            </div>
                         </div>
-                    </div>
-                    <p>
-                        @Html.ActionLink("Register a new user?", "Register")
-                    </p>
-                    <p>
-                        @Html.ActionLink("Forget your password?", "ForgotPassword")
-                    </p>
-                }
-            </section>
-        </div>
+                  
+                    }
+                </section>
+            </div>
 
+
+        </div>
 
     </div>
 
-</div>
+
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @*@RenderSection("scripts", required: false)*@
+    @Scripts.Render("~/bundles/jqueryajax")
+    <script src="~/Scripts/AjaxForm/jquery.form.js"></script>
+    <script src="~/Scripts/Noty/jquery.noty.js"></script>
+</body>
+</html>
