@@ -7,6 +7,7 @@ using AdidasNew.Models.EntityModels;
 using AdidasNew.Models.Repositores;
 using AdidasNew.ViewModels;
 
+
 namespace AdidasNew.Controllers
 {
     public class HomeController : Controller
@@ -16,7 +17,7 @@ namespace AdidasNew.Controllers
         public ActionResult Index()
         {
             
-            return View("");
+            return RedirectToAction("DashBorad", "Admin");
         }
 
         [Authorize]

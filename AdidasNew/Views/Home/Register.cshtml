@@ -262,40 +262,42 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            @Html.Label("نرم افزارهایی که بر آن مسلط هستید")
+                            @Html.Label("نرم افزارهایی که بر آن مسلط هستید",new {@class="_label" })
                         </div>
-                        <div class="col-lg-1">
+                        <div class="col-sm-2">
                             <p>
                                 @Html.LabelFor(p => p.Person.Excel)
-                                @Html.CheckBoxFor(m => m.Person.Excel, new { @class = "form-control _checkbox" })
+                                @Html.CheckBoxFor(m => m.Person.Excel, new { @class = "form-control _checkbox", style = " display: inline;" })
                             </p>
                         </div>
 
-                        <div class="col-lg-1">
+                        <div class="col-sm-2">
                             <p>
                                 @Html.LabelFor(p => p.Person.Word)
-                                @Html.CheckBoxFor(m => m.Person.Word, new { @class = "form-control _checkbox" })
+                                @Html.CheckBoxFor(m => m.Person.Word, new { @class = "form-control _checkbox", style = " display: inline;" })
                             </p>
                         </div>
 
-                        <div class="col-lg-2">
-                            <p>
-                                @Html.LabelFor(p => p.Person.PowerPoint)
-                                @Html.CheckBoxFor(m => m.Person.PowerPoint, new { @class = "form-control _checkbox" })
-                            </p>
-                        </div>
 
-                        <div class="col-lg-2">
+
+                        <div class="col-sm-2">
                             <p>
                                 @Html.LabelFor(p => p.Person.Outlook)
-                                @Html.CheckBoxFor(m => m.Person.Outlook, new { @class = "form-control _checkbox" })
+                                @Html.CheckBoxFor(m => m.Person.Outlook, new { @class = "form-control _checkbox", style = " display: inline;" })
                             </p>
                         </div>
 
-                        <div class="col-lg-2">
+                        <div class="col-sm-3">
+                            <p>
+                                @Html.LabelFor(p => p.Person.PowerPoint)
+                                @Html.CheckBoxFor(m => m.Person.PowerPoint, new { @class = "form-control _checkbox", style = " display: inline;" })
+                            </p>
+                        </div>
+
+                        <div class="col-sm-2">
                             <p>
                                 @Html.LabelFor(p => p.Person.Accounting)
-                                @Html.CheckBoxFor(m => m.Person.Accounting, new { @class = "form-control _checkbox" })
+                                @Html.CheckBoxFor(m => m.Person.Accounting, new { @class = "form-control _checkbox", style = " display: inline;" })
                             </p>
                         </div>
 

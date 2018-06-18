@@ -12,24 +12,24 @@ using Microsoft.AspNet.Identity;
 
 namespace AdidasNew.Controllers
 {
-   
+    [Authorize(Roles = "Admin,Maneger")]
     public class AdminController : Controller
     {
         countLists count;
        // GET: Admin
-       [Authorize(Roles = "Admin,Maneger")]
+       
         public ActionResult Index()
         {
 
             return View();
         }
 
-        [Authorize(Roles = "Admin,Maneger")]
+        
         public ActionResult ControlPanel()
         {
             return View();
         }
-        [Authorize(Roles = "Admin,Maneger")]
+        
         public ActionResult ListNewPerson()
         {
             PersonRepository blPerson = new PersonRepository();
@@ -38,7 +38,7 @@ namespace AdidasNew.Controllers
 
             return View(list);
         }
-        [Authorize(Roles = "Admin,Maneger")]
+        
         public ActionResult Info(int id =1)
         {
 
@@ -80,7 +80,7 @@ namespace AdidasNew.Controllers
 
         }
 
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult ListCheckedPerson()
         {
             PersonRepository blPerson = new PersonRepository();
@@ -90,7 +90,7 @@ namespace AdidasNew.Controllers
             return View(list);
         }
 
-        [Authorize(Roles = "Admin,Maneger")]
+        
          public ActionResult DashBorad()
         {
             var strCurrentUserId = User.Identity.GetUserId();
@@ -103,7 +103,7 @@ namespace AdidasNew.Controllers
         }
 
 
-        [Authorize(Roles = "Admin,Maneger")]
+        
         public ActionResult SetStatus(int id,int status)
         {
             PersonRepository blPerson = new PersonRepository();
@@ -114,11 +114,9 @@ namespace AdidasNew.Controllers
             x.Status =(byte) status;
             blPerson.Update(x);
 
-            count = new countLists();
-
-            return View("DashBorad",count);
+            return RedirectToAction("ListNewPerson");
         }
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult ListConfirmedPerson()
         {
             PersonRepository blPerson = new PersonRepository();
@@ -128,7 +126,7 @@ namespace AdidasNew.Controllers
 
             return View(list);
         }
-        [Authorize(Roles = "Admin")]
+        
         public ActionResult ListNotConfirmedPerson()
         {
             PersonRepository blPerson = new PersonRepository();
