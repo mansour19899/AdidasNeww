@@ -9,9 +9,7 @@ namespace AdidasNew.Migrations1
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "AdidasNew.Models.DomainModels.DatabaseContext";
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationsEnabled = false;
             MigrationsDirectory = @"Migrations1";
         }
 
@@ -29,7 +27,6 @@ namespace AdidasNew.Migrations1
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
         }
     }
 }

@@ -13,6 +13,7 @@ namespace AdidasNew.Models.DomainModels
            Database.SetInitializer(new MigrateDatabaseToLatestVersion<DatabaseContext,Migrations.Configuration >());
          //  Database.SetInitializer(new DropCreateDatabaseAlways<DatabaseContext>());
 
+
         }
 
         public DbSet<Person> People { get; set; }

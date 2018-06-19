@@ -35,6 +35,7 @@ namespace AdidasNew.Migrations1
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        namee = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
