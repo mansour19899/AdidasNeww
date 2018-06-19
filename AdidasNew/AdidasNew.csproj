@@ -244,6 +244,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Attributes\SendMessageHandlerAttribute.cs" />
     <Compile Include="Helpers\Filters\CodeMeli.cs" />
     <Compile Include="Helpers\Utilites\DropDown.cs" />
     <Compile Include="Helpers\Utilites\MessageBox.cs" />
@@ -332,6 +333,7 @@
     <Content Include="Views\Admin\DashBorad.cshtml" />
     <Content Include="Views\Admin\ListConfirmedPerson.cshtml" />
     <Content Include="Views\Admin\ListNotConfirmedPerson.cshtml" />
+    <Content Include="Views\Admin\test.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

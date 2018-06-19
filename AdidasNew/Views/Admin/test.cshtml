@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>test</h2>
+
+@using (Html.BeginForm("SendMessage", "Admin", FormMethod.Post))
+{
+    @Html.TextBox("Name")
+
+
+
+    <input type="submit" value="Save" name="Send_sms" class="btn btn-primary" />
+    <input type="submit" value="Save" name="Send_email" class="btn btn-primary" />
+}

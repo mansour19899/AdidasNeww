@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using AdidasNew.Models.DomainModels;
 using Microsoft.AspNet.Identity;
+using AdidasNew.Helpers.Attributes;
 
 
 namespace AdidasNew.Controllers
@@ -114,6 +115,9 @@ namespace AdidasNew.Controllers
             x.Status =(byte) status;
             blPerson.Update(x);
 
+            HistoryOfPerson per = new HistoryOfPerson();
+           
+
             return RedirectToAction("ListNewPerson");
         }
         
@@ -134,6 +138,37 @@ namespace AdidasNew.Controllers
             var list = blPerson.Where(p => p.Checked == true & p.Status == 1).ToList();
 
             return View(list);
+        }
+
+        [HttpGet]
+        public ActionResult test()
+        {
+           
+
+
+            return View("");
+        }
+
+
+        [SendMessageHandler]
+        [HttpPost]
+        public ActionResult Send_sms(string Name, string status)
+        {
+            /// Do something ...
+            return RedirectToAction("ListConfirmedPerson");
+        }
+
+        [SendMessageHandler]
+        [HttpPost]
+        public ActionResult Send_email(string Name, string status)
+        {
+            /// Do something ...
+            /// 
+            //https://www.dotnettips.info/post/1150/%DA%86%D9%86%D8%AF%DB%8C%D9%86-submit
+            //-%D8%AF%D8%B1-%DB%8C%DA%A9-html-form-%D9%88-%D8%A7%D9%86%D8%AA%D8%B3%D8%A7%D8%
+            //    A8-action-%D9%87%D8%A7%DB%8C-%D9%85%D8%AC%D8%B2%D8%A7-%D8%A8%D9%87-%D9%87%D8%B1
+            //    -%DB%8C%DA%A9-%D8%A7%D8%B2-submit-%D9%87%D8%A7-%D8%AF%D8%B1-mvc
+            return RedirectToAction("ListNotConfirmedPerson");
         }
     }
 }
