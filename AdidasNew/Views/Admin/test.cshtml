@@ -6,12 +6,13 @@
 
 <h2>test</h2>
 
-@using (Html.BeginForm("SendMessage", "Admin", FormMethod.Post))
+@using (Html.BeginForm("test", "Admin", FormMethod.Post))
 {
     @Html.TextBox("Name")
 
 
 
-    <input type="submit" value="Save" name="Send_sms" class="btn btn-primary" />
-    <input type="submit" value="Save" name="Send_email" class="btn btn-primary" />
+    <input type="submit" value="yes" name="Send_sms" class="btn btn-primary" />
+    <input type="submit" value="no" name="Send_sms" class="btn btn-primary" />
+    @Html.Hidden("hi","mansour")
 }

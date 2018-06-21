@@ -35,7 +35,7 @@ namespace AdidasNew.Models.DomainModels
         [DisplayName(" زمان اعمال")]
         [Display(Name = " زمان اعمال ")]
         [Required(ErrorMessage = "لطفا  {0} را وارد کنید")]
-        [MaxLength(10, ErrorMessage = "لطفا مقدار  {0} را بیشتر از {1} حرف وارد نکنید")]
-        public string RegDate { get; set; }
+       
+        public DateTime RegDate { get; set; }
     }
 }

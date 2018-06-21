@@ -105,7 +105,7 @@ namespace AdidasNew.Controllers
 
 
         
-        public ActionResult SetStatus(int id,int status)
+        public ActionResult SetStatus(int id,int status,string Description)
         {
             PersonRepository blPerson = new PersonRepository();
             historyOfPersonRepository blHistory = new historyOfPersonRepository();
@@ -115,7 +115,16 @@ namespace AdidasNew.Controllers
             x.Status =(byte) status;
             blPerson.Update(x);
 
-            HistoryOfPerson per = new HistoryOfPerson();
+            HistoryOfPerson per = new HistoryOfPerson()
+            {
+                Person_Id_fk = id,
+                Status = (byte)status,
+                Description = Description,
+                User_Id_fk = User.Identity.GetUserId(),
+                RegDate = DateTime.Now
+
+        };
+            blHistory.Add(per);
            
 
             return RedirectToAction("ListNewPerson");
@@ -140,35 +149,39 @@ namespace AdidasNew.Controllers
             return View(list);
         }
 
-        [HttpGet]
-        public ActionResult test()
-        {
-           
 
 
-            return View("");
-        }
-
-
-        [SendMessageHandler]
+        [SendStatusHandler]
         [HttpPost]
-        public ActionResult Send_sms(string Name, string status)
+        public ActionResult Confirmed(string Description, string PersonId)
         {
-            /// Do something ...
+            SetStatus(int.Parse(PersonId), 2, Description);
+
             return RedirectToAction("ListConfirmedPerson");
         }
 
-        [SendMessageHandler]
+        [SendStatusHandler]
         [HttpPost]
-        public ActionResult Send_email(string Name, string status)
+        public ActionResult NotConfirmed(string Description, string PersonId)
         {
-            /// Do something ...
-            /// 
-            //https://www.dotnettips.info/post/1150/%DA%86%D9%86%D8%AF%DB%8C%D9%86-submit
-            //-%D8%AF%D8%B1-%DB%8C%DA%A9-html-form-%D9%88-%D8%A7%D9%86%D8%AA%D8%B3%D8%A7%D8%
-            //    A8-action-%D9%87%D8%A7%DB%8C-%D9%85%D8%AC%D8%B2%D8%A7-%D8%A8%D9%87-%D9%87%D8%B1
-            //    -%DB%8C%DA%A9-%D8%A7%D8%B2-submit-%D9%87%D8%A7-%D8%AF%D8%B1-mvc
+            SetStatus(int.Parse(PersonId), 1, Description);
+
             return RedirectToAction("ListNotConfirmedPerson");
+        }
+       
+        public ActionResult History(int id)
+        {
+            
+            historyOfPersonRepository per = new historyOfPersonRepository();
+            AdidasNew.Models.ApplicationDbContext db = new Models.ApplicationDbContext();
+            var t = db.Users.ToList();
+           var history=  per.Where(p => p.Person_Id_fk == id).OrderByDescending(p=>p.RegDate).ToList();
+            foreach (var item in history)
+            {
+                item.User_Id_fk = t.Find(p => p.Id == item.User_Id_fk).FullName;
+                
+            }
+            return View(history);
         }
     }
 }

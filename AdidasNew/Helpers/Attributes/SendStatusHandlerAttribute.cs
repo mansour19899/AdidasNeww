@@ -7,14 +7,14 @@ using System.Reflection;
 
 namespace AdidasNew.Helpers.Attributes
 {
-    public class SendMessageHandlerAttribute : ActionNameSelectorAttribute
+    public class SendStatusHandlerAttribute : ActionNameSelectorAttribute
     {
         public override bool IsValidName(ControllerContext controllerContext, string actionName, MethodInfo methodInfo)
         {
             if (actionName.Equals(methodInfo.Name, StringComparison.InvariantCultureIgnoreCase))
                 return true;
 
-            if (!actionName.Equals("SendMessage", StringComparison.InvariantCultureIgnoreCase))
+            if (!actionName.Equals("SendStatus", StringComparison.InvariantCultureIgnoreCase))
                 return false;
 
             var request = controllerContext.RequestContext.HttpContext.Request;

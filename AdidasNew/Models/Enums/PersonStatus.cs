@@ -8,10 +8,11 @@ namespace AdidasNew.Controllers
     public enum PersonStatus
     {
         UnCheck=0,
-        Confirmed = 2,//تایید شده
         NotConfirmed = 1,//رد صلاحیت
-        Staff = 3,//کارمند
-        Deporte=4,//اخراج شده
-        Resignation=5 //اتمام همکاری
+        Confirmed = 2,//تایید شده
+         StandBy=3,//گزینش
+        Staff = 4,//کارمند
+        Deporte=5,//اخراج شده
+        Resignation=6 //اتمام همکاری
     }
 }

@@ -244,7 +244,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Attributes\SendMessageHandlerAttribute.cs" />
+    <Compile Include="Helpers\Attributes\SendStatusHandlerAttribute.cs" />
     <Compile Include="Helpers\Filters\CodeMeli.cs" />
     <Compile Include="Helpers\Utilites\DropDown.cs" />
     <Compile Include="Helpers\Utilites\MessageBox.cs" />
@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201806111847268_Initial.cs" />
     <Compile Include="Migrations\201806111847268_Initial.Designer.cs">
       <DependentUpon>201806111847268_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211314194_Initial1.cs" />
+    <Compile Include="Migrations\201806211314194_Initial1.Designer.cs">
+      <DependentUpon>201806211314194_Initial1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -334,6 +338,7 @@
     <Content Include="Views\Admin\ListConfirmedPerson.cshtml" />
     <Content Include="Views\Admin\ListNotConfirmedPerson.cshtml" />
     <Content Include="Views\Admin\test.cshtml" />
+    <Content Include="Views\Admin\History.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -353,6 +358,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806111847268_Initial.resx">
       <DependentUpon>201806111847268_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211314194_Initial1.resx">
+      <DependentUpon>201806211314194_Initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
