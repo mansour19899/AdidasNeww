@@ -18,9 +18,8 @@
     <style>
         body {
             padding-top: 0px;
-    padding-bottom: 20px;
+            padding-bottom: 20px;
         }
-
     </style>
 
 
@@ -35,7 +34,7 @@
     <div style="padding-top: 50px; padding-left: 20px; padding-right: 20px;" class="allcontentpage">
 
         @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
-            {
+        {
 
             Html.EnableClientValidation(true);
 
@@ -181,7 +180,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <p class="_label">
                                 @Html.LabelFor(p => p.Person.image)<span>*</span>
-                                <input type="file" name="UploadImage" id="fileUpload" class="input-files" onchange="return ValidateExtension()"/>
+                                <input type="file" name="UploadImage" id="fileUpload" class="input-files" onchange="return ValidateExtension()" />
                                 @Html.ValidationMessageFor(p => p.Person.image, "", new { @class = "text-danger" })
                                 <span id="lblError" style="color: red;"></span>
                             </p>
@@ -263,7 +262,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
-                            @Html.Label("نرم افزارهایی که بر آن مسلط هستید",new {@class="_label" })
+                            @Html.Label("نرم افزارهایی که بر آن مسلط هستید", new { @class = "_label" })
                         </div>
                         <div class="col-sm-2">
                             <p>
@@ -708,6 +707,7 @@
         });
 
         var send = true;
+        var CheckPic = false;
 
         function ValidateExtension() {
             var allowedFiles = [".png", ".gif", ".jpg"];
@@ -716,27 +716,47 @@
             var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
             if (!regex.test(fileUpload.value.toLowerCase())) {
                 lblError.innerHTML = "Please upload files having extensions: <b>" + allowedFiles.join(', ') + "</b> only.";
+                CheckPic = false;
                 return false;
             }
             lblError.innerHTML = "";
+            CheckPic = true;
             return true;
         }
 
         $("#BtnSend").click(function (evt) {
-            if (send == false) {
-                $.noty.closeAll(); noty({ text: "چند لحظه صبر کنید", type: "success", layout: "center", dismissQueue: false, modal: false });
+            if ($("form").valid()==false) {
+                
             }
-            if ($("#lblError").text() == ""&send==true) {
-                send = false;
+            else if ($('#fileUpload').get(0).files.length === 0) {
+                $.noty.closeAll(); noty({ text: "عکس خود را انتخاب کنید", type: "success", layout: "center", dismissQueue: false, modal: false });
+                evt.preventDefault();
+            }
+            else if (CheckPic == false) {
+                $.noty.closeAll(); noty({ text: "فرمت عکس صحیح نمی باشد \n png,gif,jpg", type: "success", layout: "center", dismissQueue: false, modal: false });
+                evt.preventDefault();
+            }
+            else if (send == false) {
+                $.noty.closeAll(); noty({ text: "اطلاعات با موفقیت ارسال شده است", type: "success", layout: "center", dismissQueue: false, modal: false });
+                evt.preventDefault();
             }
             else {
-                evt.preventDefault();
 
             }
-            
+
         });
 
-       
+        $(".form-control").keypress(function (event) {
+            if (event.keyCode == 13) {
+                event.preventDefault();
+            }
+        })
+
+        $("form").submit(function () {
+            if ($(this).valid()) {
+                send = false;
+            }
+        });
 
     </script>
 </body>
