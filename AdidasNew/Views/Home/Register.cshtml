@@ -708,19 +708,50 @@
 
         var send = true;
         var CheckPic = false;
+        var SizePic = true;
 
         function ValidateExtension() {
             var allowedFiles = [".png", ".gif", ".jpg"];
             var fileUpload = document.getElementById("fileUpload");
             var lblError = document.getElementById("lblError");
+            var size = parseFloat(fileUpload.files[0].size / 1024/1024).toFixed(2);
             var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(" + allowedFiles.join('|') + ")$");
+
             if (!regex.test(fileUpload.value.toLowerCase())) {
                 lblError.innerHTML = "Please upload files having extensions: <b>" + allowedFiles.join(', ') + "</b> only.";
                 CheckPic = false;
                 return false;
             }
-            lblError.innerHTML = "";
-            CheckPic = true;
+            else {
+                CheckPic = true;
+            }
+
+
+            if (CheckPic == false) {
+
+            }
+           else if (size > 1) {
+                SizePic = false;
+                lblError.innerHTML = "حجم تصویر باید زیر یک مگابایت باشد </br>عکس انتخاب شده "+size+"MB";
+                
+            }
+            else if (size < 1)
+            {
+                SizePic = true;
+                lblError.innerHTML = "";
+                
+            }
+            else {
+
+            }
+
+
+
+           
+          
+
+
+           
             return true;
         }
 
@@ -734,6 +765,10 @@
             }
             else if (CheckPic == false) {
                 $.noty.closeAll(); noty({ text: "فرمت عکس صحیح نمی باشد \n png,gif,jpg", type: "success", layout: "center", dismissQueue: false, modal: false });
+                evt.preventDefault();
+            }
+            else if (SizePic == false) {
+                $.noty.closeAll(); noty({ text: "حجم تصویر باید زیر یک مگابایت باشد", type: "success", layout: "center", dismissQueue: false, modal: false });
                 evt.preventDefault();
             }
             else if (send == false) {
