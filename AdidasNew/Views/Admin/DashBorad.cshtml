@@ -4,6 +4,24 @@
     ViewBag.Title = "DashBorad";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/Accordion.css" rel="stylesheet" />
+@*<script src="/Scripts/jquery-3.3.1.js"></script>*@
+<script src="~/Scripts/scriptAccordion.js"></script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $("#menu").accordion();
+        $(".colors a").click(function () {
+            if ($(this).attr("class") != "default") {
+                $("#menu").removeClass();
+                $("#menu").addClass("menu").addClass($(this).attr("class"));
+            } else {
+                $("#menu").removeClass();
+                $("#menu").addClass("menu");
+            }
+        });
+    });
+</script>
 
 <style>
     .label1 {
@@ -21,80 +39,159 @@
         -moz-box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
         box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
     }
+
+
 </style>
 
-<div class="container">
+<div>
     <div class="row">
-        <div class="col-md-4 col-sm-6">
-            <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">
-                <div style="background-color:darkgreen; " class="text-center label1 ">
-                    <p>  افراد تایید صلاحیت شده</p>
-                    <p>@Model.ConfirmedPerson نفر</p>
-                
-                </div>
-            </a>
+        <div class="col-sm-2">
+
+            @*----------------------------------*@
+
+
+            <div class="content" style="margin-top:30px;">
+             
+                <nav>
+                    <div id="menu" class="menu blue">
+                        <div class="menu-header"> ACCORDION MENU </div>
+                        <ul>
+                            <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                            <li>
+                                <a href="#"><i class="fa fa-file-image-o"> </i>Gallery</a>
+                                <ul class="submenu">
+                                    <li><a href="#"> Graphics</a></li>
+                                    <li><a href="#"> Photoshop</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-cog"> </i>Services</a>
+                                <ul class="submenu">
+                                    <li>
+                                        <a href="#"> Web Design </a>
+                                        <ul class="submenu">
+                                            <li><a href="#"> WordPress</a></li>
+                                            <li><a href="#"> Joomla</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#"> Hosting</a></li>
+                                    <li><a href="#"> Design </a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#"><i class="fa fa-newspaper-o"> </i>News<span class="menu-label"> 8 </span></a></li>
+                            <li><a href="#"><i class="fa fa-user"> </i>About</a></li>
+                            <li><a href="#"><i class="fa fa-envelope"> </i> Contact</a></li>
+                        </ul>
+                        <div class="menu-footer"> @*@ Tes*@t</div>
+                    </div>
+                </nav>
+            </div>
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-36251023-1']);
+                _gaq.push(['_setDomainName', 'jqueryscript.net']);
+                _gaq.push(['_trackPageview']);
+
+                (function () {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="/admin/listnewperson" style="text-decoration:none;">
-                <div style="background-color:darkorange" class="text-center label1">
-                    <p>افراد بررسی نشده</p>
-                    <p>@Model.NewPerson نفر</p>
+
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">
+                        <div style="background-color:darkgreen; " class="text-center label1 ">
+                            <p>  افراد تایید صلاحیت شده</p>
+                            <p>@Model.ConfirmedPerson نفر</p>
+
+                        </div>
+                    </a>
+
                 </div>
-            </a>
+                <div class="col-md-4 col-sm-6">
+                    <a href="/admin/listnewperson" style="text-decoration:none;">
+                        <div style="background-color:darkorange" class="text-center label1">
+                            <p>افراد بررسی نشده</p>
+                            <p>@Model.NewPerson نفر</p>
+                        </div>
+                    </a>
 
 
-        </div>
-        <div class="col-md-4 col-sm-6">
-            <a href="/UsersAdmin/Index" style="text-decoration:none;">
-                <div style="background-color:rebeccapurple" class="text-center label1">
-                    ناظران
                 </div>
-            </a>
+                <div class="col-md-4 col-sm-6">
+                    <a href="/UsersAdmin/Index" style="text-decoration:none;">
+                        <div style="background-color:rebeccapurple" class="text-center label1">
+                            ناظران
+                        </div>
+                    </a>
 
 
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-            <a href="/admin/ListNotConfirmedPerson" style="text-decoration:none;">
-                <div style="background-color:darkred" class="text-center label1">
-                    <p>افراد رد صلاحیت شده</p>
-                    <p>@Model.NotConfirmedPerson نفر</p>
                 </div>
-            </a>
+
+                <div class="col-md-4 col-sm-6">
+                    <a href="/admin/ListNotConfirmedPerson" style="text-decoration:none;">
+                        <div style="background-color:darkred" class="text-center label1">
+                            <p>افراد رد صلاحیت شده</p>
+                            <p>@Model.NotConfirmedPerson نفر</p>
+                        </div>
+                    </a>
 
 
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-            <a href="#" style="text-decoration:none;">
-                <div style="background-color:darkblue" class="text-center label1">
-                    کارمندان
                 </div>
-            </a>
+
+                <div class="col-md-4 col-sm-6">
+                    <a href="#" style="text-decoration:none;">
+                        <div style="background-color:darkblue" class="text-center label1">
+                            کارمندان
+                        </div>
+                    </a>
 
 
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-            <a href="#" style="text-decoration:none;">
-                <div style="background-color:black" class="text-center label1">
-                    افراد مستعفی
                 </div>
-            </a>
+
+                <div class="col-md-4 col-sm-6">
+                    <a href="#" style="text-decoration:none;">
+                        <div style="background-color:black" class="text-center label1">
+                            افراد مستعفی
+                        </div>
+                    </a>
 
 
-        </div>
-
-        <div class="col-md-4 col-sm-6">
-            <a href="#" style="text-decoration:none;">
-                <div style="background-color:red" class="text-center label1">
-                    اخراج شده
                 </div>
-            </a>
+
+                <div class="col-md-4 col-sm-6">
+                    <a href="#" style="text-decoration:none;">
+                        <div style="background-color:red" class="text-center label1">
+                            اخراج شده
+                        </div>
+                    </a>
 
 
+                </div>
+            </div>
         </div>
+
+
 
     </div>
 </div>
