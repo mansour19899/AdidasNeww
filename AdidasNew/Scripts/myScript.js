@@ -1,9 +1,24 @@
 ﻿$(document).ready(function () {
 
     var _my_height = $(window).height();
-    var _my_bootom = $(window).width()/2-100;
+    //var _my_bootom = $(window).width() / 2 - 100;
+    var _my_bootom = 20;
     $("._Header").css("height", _my_height);
     $("#hi").css("right", _my_bootom);
+
+    var _my_bootom1 = $(window).width();
+    if (_my_bootom1 < 992) {
+        $("#hi").css("height", 40);
+        $("#hi").css("width", 100);
+        $("#hi").css("padding", 0);
+        $("#hi").css("font-size", 15);
+    }
+    else {
+        $("#hi").css("height", 75);
+        $("#hi").css("width", 200);
+        $("#hi").css("padding", 18);
+        $("#hi").css("font-size", 20);
+    }
 
     // کلاس دکمه
     $("#hi").click(function () {
@@ -13,16 +28,32 @@
 
     $(window).resize(function () {
         var _my_height = $(window).height();
-        var _my_bootom = $(window).width() / 2 - 100;
+        //var _my_bootom = $(window).width() / 2 - 100;
+        var _my_bootom = 20;
+
         $("._Header").css("height", _my_height);
         $("#hi").css("right", _my_bootom);
+
+        var _my_bootom1 = $(window).width();
+        if (_my_bootom1 < 992) {
+            $("#hi").css("height", 40);
+            $("#hi").css("width", 100);
+            $("#hi").css("padding", 0);
+            $("#hi").css("font-size", 15);
+        }
+        else {
+            $("#hi").css("height", 75);
+            $("#hi").css("width", 200);
+            $("#hi").css("padding", 18);
+            $("#hi").css("font-size", 20);
+        }
     });
 
     $("#Person_Gender").change(function () {
 
     
 
-        if ($(this).val() != "true") {
+        if ($(this).val() !== "true") {
             $("#Person_MilitaryService").val(0);
             $("#Person_MilitaryService").attr("disabled", "disabled");
 
@@ -37,7 +68,7 @@
 
      
 
-        if ($(this).val() == "true") {
+        if ($(this).val() === "true") {
             $("#Person_Children").val (0);
             $("#Person_Children").attr("disabled", "disabled");
 
@@ -53,7 +84,7 @@
 
 
 
-        if ($(this).val() == "true") {
+        if ($(this).val() === "true") {
             $("#Person_DaysNumber").val(0);
             $("#Person_DaysNumber").attr("disabled", "disabled");
 
@@ -68,7 +99,7 @@
 
 
 
-        if ($(this).val() == "true") {
+        if ($(this).val() === "true") {
             $("#Person_Duration").val(0);
             $("#Person_Duration").attr("disabled", "disabled");
 
@@ -101,7 +132,7 @@
 
        
 
-        if ($(this).val() == "true") {
+        if ($(this).val() === "true") {
             $("#moaref").text("معرف");
             
 

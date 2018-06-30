@@ -45,7 +45,7 @@
 
 <div>
     <div class="row">
-        <div class="col-sm-2">
+        <div class="col-sm-3 hidden-xs">
 
             @*----------------------------------*@
 
@@ -56,12 +56,13 @@
                     <div id="menu" class="menu blue">
                         <div class="menu-header"> ACCORDION MENU </div>
                         <ul>
-                            <li class="active"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+                            <li class="active"><a href="/Admin/DashBorad"><i class="fa fa-home"></i>DashBoard</a></li>
                             <li>
-                                <a href="#"><i class="fa fa-file-image-o"> </i>Gallery</a>
+                                <a href="#"><i class="fa fa-file-image-o"> </i>افراد ثبت نام شده</a>
                                 <ul class="submenu">
-                                    <li><a href="#"> Graphics</a></li>
-                                    <li><a href="#"> Photoshop</a></li>
+                                    <li><a href="/admin/listnewperson">بررسی نشده ها</a></li>
+                                    <li><a href="/admin/ListConfirmedPerson"> تایید صلاحیت شده ها</a></li>
+                                    <li><a href="/admin/ListNotConfirmedPerson"> رد صلاحیت شده ها</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -116,7 +117,7 @@
 
         </div>
 
-        <div class="col-sm-10">
+        <div class="col-sm-9">
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">

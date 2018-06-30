@@ -29,7 +29,7 @@
 .menu {
   box-shadow: 0 20px 50px #333333;
   float: left;
-  min-width: 260px;
+  max-width: 260px;
   outline: 0;
   position: relative;
 }

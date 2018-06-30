@@ -201,6 +201,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Models\Repositores\addidas.jpg" />
     <Content Include="Models\Repositores\adidas-wallpaper-hd-008.jpg" />
+    <Content Include="Models\Repositores\adidas.jpg" />
     <Content Include="Models\Repositores\adidaslogo.png" />
     <Content Include="Models\Repositores\Fail-Stamp.png" />
     <Content Include="Models\Repositores\pass.png" />
