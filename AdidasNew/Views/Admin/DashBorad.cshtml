@@ -8,20 +8,7 @@
 @*<script src="/Scripts/jquery-3.3.1.js"></script>*@
 <script src="~/Scripts/scriptAccordion.js"></script>
 
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $("#menu").accordion();
-        $(".colors a").click(function () {
-            if ($(this).attr("class") != "default") {
-                $("#menu").removeClass();
-                $("#menu").addClass("menu").addClass($(this).attr("class"));
-            } else {
-                $("#menu").removeClass();
-                $("#menu").addClass("menu");
-            }
-        });
-    });
-</script>
+
 
 <style>
     .label1 {
@@ -39,8 +26,6 @@
         -moz-box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
         box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
     }
-
-
 </style>
 
 <div>
@@ -51,7 +36,7 @@
 
 
             <div class="content" style="margin-top:30px;">
-             
+
                 <nav>
                     <div id="menu" class="menu blue">
                         <div class="menu-header"> ACCORDION MENU </div>
@@ -196,3 +181,22 @@
 
     </div>
 </div>
+
+
+@section scriptss{
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("#menu").accordion();
+            $(".colors a").click(function () {
+                if ($(this).attr("class") != "default") {
+                    $("#menu").removeClass();
+                    $("#menu").addClass("menu").addClass($(this).attr("class"));
+                } else {
+                    $("#menu").removeClass();
+                    $("#menu").addClass("menu");
+                }
+            });
+        });
+    </script>
+
+}
