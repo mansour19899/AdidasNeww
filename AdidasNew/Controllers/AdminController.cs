@@ -35,7 +35,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == false).ToList();
+            var list = blPerson.Where(p => p.Checked == false).ToList().OrderByDescending(pp=>pp.Id);
 
             return View(list);
         }
@@ -86,7 +86,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == true).ToList();
+            var list = blPerson.Where(p => p.Checked == true).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -135,7 +135,7 @@ namespace AdidasNew.Controllers
             PersonRepository blPerson = new PersonRepository();
 
 
-            var list = blPerson.Where(p => p.Checked == true&p.Status==2).ToList();
+            var list = blPerson.Where(p => p.Checked == true&p.Status==2).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -144,7 +144,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == true & p.Status == 1).ToList();
+            var list = blPerson.Where(p => p.Checked == true & p.Status == 1).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -157,7 +157,8 @@ namespace AdidasNew.Controllers
         {
             SetStatus(int.Parse(PersonId), 2, Description);
 
-            return RedirectToAction("ListConfirmedPerson");
+            //return RedirectToAction("ListConfirmedPerson");
+            return RedirectToAction("ListNewPerson");
         }
 
         [SendStatusHandler]
@@ -166,7 +167,8 @@ namespace AdidasNew.Controllers
         {
             SetStatus(int.Parse(PersonId), 1, Description);
 
-            return RedirectToAction("ListNotConfirmedPerson");
+            //return RedirectToAction("ListNotConfirmedPerson");
+            return RedirectToAction("ListNewPerson");
         }
        
         public ActionResult History(int id)
@@ -175,7 +177,7 @@ namespace AdidasNew.Controllers
             historyOfPersonRepository per = new historyOfPersonRepository();
             AdidasNew.Models.ApplicationDbContext db = new Models.ApplicationDbContext();
             var t = db.Users.ToList();
-           var history=  per.Where(p => p.Person_Id_fk == id).OrderByDescending(p=>p.RegDate).ToList();
+           var history=  per.Where(p => p.Person_Id_fk == id).ToList().OrderByDescending(p => p.RegDate);
             foreach (var item in history)
             {
                 item.User_Id_fk = t.Find(p => p.Id == item.User_Id_fk).FullName;
