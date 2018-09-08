@@ -5,8 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Html.ActionLink("Print", "Print")
+
 @{
-    var fullname = Model.Person.Name+Model.Person.LastName;
+    var fullname = Model.Person.Name + Model.Person.LastName;
     var x = "/Admin/history/" + Model.Person.Id;
     <a href=@x>
         <div class="row" style="margin-top: 20px;">

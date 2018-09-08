@@ -9,16 +9,19 @@ using System.Web.Mvc;
 using AdidasNew.Models.DomainModels;
 using Microsoft.AspNet.Identity;
 using AdidasNew.Helpers.Attributes;
-
+using Stimulsoft.Report.Mvc;
+using Stimulsoft.Report;
 
 namespace AdidasNew.Controllers
 {
+
     [Authorize(Roles = "Admin,Maneger")]
     public class AdminController : Controller
     {
         countLists count;
+        PersonInfo infoo = new PersonInfo();
        // GET: Admin
-       
+
         public ActionResult Index()
         {
 
@@ -47,7 +50,7 @@ namespace AdidasNew.Controllers
             JobRecordRepository blJob = new JobRecordRepository();
             RelationShipRepository blRelation = new RelationShipRepository();
 
-            PersonInfo infoo = new PersonInfo();
+             
 
             var t = blPerson.Find(id);
             if (t != null)
@@ -185,5 +188,28 @@ namespace AdidasNew.Controllers
             }
             return View(history);
         }
+
+        public ActionResult Print()
+        {
+            var yy = infoo;
+            return View();
+        }
+
+
+        public ActionResult report()
+        {
+            var report = new StiReport();
+            report.Load(Server.MapPath("/Reports/Report.mrt"));
+            report.Dictionary.Variables["hi"].Value = "mansour";
+            report.Compile();
+            //report.RegBusinessObject("dt", db.People.ToList());
+            return StiMvcViewer.GetReportSnapshotResult(report);
+        }
+
+        public ActionResult viewerEvent()
+        {
+            return StiMvcViewer.ViewerEventResult(HttpContext);
+        }
     }
-}
+
+    }
