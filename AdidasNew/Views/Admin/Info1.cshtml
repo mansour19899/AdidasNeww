@@ -1,11 +1,12 @@
 ﻿@model AdidasNew.ViewModels.PersonInfo
 
 @{
-    ViewBag.Title = "Info1";
+    ViewBag.Title = "اطلاعات فردی";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Html.ActionLink("Print", "Print")
+
+@Html.ActionLink("Print", "Print", "Admin", null, new { @class = "btn btn-success", @style = "width:100px;margin-top:10px;" })
 
 @{
     var fullname = Model.Person.Name + Model.Person.LastName;
@@ -73,11 +74,11 @@
                         @{
                             if (Model.Person.Gender)
                             {
-                                <span>مرد</span>
+                                <span>آقا</span>
                             }
                             else
                             {
-                                <span>زن</span>
+                                <span>خانم</span>
 
                             }
 

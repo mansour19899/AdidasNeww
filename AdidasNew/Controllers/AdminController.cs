@@ -228,13 +228,18 @@ namespace AdidasNew.Controllers
             report.Dictionary.Variables["Family"].Value = t.Person.LastName;
             report.Dictionary.Variables["Father"].Value = t.Person.Father;
             report.Dictionary.Variables["BirthDay"].Value = t.Person.BirthDay.Value.ToPersianDateString();
-            report.Dictionary.Variables["MilitaryService"].Value = DropDown.GetMilitaryList().FirstOrDefault(p => p.Value == t.Person.MilitaryService.ToString()).Text;
+            
             report.Dictionary.Variables["Marriage"].Value = DropDown.GetMarrigeList().First(p => p.Value == t.Person.Marriage.ToString().ToLower()).Text;
 
             if (t.Person.Children != null)
                 report.Dictionary.Variables["Children"].Value = DropDown.GetCountOfChildernList().FirstOrDefault(p => p.Value == t.Person.Children.ToString()).Text;
             else
                 report.Dictionary.Variables["Children"].Value = "";
+
+            if (t.Person.MilitaryService != null)
+                report.Dictionary.Variables["MilitaryService"].Value = DropDown.GetMilitaryList().FirstOrDefault(p => p.Value == t.Person.MilitaryService.ToString()).Text;
+            else
+                report.Dictionary.Variables["MilitaryService"].Value = "";
 
             report.Dictionary.Variables["NationalCode"].Value = t.Person.NationalCode;
             report.Dictionary.Variables["Address"].Value = t.Person.Address;
@@ -248,6 +253,8 @@ namespace AdidasNew.Controllers
                 report.Dictionary.Variables["Email"].Value = "";
 
             report.Dictionary.Variables["Gender"].Value = DropDown.GetGenderList().First(p => p.Value == t.Person.Gender.ToString().ToLower()).Text;
+            if(!t.Person.Gender)
+                report.Dictionary.Variables["MilitaryService"].Value = "ــــــ";
 
             byte[] ImageByteArray = t.Person.image;
             MemoryStream ms = new MemoryStream(ImageByteArray);
@@ -369,15 +376,91 @@ namespace AdidasNew.Controllers
 
             }
 
-            report.Dictionary.Variables["JobStatus"].Value = DropDown.GetJobStatusList().FirstOrDefault(p => p.Value == t.Person.JobStatus.ToString()).Text;
+            report.Dictionary.Variables["JobStatus"].Value = DropDown.GetJobStatusList().First(p => p.Value == t.Person.JobStatus.ToString().ToLower()).Text;
 
             if (t.Person.DaysNumber != null)
-                report.Dictionary.Variables["DaysNumber"].Value = t.Person.DaysNumber.ToString();
+                report.Dictionary.Variables["DaysNumber"].Value =string.Format("{0}", t.Person.DaysNumber.ToString());
             else
                 report.Dictionary.Variables["DaysNumber"].Value = "";
 
-            report.Dictionary.Variables["Duration"].Value = DropDown.GetDurationOfWorkList().First(p => p.Value == t.Person.Duration.ToString().ToLower()).Text;
+            if (t.Person.Duration != null)
+                report.Dictionary.Variables["Duration"].Value = DropDown.GetDurationOfWorkList().First(p => p.Value == t.Person.Duration.ToString()).Text;
+            else
+                report.Dictionary.Variables["Duration"].Value = "ــــ";
+
+            
             report.Dictionary.Variables["WorkingGuranty"].Value = DropDown.GetYesOrNoList().First(p => p.Value == t.Person.WorkingGuranty.ToString().ToLower()).Text;
+            report.Dictionary.Variables["GurantyPayment"].Value = DropDown.GetYesOrNoList().First(p => p.Value == t.Person.GurantyPayment.ToString().ToLower()).Text;
+            report.Dictionary.Variables["SalaryExpection"].Value = t.Person.SalaryExpection;
+
+            if(t.RelationShip1!=null)
+            {
+                if (t.RelationShip1.Name != null)
+                    report.Dictionary.Variables["Name1"].Value = t.RelationShip1.Name;
+                else
+                    report.Dictionary.Variables["Name1"].Value = "";
+
+                if (t.RelationShip1.Relational != null)
+                    report.Dictionary.Variables["Relational1"].Value = t.RelationShip1.Relational;
+                else
+                    report.Dictionary.Variables["Relational1"].Value = "";
+
+                if (t.RelationShip1.Tell != null)
+                    report.Dictionary.Variables["Tell1"].Value = t.RelationShip1.Tell;
+                else
+                    report.Dictionary.Variables["Tell1"].Value = "";
+
+                if (t.RelationShip1.Address != null)
+                    report.Dictionary.Variables["Address11"].Value = t.RelationShip1.Address;
+                else
+                    report.Dictionary.Variables["Address11"].Value = "";
+            }
+
+            if (t.RelationShip2 != null)
+            {
+                if (t.RelationShip2.Name != null)
+                    report.Dictionary.Variables["Name2"].Value = t.RelationShip2.Name;
+                else
+                    report.Dictionary.Variables["Name2"].Value = "";
+
+                if (t.RelationShip2.Relational != null)
+                    report.Dictionary.Variables["Relational2"].Value = t.RelationShip2.Relational;
+                else
+                    report.Dictionary.Variables["Relational2"].Value = "";
+
+                if (t.RelationShip2.Tell != null)
+                    report.Dictionary.Variables["Tell2"].Value = t.RelationShip2.Tell;
+                else
+                    report.Dictionary.Variables["Tell2"].Value = "";
+
+                if (t.RelationShip2.Address != null)
+                    report.Dictionary.Variables["Address21"].Value = t.RelationShip2.Address;
+                else
+                    report.Dictionary.Variables["Address21"].Value = "";
+            }
+
+            if (t.RelationShip3 != null)
+            {
+                if (t.RelationShip3.Name != null)
+                    report.Dictionary.Variables["Name3"].Value = t.RelationShip3.Name;
+                else
+                    report.Dictionary.Variables["Name3"].Value = "";
+
+                if (t.RelationShip3.Relational != null)
+                    report.Dictionary.Variables["Relational3"].Value = t.RelationShip3.Relational;
+                else
+                    report.Dictionary.Variables["Relational3"].Value = "";
+
+                if (t.RelationShip3.Tell != null)
+                    report.Dictionary.Variables["Tell3"].Value = t.RelationShip3.Tell;
+                else
+                    report.Dictionary.Variables["Tell3"].Value = "";
+
+                if (t.RelationShip3.Address != null)
+                    report.Dictionary.Variables["Address31"].Value = t.RelationShip3.Address;
+                else
+                    report.Dictionary.Variables["Address31"].Value = "";
+            }
 
             report.Print();
 

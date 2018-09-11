@@ -64,8 +64,8 @@ public class DropDown
     {
         List<SelectListItem> items = new List<SelectListItem>
             {
-                new SelectListItem{Text = "مرد", Value = "true",Selected=true},
-                new SelectListItem{Text = "زن", Value = "false",Selected=false}
+                new SelectListItem{Text = "آقا", Value = "true",Selected=true},
+                new SelectListItem{Text = "خانم", Value = "false",Selected=false}
             };
         return items;
     }
