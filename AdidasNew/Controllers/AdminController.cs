@@ -217,6 +217,19 @@ namespace AdidasNew.Controllers
         {
             //------------------------------------------------
 
+
+
+            // report.Print();
+
+
+            //-----------------------------------------------------
+            //return View("info1", t);
+            return View();
+        }
+
+
+        public ActionResult report()
+        {
             int yy = Convert.ToInt16(Session["id"]);
 
             var t = CreatePersonInfo(yy);
@@ -229,7 +242,7 @@ namespace AdidasNew.Controllers
             report.Dictionary.Variables["Family"].Value = t.Person.LastName;
             report.Dictionary.Variables["Father"].Value = t.Person.Father;
             report.Dictionary.Variables["BirthDay"].Value = t.Person.BirthDay.Value.ToPersianDateString();
-            
+
             report.Dictionary.Variables["Marriage"].Value = DropDown.GetMarrigeList().First(p => p.Value == t.Person.Marriage.ToString().ToLower()).Text;
 
             if (t.Person.Children != null)
@@ -254,7 +267,7 @@ namespace AdidasNew.Controllers
                 report.Dictionary.Variables["Email"].Value = "";
 
             report.Dictionary.Variables["Gender"].Value = DropDown.GetGenderList().First(p => p.Value == t.Person.Gender.ToString().ToLower()).Text;
-            if(!t.Person.Gender)
+            if (!t.Person.Gender)
                 report.Dictionary.Variables["MilitaryService"].Value = "ــــــ";
 
             byte[] ImageByteArray = t.Person.image;
@@ -291,7 +304,7 @@ namespace AdidasNew.Controllers
             else
                 report.Dictionary.Variables["OtherSoftwer"].Value = "";
 
-            if(t.JobRecord1!=null)
+            if (t.JobRecord1 != null)
             {
                 if (t.JobRecord1.Company != null)
                     report.Dictionary.Variables["Company1"].Value = t.JobRecord1.Company;
@@ -380,7 +393,7 @@ namespace AdidasNew.Controllers
             report.Dictionary.Variables["JobStatus"].Value = DropDown.GetJobStatusList().First(p => p.Value == t.Person.JobStatus.ToString().ToLower()).Text;
 
             if (t.Person.DaysNumber != null)
-                report.Dictionary.Variables["DaysNumber"].Value =string.Format("{0}", t.Person.DaysNumber.ToString());
+                report.Dictionary.Variables["DaysNumber"].Value = string.Format("{0}", t.Person.DaysNumber.ToString());
             else
                 report.Dictionary.Variables["DaysNumber"].Value = "";
 
@@ -389,12 +402,12 @@ namespace AdidasNew.Controllers
             else
                 report.Dictionary.Variables["Duration"].Value = "ــــ";
 
-            
+
             report.Dictionary.Variables["WorkingGuranty"].Value = DropDown.GetYesOrNoList().First(p => p.Value == t.Person.WorkingGuranty.ToString().ToLower()).Text;
             report.Dictionary.Variables["GurantyPayment"].Value = DropDown.GetYesOrNoList().First(p => p.Value == t.Person.GurantyPayment.ToString().ToLower()).Text;
             report.Dictionary.Variables["SalaryExpection"].Value = t.Person.SalaryExpection;
 
-            if(t.RelationShip1!=null)
+            if (t.RelationShip1 != null)
             {
                 if (t.RelationShip1.Name != null)
                     report.Dictionary.Variables["Name1"].Value = t.RelationShip1.Name;
@@ -462,56 +475,7 @@ namespace AdidasNew.Controllers
                 else
                     report.Dictionary.Variables["Address31"].Value = "";
             }
-
-            report.Print();
-
-
-            //-----------------------------------------------------
-            return View("info1", t);
-            //return View();
-        }
-
-
-        public ActionResult report()
-        {
-
-            int yy = Convert.ToInt16(Session["id"]);
-
-            var t = CreatePersonInfo(yy);
-
-
-            var report = new StiReport();
-            report.Load(Server.MapPath("/Reports/Report.mrt"));
-            report.Dictionary.Variables["Name"].Value = t.Person.Name;
-            report.Dictionary.Variables["Family"].Value = t.Person.LastName;
-            report.Dictionary.Variables["Father"].Value = t.Person.Father;
-            report.Dictionary.Variables["BirthDay"].Value = t.Person.BirthDay.Value.ToPersianDateString();
-            report.Dictionary.Variables["MilitaryService"].Value = DropDown.GetMilitaryList().FirstOrDefault(p => p.Value == t.Person.MilitaryService.ToString()).Text;
-            report.Dictionary.Variables["Marriage"].Value = DropDown.GetMarrigeList().First(p => p.Value == t.Person.Marriage.ToString().ToLower()).Text;
-
-            if (t.Person.Children != null)
-                report.Dictionary.Variables["Children"].Value = DropDown.GetCountOfChildernList().FirstOrDefault(p => p.Value == t.Person.Children.ToString()).Text;
-            else
-                report.Dictionary.Variables["Children"].Value = "";
-
-            report.Dictionary.Variables["NationalCode"].Value = t.Person.NationalCode;
-            report.Dictionary.Variables["Address"].Value = t.Person.Address;
-
-            report.Dictionary.Variables["Tell"].Value = t.Person.Tell;
-            report.Dictionary.Variables["Mobile"].Value = t.Person.Mobile;
-
-            if (t.Person.Email != null)
-                report.Dictionary.Variables["Email"].Value = t.Person.Email;
-            else
-                report.Dictionary.Variables["Email"].Value = t.Person.Email;
-
-            report.Dictionary.Variables["Gender"].Value = DropDown.GetGenderList().First(p => p.Value == t.Person.Gender.ToString().ToLower()).Text;
-
-            byte[] ImageByteArray =t.Person.image;
-            MemoryStream ms = new MemoryStream(ImageByteArray);
-            System.Drawing.Image image = System.Drawing.Image.FromStream(ms);
-            report.Dictionary.Variables.Add("image", image);
-            report.Print();
+            //report.Print();
             report.Compile();
             //report.RegBusinessObject("dt", db.People.ToList());
             return StiMvcViewer.GetReportSnapshotResult(report);

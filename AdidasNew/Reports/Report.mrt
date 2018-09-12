@@ -321,7 +321,7 @@
           <Brush>Transparent</Brush>
           <ClientRectangle>0.4,3.2,2,0.3</ClientRectangle>
           <Conditions isList="true" count="0" />
-          <Font>B Nazanin,12,Bold</Font>
+          <Font>Tahoma,12,Bold</Font>
           <HorAlignment>Right</HorAlignment>
           <Margins>0,0,0,0</Margins>
           <Name>Text19</Name>
@@ -388,7 +388,8 @@
           <Brush>Transparent</Brush>
           <ClientRectangle>3.1,-0.1,1.6,1.1</ClientRectangle>
           <Conditions isList="true" count="0" />
-          <File>C:\Users\gatatech\Desktop\adidas_PNG17.png</File>
+          <File>~/adidas_logo.png</File>
+          <ImageURL>http://smm2020.ir/Reports/adidas_logo.png</ImageURL>
           <Name>Image2</Name>
           <Page isRef="2" />
           <Parent isRef="2" />
@@ -522,7 +523,7 @@
           <Brush>Transparent</Brush>
           <ClientRectangle>0,4,2.5,0.3</ClientRectangle>
           <Conditions isList="true" count="0" />
-          <Font>B Nazanin,12,Bold</Font>
+          <Font>Tahoma,12,Bold</Font>
           <HorAlignment>Right</HorAlignment>
           <Margins>0,0,0,0</Margins>
           <Name>Text32</Name>
@@ -551,7 +552,7 @@
           <Brush>Transparent</Brush>
           <ClientRectangle>0,4.3,2.5,0.3</ClientRectangle>
           <Conditions isList="true" count="0" />
-          <Font>B Nazanin,10,Bold</Font>
+          <Font>Tahoma,10,Bold</Font>
           <HorAlignment>Right</HorAlignment>
           <Margins>0,0,0,0</Margins>
           <Name>Text34</Name>
@@ -580,7 +581,7 @@
           <Brush>Transparent</Brush>
           <ClientRectangle>0,4.6,2.7,0.3</ClientRectangle>
           <Conditions isList="true" count="0" />
-          <Font>B Nazanin,10,Bold</Font>
+          <Font>Tahoma,10,Bold</Font>
           <HorAlignment>Right</HorAlignment>
           <Margins>0,0,0,0</Margins>
           <Name>Text36</Name>
@@ -1504,10 +1505,10 @@
     <value>Stimulsoft.Report.Dll</value>
   </ReferencedAssemblies>
   <ReportAlias>Report</ReportAlias>
-  <ReportChanged>9/12/2018 10:30:20 AM</ReportChanged>
+  <ReportChanged>9/12/2018 11:57:05 AM</ReportChanged>
   <ReportCreated>9/8/2018 2:23:26 PM</ReportCreated>
   <ReportFile>D:\projects\AdidasNew\AdidasNeww\AdidasNew\Reports\Report.mrt</ReportFile>
-  <ReportGuid>a41f656e02c34952aa932efd750a3122</ReportGuid>
+  <ReportGuid>51305d3d99834355a48aa53090011771</ReportGuid>
   <ReportName>Report</ReportName>
   <ReportUnit>Inches</ReportUnit>
   <ReportVersion>2014.3.0</ReportVersion>
