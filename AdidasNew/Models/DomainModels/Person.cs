@@ -90,7 +90,7 @@ namespace AdidasNew.Models.DomainModels
         [MaxLength(12, ErrorMessage = "لطفا مقدار  {0} را بیشتر از {1} حرف وارد نکنید")]
         //[MaxLength(11, ErrorMessage = "لطفا مقدار  {0} را بیشتر از {1} رقم وارد نکنید")]
         //[MinLength(10, ErrorMessage = "لطفا مقدار  {0} را کمتر از {1} رقم وارد نکنید")]
-        [RegularExpression(@"^[0۰]?[9۹]([123۱۲۳])([0-9,۰۱۲۳۴۵۶۷۸۹]{8})$", ErrorMessage = "شماره موبایل را بدرستی وارد کنید")]
+        [RegularExpression(@"^[0۰]?[9۹]([0-9,۰۱۲۳۴۵۶۷۸۹]{9})$", ErrorMessage = "شماره موبایل را بدرستی وارد کنید")]
          public string Mobile { get; set; }
 
         [DisplayName("ایمیل ")]

@@ -224,6 +224,7 @@ namespace AdidasNew.Controllers
 
             var report = new StiReport();
             report.Load(Server.MapPath("/Reports/Report.mrt"));
+
             report.Dictionary.Variables["Name"].Value = t.Person.Name;
             report.Dictionary.Variables["Family"].Value = t.Person.LastName;
             report.Dictionary.Variables["Father"].Value = t.Person.Father;
