@@ -16,6 +16,16 @@ textarea {
     max-width: 280px;
 }
 
+@font-face {
+    font-family: 'BMitraBold';
+    src: url('Fonts/BMitraBold.woff') format('woff'),url('Fonts/BMitraBold.ttf') format('truetype'), url('Fonts/BMitraBold.svg') format('svg'),url('Fonts/BMitraBd.eot') format('embedded-opentype');
+}
+
+@font-face {
+    font-family: 'BTitrBd';
+    src: url('Fonts/BTitrBd.eot') format('embedded-opentype'),url('Fonts/BTitrBold.svg') format('svg'),url('Fonts/BTitrBold.ttf') format('truetype'),url('Fonts/BTitrBold.woff') format('woff');
+}
+
 /* styles for validation helpers */
 .field-validation-error {
     color: #b94a48;
@@ -44,7 +54,7 @@ input[type="checkbox"].input-validation-error {
 body {
     /*padding-top: 0px;
     padding-bottom: 20px;*/
-    font-family: Tahoma,Arial,sans-serif,b mitra;
+    font-family: Tahoma,Arial,sans-serif,'BMitraBold';
 }
 
 
@@ -73,12 +83,14 @@ textarea {
     font-size: 20px;
     height: 40px;
     width: 100%;
-    font-family: b mitra;
+    font-family: 'BMitraBold' !important;
+    ;
 }
 
 ._label {
-    font-family: b mitra;
+    font-family: 'BMitraBold' !important;
     font-size: 15px;
+    font-weight: normal !important;
 }
 
 
@@ -86,13 +98,15 @@ textarea {
     max-width: 75px;
     display: inline;
     font-size: 15px;
-    font-family: b mitra;
+    font-family: 'BMitraBold' !important;
+    font-weight: normal;
     padding: 0px;
 }
 
 ._dropdown {
     padding-bottom: 8px;
-    font-family: b mitra;
+    font-family: 'BMitraBold' !important;
+    font-weight: normal;
     font-size: 15px;
 }
 
@@ -129,6 +143,8 @@ span {
     color: darkred;
 }
 
-
+label {
+    font-weight: normal;
+}
 
 

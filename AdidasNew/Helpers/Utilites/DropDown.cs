@@ -42,7 +42,7 @@ public class DropDown
                 new SelectListItem{Text = "کاردانی", Value = "2",Selected=false},
                 new SelectListItem{Text = "کارشناسی", Value = "3",Selected=false},
                 new SelectListItem{Text = "کارشناسی ارشد", Value = "4",Selected=false},
-                new SelectListItem{Text = "در حین تحصیل", Value = "5",Selected=false}
+                new SelectListItem{Text = "در حال تحصیل", Value = "5",Selected=false}
               };
         return items;
     }

@@ -164,6 +164,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Fonts\BMitra.svg" />
+    <Content Include="Content\Fonts\BMitraBold.svg" />
+    <Content Include="Content\Fonts\BTitrBold.svg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -223,6 +226,15 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Reports\Report.mrt" />
+    <Content Include="Content\Fonts\BMitra.eot" />
+    <Content Include="Content\Fonts\BMitra.ttf" />
+    <Content Include="Content\Fonts\BMitra.woff" />
+    <Content Include="Content\Fonts\BMitraBd.eot" />
+    <Content Include="Content\Fonts\BMitraBold.ttf" />
+    <Content Include="Content\Fonts\BMitraBold.woff" />
+    <Content Include="Content\Fonts\BTitrBd.eot" />
+    <Content Include="Content\Fonts\BTitrBold.ttf" />
+    <Content Include="Content\Fonts\BTitrBold.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
