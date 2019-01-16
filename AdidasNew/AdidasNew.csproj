@@ -310,6 +310,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\ApiModel\InformationPerson.cs" />
+    <Compile Include="Models\ApiModel\PersonMobile.cs" />
     <Compile Include="Models\DomainModels\DatabaseContext.cs" />
     <Compile Include="Models\DomainModels\HistoryOfPerson.cs" />
     <Compile Include="Models\DomainModels\JobRecord.cs" />
