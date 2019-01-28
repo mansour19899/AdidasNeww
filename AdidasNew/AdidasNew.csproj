@@ -316,6 +316,7 @@
     <Compile Include="Models\DomainModels\HistoryOfPerson.cs" />
     <Compile Include="Models\DomainModels\JobRecord.cs" />
     <Compile Include="Models\DomainModels\Person.cs" />
+    <Compile Include="Models\DomainModels\Question.cs" />
     <Compile Include="Models\DomainModels\RelationShip.cs" />
     <Compile Include="Models\EntityModels\countLists.cs" />
     <Compile Include="Models\EntityModels\DateOfBirth.cs" />

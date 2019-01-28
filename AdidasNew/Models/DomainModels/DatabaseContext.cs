@@ -21,6 +21,7 @@ namespace AdidasNew.Models.DomainModels
         public DbSet<RelationShip> RelationShips { get; set; }
 
         public DbSet<HistoryOfPerson> historyOfPeople { get; set; }
+        public DbSet<Question> Questions { get; set; }
 
 
     }

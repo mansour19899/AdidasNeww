@@ -65,5 +65,17 @@ namespace AdidasNew.Controllers
        
             return person;
         }
+
+        [HttpGet]
+        [Route("questions/{id}")]
+        public List<Question> GetQuestions(int id)
+        {
+
+            var person = db.Questions.Where(p => p.Id > id).ToList();
+
+            return person;
+        }
+
+
     }
 }
