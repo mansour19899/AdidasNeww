@@ -229,6 +229,9 @@
     <Content Include="Models\Repositores\adidaslogo.png" />
     <Content Include="Models\Repositores\Fail-Stamp.png" />
     <Content Include="Models\Repositores\pass.png" />
+    <Content Include="Models\Repositores\sky1.jpg" />
+    <Content Include="Models\Repositores\sky2.jpg" />
+    <Content Include="Models\Repositores\sky4.jpg" />
     <Content Include="Models\Repositores\sorbino.png" />
     <Content Include="Scripts\AjaxForm\jquery.form.js" />
     <Content Include="Scripts\AjaxForm\jquery.form.min.js" />
