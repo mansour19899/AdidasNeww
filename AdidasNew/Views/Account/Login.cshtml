@@ -35,7 +35,7 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             <div class="col-xs-12" style="text-align: right;">
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control login-text", @placeholder = "نام کاربری" })
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control login-text", @placeholder = "نام کاربری", style = "direction: rtl;" })
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
 
@@ -44,7 +44,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12" style="text-align: right;">
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control login-text", @placeholder = "رمز عبور" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control login-text", @placeholder = "رمز عبور", style = "direction: rtl;" })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
 
@@ -87,5 +87,28 @@
     @Scripts.Render("~/bundles/jqueryajax")
     <script src="~/Scripts/AjaxForm/jquery.form.js"></script>
     <script src="~/Scripts/Noty/jquery.noty.js"></script>
+    <script>
+        $(document).ready(function () {
+            var now = new Date();
+            var minute = now.getMinutes();
+            if (minute % 5 == 0) {
+                $(".loginPage").css('background-image', 'url(../Models/Repositores/sky4.jpg)');
+            }
+          else  if (minute % 5 == 1) {
+                $(".loginPage").css('background-image', 'url(../Models/Repositores/sky1.jpg)');
+            }
+            else if (minute % 5 == 2) {
+                $(".loginPage").css('background-image', 'url(../Models/Repositores/sky2.jpg)');
+            }
+            else if (minute % 5 == 3) {
+                $(".loginPage").css('background-image', 'url(../Models/Repositores/sky3.jpg)');
+            }
+           else  {
+                $(".loginPage").css('background-image', 'url(../Models/Repositores/sky5.jpg)');
+            }
+
+
+        });
+    </script>
 </body>
 </html>

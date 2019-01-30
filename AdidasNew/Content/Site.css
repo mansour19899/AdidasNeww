@@ -148,9 +148,13 @@ label {
 }
 
 .loginPage {
-	background-image: url('../Models/Repositores/sky1.jpg');
-	height: 100vh;
-	background-size: cover;
+    background-image: url('../Models/Repositores/sky1.jpg');
+    height: 100vh;
+    background-size: cover;
+    /*background-position:center;*/
+    /*-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;*/
 }
 .loginForm {
     border-radius: 2px 5px 5px 5px;
@@ -172,10 +176,11 @@ label {
     padding: 20px;
 }
 
- input.login-text:focus {
+input.login-text:focus {
     outline: none;
     color: #444;
     border-color: #2196f3;
     border-right-width: 35px;
+    transition: all .2s;
 }
 

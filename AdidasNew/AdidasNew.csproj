@@ -233,6 +233,8 @@
     <Content Include="Models\Repositores\sky2.jpg" />
     <Content Include="Models\Repositores\sky4.jpg" />
     <Content Include="Models\Repositores\sorbino.png" />
+    <Content Include="Models\Repositores\sky3.jpg" />
+    <Content Include="Models\Repositores\sky5.jpg" />
     <Content Include="Scripts\AjaxForm\jquery.form.js" />
     <Content Include="Scripts\AjaxForm\jquery.form.min.js" />
     <Content Include="Scripts\bootstrap.js" />
