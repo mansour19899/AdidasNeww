@@ -184,3 +184,12 @@ input.login-text:focus {
     transition: all .2s;
 }
 
+.aside{
+    position:fixed;
+    right:0px;
+    width:250px;
+    background-color:greenyellow;
+}
+.section{
+    padding-right:170px;
+}

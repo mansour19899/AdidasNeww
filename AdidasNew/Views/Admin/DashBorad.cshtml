@@ -28,89 +28,94 @@
         box-shadow: 18px 24px 5px -6px rgba(0,0,0,0.51);
     }
 </style>
+<aside class="aside">
+    salam
+</aside>
+<section class="section">
+    <div>
+        <div class="row">
 
-<div>
-    <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">
+                            <div style="background-color:darkgreen; " class="text-center label1 ">
+                                <p>  افراد تایید صلاحیت شده</p>
+                                <p>@Model.ConfirmedPerson نفر</p>
 
-        <div class="col-sm-12">
-            <div class="row">
-                <div class="col-md-4 col-sm-6">
-                    <a href="/admin/ListConfirmedPerson" style="text-decoration:none;">
-                        <div style="background-color:darkgreen; " class="text-center label1 ">
-                            <p>  افراد تایید صلاحیت شده</p>
-                            <p>@Model.ConfirmedPerson نفر</p>
+                            </div>
+                        </a>
 
-                        </div>
-                    </a>
-
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="/admin/listnewperson" style="text-decoration:none;">
-                        <div style="background-color:darkorange" class="text-center label1">
-                            <p>افراد بررسی نشده</p>
-                            <p>@Model.NewPerson نفر</p>
-                        </div>
-                    </a>
-
-
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="/UsersAdmin/Index" style="text-decoration:none;">
-                        <div style="background-color:rebeccapurple" class="text-center label1">
-                            ناظران
-                        </div>
-                    </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="/admin/listnewperson" style="text-decoration:none;">
+                            <div style="background-color:darkorange" class="text-center label1">
+                                <p>افراد بررسی نشده</p>
+                                <p>@Model.NewPerson نفر</p>
+                            </div>
+                        </a>
 
 
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <a href="/admin/ListNotConfirmedPerson" style="text-decoration:none;">
-                        <div style="background-color:darkred" class="text-center label1">
-                            <p>افراد رد صلاحیت شده</p>
-                            <p>@Model.NotConfirmedPerson نفر</p>
-                        </div>
-                    </a>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="/UsersAdmin/Index" style="text-decoration:none;">
+                            <div style="background-color:rebeccapurple" class="text-center label1">
+                                ناظران
+                            </div>
+                        </a>
 
 
-                </div>
+                    </div>
 
-                <div class="col-md-4 col-sm-6">
-                    <a href="#" style="text-decoration:none;">
-                        <div style="background-color:darkblue" class="text-center label1">
-                            کارمندان
-                        </div>
-                    </a>
-
-
-                </div>
-
-                <div class="col-md-4 col-sm-6">
-                    <a href="#" style="text-decoration:none;">
-                        <div style="background-color:black" class="text-center label1">
-                            افراد مستعفی
-                        </div>
-                    </a>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="/admin/ListNotConfirmedPerson" style="text-decoration:none;">
+                            <div style="background-color:darkred" class="text-center label1">
+                                <p>افراد رد صلاحیت شده</p>
+                                <p>@Model.NotConfirmedPerson نفر</p>
+                            </div>
+                        </a>
 
 
-                </div>
+                    </div>
 
-                <div class="col-md-4 col-sm-6">
-                    <a href="#" style="text-decoration:none;">
-                        <div style="background-color:red" class="text-center label1">
-                            اخراج شده
-                        </div>
-                    </a>
+                    <div class="col-md-4 col-sm-6">
+                        <a href="#" style="text-decoration:none;">
+                            <div style="background-color:darkblue" class="text-center label1">
+                                کارمندان
+                            </div>
+                        </a>
 
 
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                        <a href="#" style="text-decoration:none;">
+                            <div style="background-color:black" class="text-center label1">
+                                افراد مستعفی
+                            </div>
+                        </a>
+
+
+                    </div>
+
+                    <div class="col-md-4 col-sm-6">
+                        <a href="#" style="text-decoration:none;">
+                            <div style="background-color:red" class="text-center label1">
+                                اخراج شده
+                            </div>
+                        </a>
+
+
+                    </div>
                 </div>
             </div>
+
+
+
         </div>
-
-
-
     </div>
-</div>
+</section>
+
 
 
 @section scriptss{
