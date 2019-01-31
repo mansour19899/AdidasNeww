@@ -19,11 +19,13 @@ namespace AdidasNew.Models.EntityModels
         public countLists()
         {
             db = new DomainModels.DatabaseContext();
-            ConfirmedPerson = db.People.Where(p => p.Checked == true & p.Status == 2).ToList().Count();
-            NotConfirmedPerson = db.People.Where(p => p.Checked == true & p.Status == 1).ToList().Count();
-            NewPerson = db.People.Where(p => p.Checked == false ).ToList().Count();
+            ConfirmedPerson = db.People.Where(p =>  p.Status == 2).ToList().Count();
+            NotConfirmedPerson = db.People.Where(p => p.Status == 1).ToList().Count();
+            NewPerson = db.People.Where(p => p.Status==0).ToList().Count();
 
-
+            ConfirmedPersonUncheck = db.People.Where(p =>p.Checked==false& p.Status == 2).ToList().Count();
+            NotConfirmedPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == 1).ToList().Count();
+            NewPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == 0).ToList().Count();
 
         }
 

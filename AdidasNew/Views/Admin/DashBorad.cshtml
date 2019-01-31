@@ -34,14 +34,14 @@
             <ul class="sidebar-menu">
                 <li class="nav-item">
                     <a href="~/Admin/listnewperson">
-                        <ion-icon style="color:orangered" class="icon" name="person-add"></ion-icon> <span>ثبت نام جدید </span>@{ if (Model.NewPerson != 0)
-                            { <span class="recheck">@Model.NewPerson </span>}}
+                        <ion-icon style="color:orangered" class="icon" name="person-add"></ion-icon> <span>ثبت نام جدید </span>@{ if (Model.NewPersonUncheck != 0)
+                            { <span class="recheck">@Model.NewPersonUncheck </span>}}
                     </a>
                 </li>
-                <li class="nav-item"> <a href="~/Admin/ListConfirmedPerson"><ion-icon style="color:darkgreen" class="icon" name="checkbox"></ion-icon> <span>تایید صلاحیت شده ها</span>@{ if (Model.ConfirmedPerson != 0)
-                    { <span class="recheck">@Model.ConfirmedPerson </span>}}</a></li>
-                <li class="nav-item"> <a href="~/Admin/ListNotConfirmedPerson"><ion-icon style="color:darkred" class="icon" name="hand"></ion-icon> <span>رد صلاحیت شده ها </span>@{ if (Model.NotConfirmedPerson != 0)
-                    { <span class="recheck">@Model.NotConfirmedPerson </span>}}</a></li>
+                <li class="nav-item"> <a href="~/Admin/ListConfirmedPerson"><ion-icon style="color:darkgreen" class="icon" name="checkbox"></ion-icon> <span>تایید صلاحیت شده ها</span>@{ if (Model.ConfirmedPersonUncheck != 0)
+                    { <span class="recheck">@Model.ConfirmedPersonUncheck </span>}}</a></li>
+                <li class="nav-item"> <a href="~/Admin/ListNotConfirmedPerson"><ion-icon style="color:darkred" class="icon" name="hand"></ion-icon> <span>رد صلاحیت شده ها </span>@{ if (Model.NotConfirmedPersonUncheck != 0)
+                    { <span class="recheck">@Model.NotConfirmedPersonUncheck </span>}}</a></li>
                 <li class="nav-item"> <a href="~/Admin/listnewperson"><ion-icon style="color:darkblue" class="icon" name="contact"></ion-icon> <span>پرسنل </span></a></li>
                 <li class="nav-item"> <a href="~/Admin/listnewperson"> <ion-icon style="color:#000000" class="icon" name="walk"></ion-icon><span>اتمام همکاری </span></a></li>
                 <li class="nav-item"> <a href="~/Admin/listnewperson"><ion-icon style="color:#ea0404" class="icon" name="close-circle"></ion-icon> <span>اخراج شده ها </span></a></li>

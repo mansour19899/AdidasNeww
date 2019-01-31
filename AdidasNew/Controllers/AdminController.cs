@@ -39,7 +39,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == false).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p => p.Status == 0).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -75,6 +75,8 @@ namespace AdidasNew.Controllers
                 if (ttt.Count() > 2)
                     infoo.RelationShip3 = ttt.ElementAt(2);
 
+                t.Checked = true;
+                blPerson.Update(t);
 
                 return infoo;
             }
@@ -138,7 +140,7 @@ namespace AdidasNew.Controllers
             historyOfPersonRepository blHistory = new historyOfPersonRepository();
 
             var x = blPerson.Find(id);
-            x.Checked = true;
+            x.Checked = false;
             x.Status = (byte)status;
             blPerson.Update(x);
 
@@ -162,7 +164,7 @@ namespace AdidasNew.Controllers
             PersonRepository blPerson = new PersonRepository();
 
 
-            var list = blPerson.Where(p => p.Checked == true & p.Status == 2).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p =>  p.Status == 2).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -171,7 +173,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Checked == true & p.Status == 1).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p =>  p.Status == 1).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }

@@ -5,8 +5,30 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row">
+    <div class="col-xs-6">
+        @Html.ActionLink("Print", "Print", "Admin", null, new { @class = "btn btn-success", @style = "width:100px;margin-top:10px;" })
+    </div>
+    <div class="col-xs-6">
+        @{
+            if (Model.Person.Status == 2)
+            {
+                <a class="btn btn-info" href="/Admin/ListConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+            }
+            else if (Model.Person.Status == 1)
+            {
+                <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+            }
+            else
+            {
+                <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
+            }
+        }
 
-@Html.ActionLink("Print", "Print", "Admin", null, new { @class = "btn btn-success", @style = "width:100px;margin-top:10px;" })
+
+    </div>
+</div>
+
 
 @{
     var fullname = Model.Person.Name + Model.Person.LastName;
@@ -908,7 +930,7 @@
                             @Html.TextArea("Description", new { @class = "form-control", maxlength = 200, style = "width: 100%; height: 100px;" })
                         </div>
 
-                        <div class="col-lg-12" , style="padding:30px;">
+                        <div class="col-xs-8" , style="padding:30px;">
                             @{
                                 if (Model.Person.Status == 1 | Model.Person.Status == 0)
                                 {
@@ -929,6 +951,24 @@
 
 
                             }
+
+                        </div>
+                        <div class="col-xs-4">
+                            @{
+                                if (Model.Person.Status == 2)
+                                {
+                                    <a class="btn btn-info" href="/Admin/ListConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                }
+                               else if (Model.Person.Status == 1)
+                                {
+                                    <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                }
+                                else
+                                {
+                                    <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                }
+                            }
+
 
                         </div>
 
