@@ -139,8 +139,10 @@ namespace AdidasNew.Controllers
             PersonRepository blPerson = new PersonRepository();
             historyOfPersonRepository blHistory = new historyOfPersonRepository();
 
+           
             var x = blPerson.Find(id);
-            x.Checked = false;
+            int perviousStatus = x.Status;
+           x.Checked = false;
             x.Status = (byte)status;
             blPerson.Update(x);
 
@@ -155,8 +157,18 @@ namespace AdidasNew.Controllers
             };
             blHistory.Add(per);
 
+            switch (perviousStatus)
+            {
+                case 0:
+                    return RedirectToAction("ListNewPerson");
+                case 1:
+                    return RedirectToAction("ListNotConfirmedPerson");
+                case 2:
+                    return RedirectToAction("ListConfirmedPerson");
+                default:
+                    return RedirectToAction("ListNewPerson");
+            }
 
-            return RedirectToAction("ListNewPerson");
         }
 
         public ActionResult ListConfirmedPerson()
@@ -184,20 +196,20 @@ namespace AdidasNew.Controllers
         [HttpPost]
         public ActionResult Confirmed(string Description, string PersonId)
         {
-            SetStatus(int.Parse(PersonId), 2, Description);
+         return   SetStatus(int.Parse(PersonId), 2, Description);
 
-            //return RedirectToAction("ListConfirmedPerson");
-            return RedirectToAction("ListNewPerson");
+           // return RedirectToAction("ListConfirmedPerson");
+
         }
 
         [SendStatusHandler]
         [HttpPost]
         public ActionResult NotConfirmed(string Description, string PersonId)
         {
-            SetStatus(int.Parse(PersonId), 1, Description);
+         return   SetStatus(int.Parse(PersonId), 1, Description);
 
-            //return RedirectToAction("ListNotConfirmedPerson");
-            return RedirectToAction("ListNewPerson");
+           // return RedirectToAction("ListNotConfirmedPerson");
+
         }
 
         public ActionResult History(int id)

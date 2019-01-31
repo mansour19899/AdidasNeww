@@ -20,11 +20,23 @@
                 <tbody>
                     @{
                         int x = 0;
+                        string xx = "";
                     }
 
                     @foreach (var item in Model)
                     {
-                        <tr>
+                       
+                            if(item.Checked==false)
+                            {
+                              xx = "font-weight: bold;";
+                            }
+                            else
+                            {
+                                 xx ="";
+                            }
+                      
+                        <tr style="@xx">
+
                             <td>@(x = x + 1)</td>
                             <td>@Html.ActionLink(item.Name + "  " + @item.LastName, "Info", "Admin", new { id = item.Id }, null)</td>
                             <td>
