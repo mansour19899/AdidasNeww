@@ -230,11 +230,11 @@
     <Content Include="Models\Repositores\Fail-Stamp.png" />
     <Content Include="Models\Repositores\pass.png" />
     <Content Include="Models\Repositores\sky1.jpg" />
-    <Content Include="Models\Repositores\sky2.jpg" />
     <Content Include="Models\Repositores\sky4.jpg" />
     <Content Include="Models\Repositores\sorbino.png" />
     <Content Include="Models\Repositores\sky3.jpg" />
     <Content Include="Models\Repositores\sky5.jpg" />
+    <Content Include="Models\Repositores\sky2.jpg" />
     <Content Include="Scripts\AjaxForm\jquery.form.js" />
     <Content Include="Scripts\AjaxForm\jquery.form.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -250,6 +250,7 @@
     <Content Include="Content\Fonts\BTitrBold.ttf" />
     <Content Include="Content\Fonts\BTitrBold.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\ionicons.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />

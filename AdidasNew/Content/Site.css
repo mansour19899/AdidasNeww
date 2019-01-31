@@ -139,7 +139,7 @@ textarea {
 	display: none;
 }
 
-span {
+.star{
 	color: darkred;
 }
 
@@ -187,9 +187,81 @@ input.login-text:focus {
 .aside{
     position:fixed;
     right:0px;
-    width:250px;
+    width:230px;
     background-color:greenyellow;
 }
 .section{
-    padding-right:170px;
+    padding-right:180px;
+}
+
+.sidebar {
+    background-color: #fff;
+    bottom: 0;
+    overflow: hidden;
+    position: fixed;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    width: 280px;
+    z-index: 1000
+}
+
+.sidebar-inner {
+    position: relative;
+    height: 100%;
+}
+
+.sidebar-menu {
+    border-right: 1px solid rgba(0,0,0,.0625);
+    height: calc(100vh - 65px);
+    list-style: none;
+    list-style-type: none;
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    position: relative;
+}
+
+    .sidebar-menu li a {
+        color: #72777a;
+        -webkit-transition: all .3s ease;
+        -o-transition: all .3s ease;
+        transition: all .3s ease;
+    }
+
+
+    .sidebar-menu > li > a {
+        display:flex; 
+        align-items:center;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 5px 15px;
+        position: relative;
+        white-space: nowrap;
+    }
+.sidebar ul {
+    list-style-type: none
+}
+.sidebar-menu li a:focus, .sidebar-menu li a:hover {
+    color: black;
+    /*background-color: #2780e3;*/
+    text-decoration: none;
+    margin-right:20px;
+}
+.nav-item {
+    padding:10px;
+}
+.icon{
+    font-size:20px;
+    padding-left:10px;
+}
+.recheck {
+    background-color: navy;
+    color: white;
+    border-radius: 10em !important;
+    margin-right: 5px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    font-family: 'BTitrBd';
 }

@@ -48,7 +48,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Name)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Name)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Name, "", new { @class = "text-danger" })
                             </p>
                             <p>
@@ -58,7 +58,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.LastName)<span>*</span>
+                                @Html.LabelFor(p => p.Person.LastName)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.LastName, "", new { @class = "text-danger" })
                             </p>
                             <p>
@@ -69,7 +69,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Father)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Father)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Father, "", new { @class = "text-danger" })
                             </p>
                             <p>
@@ -79,7 +79,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.NationalCode)<span>*</span>
+                                @Html.LabelFor(p => p.Person.NationalCode)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.NationalCode, "", new { @class = "text-danger" })
                             </p>
                             <p>
@@ -88,7 +88,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Gender)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Gender)<span class="star">*</span>
                             </p>
                             <p>
                                 @Html.DropDownListFor(p => p.Person.Gender, DropDown.GetGenderList(), new { @class = "form-control _dropdown", style = " display: inline;" })
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.MilitaryService)<span>*</span>
+                                @Html.LabelFor(p => p.Person.MilitaryService)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Marriage)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Marriage)<span class="star">*</span>
                             </p>
                             <p>
                                 @Html.DropDownListFor(p => p.Person.Marriage, DropDown.GetMarrigeList(), new { @class = "form-control _dropdown", style = " display: inline; " })
@@ -124,7 +124,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Children)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Children)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Mobile)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Mobile)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Mobile, "", new { @class = "text-danger" })
 
 
@@ -145,7 +145,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Tell)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Tell)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Tell, "", new { @class = "text-danger" })
 
                             </p>
@@ -166,7 +166,7 @@
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Address)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Address)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Address, "", new { @class = "text-danger" })
 
 
@@ -179,7 +179,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.image)<span>*</span>
+                                @Html.LabelFor(p => p.Person.image)<span class="star">*</span>
                                 <input type="file" name="UploadImage" id="fileUpload" class="input-files" onchange="return ValidateExtension()" />
                                 @Html.ValidationMessageFor(p => p.Person.image, "", new { @class = "text-danger" })
                                 <span id="lblError" style="color: red;"></span>
@@ -209,7 +209,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Degree)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Degree)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -219,7 +219,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Institute)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Institute)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Institute, "", new { @class = "text-danger" })
 
                             </p>
@@ -230,7 +230,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Field)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Field)<span class="star">*</span>
                                 @Html.ValidationMessageFor(p => p.Person.Field, "", new { @class = "text-danger" })
 
                             </p>
@@ -241,7 +241,7 @@
 
                         <div class="col-lg-3 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.EnglishKnowledge)<span>*</span>
+                                @Html.LabelFor(p => p.Person.EnglishKnowledge)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -467,7 +467,7 @@
 
                         <div class="col-lg-3 col-md-3 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.JobStatus)<span>*</span>
+                                @Html.LabelFor(p => p.Person.JobStatus)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -477,7 +477,7 @@
 
                         <div class="col-lg-3 col-md-5 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.DaysNumber)<span>*</span>
+                                @Html.LabelFor(p => p.Person.DaysNumber)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -487,7 +487,7 @@
 
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.WorkingGuranty)<span>*</span>
+                                @Html.LabelFor(p => p.Person.WorkingGuranty)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -497,7 +497,7 @@
 
                         <div class="col-lg-2 col-md-3 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.Duration)<span>*</span>
+                                @Html.LabelFor(p => p.Person.Duration)<span class="star">*</span>
                             </p>
                             <p>
                                 @Html.DropDownListFor(p => p.Person.Duration, DropDown.GetDurationOfWorkList(), new { @class = "form-control _dropdown", style = " display: inline;" })
@@ -507,7 +507,7 @@
 
                         <div class="col-lg-4 col-md-5 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.GurantyPayment)<span>*</span>
+                                @Html.LabelFor(p => p.Person.GurantyPayment)<span class="star">*</span>
 
                             </p>
                             <p>
@@ -529,7 +529,7 @@
 
                         <div class="col-lg-4 col-md-3 col-sm-6">
                             <p class="_label">
-                                @Html.LabelFor(p => p.Person.SalaryExpection)<span>*(برحسب ریال)</span>
+                                @Html.LabelFor(p => p.Person.SalaryExpection)<span class="star">*(برحسب ریال)</span>
                                 @Html.ValidationMessageFor(p => p.Person.SalaryExpection, "", new { @class = "text-danger" })
                             </p>
                             <p>
