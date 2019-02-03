@@ -363,6 +363,12 @@ input.login-text:focus {
 
 }
 
+.hero-image {
+    background-position: left; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: 200px 100px;
+}
+
 @media only screen and (max-width: 960px) {
     .amar-div{
         width:50%;

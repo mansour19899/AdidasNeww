@@ -4,280 +4,286 @@
     ViewBag.Title = "اطلاعات فردی";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="row">
-    <div class="col-xs-6">
-        @Html.ActionLink("Print", "Print", "Admin", null, new { @class = "btn btn-success", @style = "width:100px;margin-top:10px;" })
-    </div>
-    <div class="col-xs-6">
-        @{
-            if (Model.Person.Status == 2)
-            {
-                <a class="btn btn-info" href="/Admin/ListConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
-            }
-            else if (Model.Person.Status == 1)
-            {
-                <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
-            }
-            else
-            {
-                <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
-            }
-        }
-
-
-    </div>
-</div>
-
-
-@{
-    var fullname = Model.Person.Name + Model.Person.LastName;
-    var x = "/Admin/history/" + Model.Person.Id;
-    <a href=@x>
-        <div class="row" style="margin-top: 20px;">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            @Html.ActionLink("Print", "Print", "Admin", null, new { @class = "btn btn-success", @style = "width:100px;margin-top:10px;" })
+        </div>
+        <div class="col-xs-6">
             @{
-                if (Model.Person.Status == 1)
-                {
-                    <div class="col-xs-4 col-xs-offset-5">
-                        <img src="~/Models/Repositores/Fail-Stamp.png" style="height:100px;" />
-                    </div>
-                }
                 if (Model.Person.Status == 2)
                 {
-                    <div class="col-xs-4 col-xs-offset-5">
-                        <img src="~/Models/Repositores/pass.png" style="height:100px;" />
-                    </div>
+                    <a class="btn btn-info" href="/Admin/ListConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
                 }
-
+                else if (Model.Person.Status == 1)
+                {
+                    <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                }
+                else
+                {
+                    <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                }
             }
 
 
         </div>
+    </div>
+    
 
-    </a>
-}
-
-
-
-<div style="padding-top: 50px; padding-left: 20px; padding-right: 20px;">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h1 class="panel-title"style="font-weight: bold;">اطلاعات فردی</h1>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <p>
-                        @Html.LabelFor(p => p.Person.Name):
-                        <span>@Html.DisplayFor(p => p.Person.Name)</span>
-
-
-                    </p>
-                    <p>
-                        @Html.LabelFor(p => p.Person.LastName):
-                        <span>@Html.DisplayFor(p => p.Person.LastName)</span>
-
-
-                    </p>
-                    <p>
-                        @Html.LabelFor(p => p.Person.Father):
-                        <span>@Html.DisplayFor(p => p.Person.Father)</span>
-
-
-                    </p>
-                    <p>
-                        @Html.LabelFor(p => p.Person.NationalCode):
-                        <span>@Html.DisplayFor(p => p.Person.NationalCode)</span>
-
-
-                    </p>
-                    <p>
-                        @Html.LabelFor(p => p.Person.Gender):
-                        @{
-                            if (Model.Person.Gender)
-                            {
-                                <span>آقا</span>
+    @{
+        var fullname = Model.Person.Name + Model.Person.LastName;
+        var x = "/Admin/history/" + Model.Person.Id;
+        <a href=@x>
+            <div class="row" style="margin-top: 20px;">
+                @{
+                    if (Model.Person.Status == 1)
+                    {
+                 
+                        <style>
+                            .hero-image {
+                                background-image: url('../../Models/Repositores/Fail-Stamp.png');
                             }
-                            else
-                            {
-                                <span>خانم</span>
+                        </style>
+                    }
+                    if (Model.Person.Status == 2)
+                    {
 
+                        <style>
+                            .hero-image {
+                                background-image: url('../../Models/Repositores/pass.png');
                             }
-
-
-                        }
-
-
-                    </p>
-
-
-
-
-                    @{
-                        if (Model.Person.Gender)
-                        {
-                            <p>
-                                @Html.LabelFor(p => p.Person.MilitaryService):
-                                @{
-                                    var t = DropDown.GetMilitaryList();
-
-                                    if (Model.Person.MilitaryService == 0)
-                                    {
-                                        <span>@t.ElementAt(0).Text</span>
-                                    }
-                                    else if (Model.Person.MilitaryService == 1)
-                                    {
-                                        <span>@t.ElementAt(1).Text</span>
-                                    }
-                                    else if (Model.Person.MilitaryService == 2)
-                                    {
-                                        <span>@t.ElementAt(2).Text</span>
-                                    }
-                                    else if (Model.Person.MilitaryService == 3)
-                                    {
-                                        <span>@t.ElementAt(3).Text</span>
-                                    }
-                                    else if (Model.Person.MilitaryService == 4)
-                                    {
-                                        <span>@t.ElementAt(4).Text</span>
-
-                                    }
-
-
-
-                                }
-
-                            </p>
-                        }
+                        </style>
                     }
 
+                }
 
 
-                    <p>
-                        @Html.LabelFor(p => p.Person.BirthDay):
-                        @{
-                            <span> @Model.Person.BirthDay.Value.ToPersianDateString()</span>
-                            TimeSpan r = DateTime.Now.Subtract(Model.Person.BirthDay.Value);
-                            int years = (int)(r.Days / 365.25);
-                            <span>( @years.ToString() سال)</span>
-                        }
+            </div>
 
-
-                    </p>
-
-                    <p>
-                        @Html.LabelFor(p => p.Person.Marriage):
-                        @{
-                            if (Model.Person.Marriage)
-                            {
-                                <span>مجرد</span>
-                            }
-                            else
-                            {
-                                <span>متاهل</span>
-
-                            }
-
-
-                        }
-
-
-                        @{
-                            if (!Model.Person.Gender)
-                            {
-
-                            <p>
-                                @Html.LabelFor(p => p.Person.Children):
-                                @{
-                                    var tt = DropDown.GetCountOfChildernList();
-                                    if (Model.Person.Children == null)
-                                    {
-
-                                        <span>@tt.ElementAt(0).Text</span>
-                                    }
-                                    else if (Model.Person.Children == 0)
-                                    {
-                                        <span>@tt.ElementAt(0).Text</span>
-                                    }
-                                    else if (Model.Person.Children == 1)
-                                    {
-                                        <span>@tt.ElementAt(1).Text</span>
-                                    }
-                                    else if (Model.Person.Children == 2)
-                                    {
-                                        <span>@tt.ElementAt(2).Text</span>
-                                    }
-                                    else if (Model.Person.Children == 3)
-                                    {
-                                        <span>@tt.ElementAt(3).Text</span>
-                                    }
-                                    else if (Model.Person.Children == 4)
-                                    {
-                                        <span>@tt.ElementAt(4).Text</span>
-
-                                    }
+        </a>
+    }
 
 
 
-                                }
-
-                            </p>
-                        }
-                        }
-
+    <div style="padding-top: 50px; padding-left: 20px; padding-right: 20px;">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h1 class="panel-title" style="font-weight: bold;">اطلاعات فردی</h1>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6  hero-image" >
                         <p>
-                            @Html.LabelFor(p => p.Person.Mobile):
-                            <span>@Html.DisplayFor(p => p.Person.Mobile)</span>
+                            @Html.LabelFor(p => p.Person.Name):
+                            <span>@Html.DisplayFor(p => p.Person.Name)</span>
 
 
                         </p>
                         <p>
-                            @Html.LabelFor(p => p.Person.Tell):
-                            <span>@Html.DisplayFor(p => p.Person.Tell)</span>
+                            @Html.LabelFor(p => p.Person.LastName):
+                            <span>@Html.DisplayFor(p => p.Person.LastName)</span>
 
 
                         </p>
                         <p>
-                            @Html.LabelFor(p => p.Person.Email):
+                            @Html.LabelFor(p => p.Person.Father):
+                            <span>@Html.DisplayFor(p => p.Person.Father)</span>
+
+
+                        </p>
+                        <p>
+                            @Html.LabelFor(p => p.Person.NationalCode):
+                            <span>@Html.DisplayFor(p => p.Person.NationalCode)</span>
+
+
+                        </p>
+                        <p>
+                            @Html.LabelFor(p => p.Person.Gender):
                             @{
-                                if (Model.Person.Email == null)
+                                if (Model.Person.Gender)
                                 {
-                                    <span>ندارد</span>
+                                    <span>آقا</span>
                                 }
                                 else
                                 {
-                                    <span>@Html.DisplayFor(p => p.Person.Email)</span>
+                                    <span>خانم</span>
+
                                 }
+
+
                             }
 
 
-
                         </p>
+
+
+
+
+                        @{
+                            if (Model.Person.Gender)
+                            {
+                                <p>
+                                    @Html.LabelFor(p => p.Person.MilitaryService):
+                                    @{
+                                        var t = DropDown.GetMilitaryList();
+
+                                        if (Model.Person.MilitaryService == 0)
+                                        {
+                                            <span>@t.ElementAt(0).Text</span>
+                                        }
+                                        else if (Model.Person.MilitaryService == 1)
+                                        {
+                                            <span>@t.ElementAt(1).Text</span>
+                                        }
+                                        else if (Model.Person.MilitaryService == 2)
+                                        {
+                                            <span>@t.ElementAt(2).Text</span>
+                                        }
+                                        else if (Model.Person.MilitaryService == 3)
+                                        {
+                                            <span>@t.ElementAt(3).Text</span>
+                                        }
+                                        else if (Model.Person.MilitaryService == 4)
+                                        {
+                                            <span>@t.ElementAt(4).Text</span>
+
+                                        }
+
+
+
+                                    }
+
+                                </p>
+                            }
+                        }
+
+
+
                         <p>
-                            @Html.LabelFor(p => p.Person.Address):
-                            <span>@Html.DisplayFor(p => p.Person.Address)</span>
+                            @Html.LabelFor(p => p.Person.BirthDay):
+                            @{
+                                <span> @Model.Person.BirthDay.Value.ToPersianDateString()</span>
+                                TimeSpan r = DateTime.Now.Subtract(Model.Person.BirthDay.Value);
+                                int years = (int)(r.Days / 365.25);
+                                <span>( @years.ToString() سال)</span>
+                            }
 
 
                         </p>
 
+                        <p>
+                            @Html.LabelFor(p => p.Person.Marriage):
+                            @{
+                                if (Model.Person.Marriage)
+                                {
+                                    <span>مجرد</span>
+                                }
+                                else
+                                {
+                                    <span>متاهل</span>
 
-
-
-
-                    </div>
-
-                    @{
-                        if (Model.Person.image != null)
-                        {
-                            <div class="col-lg-6 col-md-6 col-sm-6 visible-lg visible-md">
-                                @{var base64 = Convert.ToBase64String(Model.Person.image);
-                                    var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
-                                    @*<img src='@imgsrc' style="width:100%;height:100%;" />*@
                                 }
 
-                                <img id="displayBox" src="@imgsrc" width="400" height="400" style="display:none" />
 
-                                <a class="imgg" id="demo5" href="#" style="width:350px;height:350px;background-image:url(@imgsrc);background-size:cover; background-position: center;
+                            }
+
+
+                            @{
+                                if (!Model.Person.Gender)
+                                {
+
+                                <p>
+                                    @Html.LabelFor(p => p.Person.Children):
+                                    @{
+                                        var tt = DropDown.GetCountOfChildernList();
+                                        if (Model.Person.Children == null)
+                                        {
+
+                                            <span>@tt.ElementAt(0).Text</span>
+                                        }
+                                        else if (Model.Person.Children == 0)
+                                        {
+                                            <span>@tt.ElementAt(0).Text</span>
+                                        }
+                                        else if (Model.Person.Children == 1)
+                                        {
+                                            <span>@tt.ElementAt(1).Text</span>
+                                        }
+                                        else if (Model.Person.Children == 2)
+                                        {
+                                            <span>@tt.ElementAt(2).Text</span>
+                                        }
+                                        else if (Model.Person.Children == 3)
+                                        {
+                                            <span>@tt.ElementAt(3).Text</span>
+                                        }
+                                        else if (Model.Person.Children == 4)
+                                        {
+                                            <span>@tt.ElementAt(4).Text</span>
+
+                                        }
+
+
+
+                                    }
+
+                                </p>
+                            }
+                            }
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.Mobile):
+                                <span>@Html.DisplayFor(p => p.Person.Mobile)</span>
+
+
+                            </p>
+                            <p>
+                                @Html.LabelFor(p => p.Person.Tell):
+                                <span>@Html.DisplayFor(p => p.Person.Tell)</span>
+
+
+                            </p>
+                            <p>
+                                @Html.LabelFor(p => p.Person.Email):
+                                @{
+                                    if (Model.Person.Email == null)
+                                    {
+                                        <span>ندارد</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@Html.DisplayFor(p => p.Person.Email)</span>
+                                    }
+                                }
+
+
+
+                            </p>
+                            <p>
+                                @Html.LabelFor(p => p.Person.Address):
+                                <span>@Html.DisplayFor(p => p.Person.Address)</span>
+
+
+                            </p>
+
+
+
+
+
+                        </div>
+
+                        @{
+                            if (Model.Person.image != null)
+                            {
+                                <div class="col-lg-6 col-md-6 col-sm-6 visible-lg visible-md">
+                                    @{var base64 = Convert.ToBase64String(Model.Person.image);
+                                        var imgsrc = string.Format("data:image/jpg;base64,{0}", base64);
+                                        @*<img src='@imgsrc' style="width:100%;height:100%;" />*@
+                                    }
+
+                                    <img id="displayBox" src="@imgsrc" width="400" height="400" style="display:none" />
+
+                                    <a class="imgg" id="demo5" href="#" style="width:350px;height:350px;background-image:url(@imgsrc);background-size:cover; background-position: center;
                                  position:absolute;left:0px;top:0px;"></a>
 
 
@@ -286,705 +292,707 @@
 
 
 
-                            </div>
+                                </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-6 visible-sm">
-                                @*<img src='@imgsrc' style="width:100%;height:100%;" />*@
+                                <div class="col-lg-6 col-md-6 col-sm-6 visible-sm">
+                                    @*<img src='@imgsrc' style="width:100%;height:100%;" />*@
 
-                                <a class="imgg" href="#" style="width:200px;height:200px;background-image:url(@imgsrc);background-size:cover; background-position: center;
+                                    <a class="imgg" href="#" style="width:200px;height:200px;background-image:url(@imgsrc);background-size:cover; background-position: center;
                                  position:absolute;left:0px;top:0px;">
-                                </a>
+                                    </a>
 
 
 
 
-                            </div>
+                                </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-6 visible-xs">
-                                <a id="imggg" class="btn btn-primary imgg">مشاهده تصویر</a>
-                            </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 visible-xs">
+                                    <a id="imggg" class="btn btn-primary imgg">مشاهده تصویر</a>
+                                </div>
 
-                            <script>
-                                $(document).ready(function () {
-                                    $('.imgg').click(function () {
-                                        $.blockUI({
-                                            message: $('#displayBox'),
-                                            css: {
-                                                top: ($(window).height() - 400) / 2 + 'px',
-                                                left: ($(window).width() - 400) / 2 + 'px',
-                                                width: '400px'
-                                            }
+                                <script>
+                                    $(document).ready(function () {
+                                        $('.imgg').click(function () {
+                                            $.blockUI({
+                                                message: $('#displayBox'),
+                                                css: {
+                                                    top: ($(window).height() - 400) / 2 + 'px',
+                                                    left: ($(window).width() - 400) / 2 + 'px',
+                                                    width: '400px'
+                                                }
+                                            });
+
+                                            $('.blockOverlay').attr('title', 'Click to unblock').click($.unblockUI);
                                         });
 
-                                        $('.blockOverlay').attr('title', 'Click to unblock').click($.unblockUI);
-                                    });
+                                        $('#imggg').click(function () {
 
-                                    $('#imggg').click(function () {
+                                            var win_width = $(window).width();
+                                            var win_height = $(window).height();
 
-                                        var win_width = $(window).width();
-                                        var win_height = $(window).height();
+                                            var percent = 70;
+                                            var percent_offset = (100 - percent) / 2;
 
-                                        var percent = 70;
-                                        var percent_offset = (100 - percent) / 2;
+                                            var div_width = (win_width / 100) * percent;
 
-                                        var div_width = (win_width / 100) * percent;
+                                            var div_top = (win_width / 100) * (percent_offset + 10);
+                                            var div_right = (win_width / 100) * percent_offset;
 
-                                        var div_top = (win_width / 100) * (percent_offset+10);
-                                        var div_right = (win_width / 100) * percent_offset;
-
-                                        var pic_width = div_width - 6;
+                                            var pic_width = div_width - 6;
 
 
-                                        $.blockUI({
-                                            message: $('#displayBox'),
-                                            css: {
-                                                top: div_top + 'px',
-                                                right: div_right + 'px',
-                                                width: div_width + 'px'
-                                            }
+                                            $.blockUI({
+                                                message: $('#displayBox'),
+                                                css: {
+                                                    top: div_top + 'px',
+                                                    right: div_right + 'px',
+                                                    width: div_width + 'px'
+                                                }
 
 
+                                            });
+
+                                            //$('#displayBox').css({ 'width': '300px', 'height': '300px' });
+
+                                            $('#displayBox').css({ 'width': pic_width + 'px', 'height': pic_width + 'px' });
+
+                                            $('.blockOverlay').attr('title', 'Click to unblock').click($.unblockUI);
                                         });
 
-                                        //$('#displayBox').css({ 'width': '300px', 'height': '300px' });
-                                        
-                                        $('#displayBox').css({ 'width': pic_width + 'px', 'height': pic_width+'px' });
-
-                                        $('.blockOverlay').attr('title', 'Click to unblock').click($.unblockUI);
                                     });
 
-                                });
-
-                            </script>
+                                </script>
+                            }
                         }
-                    }
-
-
-                </div>
-
-
-
-
-                <div class="row">
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-
-
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h1 class="panel-title"style="font-weight: bold;">اطلاعات تحصیلی و شغلی</h1>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-
-                        <p>
-                            @Html.LabelFor(p => p.Person.Degree):
-                            @{
-                                var ttt = DropDown.GetDegreeList();
-                                if (Model.Person.Degree == 0)
-                                {
-
-                                    <span>@ttt.ElementAt(0).Text</span>
-                                }
-                                else if (Model.Person.Degree == 1)
-                                {
-                                    <span>@ttt.ElementAt(1).Text</span>
-                                }
-                                else if (Model.Person.Degree == 2)
-                                {
-                                    <span>@ttt.ElementAt(2).Text</span>
-                                }
-                                else if (Model.Person.Degree == 3)
-                                {
-                                    <span>@ttt.ElementAt(3).Text</span>
-                                }
-                                else if (Model.Person.Degree == 4)
-                                {
-                                    <span>@ttt.ElementAt(4).Text</span>
-
-                                }
-                                else if (Model.Person.Degree == 5)
-                                {
-                                    <span>@ttt.ElementAt(5).Text</span>
-
-                                }
-
-
-
-                            }
-
-                        </p>
-
-
-                        <p>
-                            @Html.LabelFor(p => p.Person.Institute):
-                            <span>@Html.DisplayFor(p => p.Person.Institute)</span>
-
-
-                        </p>
-                        <p>
-                            @Html.LabelFor(p => p.Person.Field):
-                            <span>@Html.DisplayFor(p => p.Person.Field)</span>
-
-
-                        </p>
-
-                        <p>
-                            @Html.LabelFor(p => p.Person.EnglishKnowledge):
-                            @{
-                                var tttt = DropDown.GetKnowledgeList();
-                                if (Model.Person.EnglishKnowledge == 1)
-                                {
-
-                                    <span>@tttt.ElementAt(1).Text</span>
-                                }
-                                else if (Model.Person.EnglishKnowledge == 2)
-                                {
-                                    <span>@tttt.ElementAt(2).Text</span>
-                                }
-                                else if (Model.Person.EnglishKnowledge == 3)
-                                {
-                                    <span>@tttt.ElementAt(3).Text</span>
-                                }
-                                else if (Model.Person.EnglishKnowledge == 0)
-                                {
-                                    <span>@tttt.ElementAt(0).Text</span>
-                                }
-
-                            }
-
-                        </p>
 
 
                     </div>
 
-                    <div class="col-lg-6 col-md-6 col-sm-6">
 
 
 
-                        <p>
-                            @Html.LabelFor(p => p.Person.Skills):
-                            @{
-                                if (Model.Person.Skills == null)
-                                {
-                                    <span>ندارد</span>
-                                }
-                                else
-                                {
-                                    <span>@Html.DisplayFor(p => p.Person.Skills)</span>
-                                }
-                            }
-
-
-
-                        </p>
-                        <p>
-                            @Html.Label("نرم افزارهای مسلط"):
-                            @{
-                                if (Model.Person.Excel)
-                                {
-                                    <span>Excel</span>
-                                }
-                                if (Model.Person.Word)
-                                {
-                                    <span>Word</span>
-                                }
-                                if (Model.Person.PowerPoint)
-                                {
-                                    <span>PowerPoint </span>
-                                }
-                                if (Model.Person.Outlook)
-                                {
-                                    <span>Outlook</span>
-                                }
-                                if (Model.Person.Accounting)
-                                {
-                                    <span>حسابداری</span>
-                                }
-                            }
-
-
-
-                        </p>
-                        <p>
-                            @Html.LabelFor(p => p.Person.OtherSoftwer):
-                            @{
-                                if (Model.Person.OtherSoftwer == null)
-                                {
-                                    <span>ندارد</span>
-                                }
-                                else
-                                {
-                                    <span>@Html.DisplayFor(p => p.Person.OtherSoftwer)</span>
-                                }
-                            }
-
-
-
-                        </p>
+                    <div class="row">
 
                     </div>
 
-                </div>
-                <div class="row table-responsive">
 
-                    @{
-                        if (Model.JobRecord1 != null)
-                        {
-                            <table class="table table-striped table-hover table-bordered ">
-                                <thead>
-                                    <tr class="info">
-                                        <th>#</th>
-                                        <th class="text-center col-xs-2">نام موسسه</th>
-                                        <th class="text-center col-xs-2">سمت کاری/نوع همکاری</th>
-                                        <th class="text-center col-xs-2">مدت اشتغال</th>
-                                        <th class="text-center col-xs-2">علت قطع همکاری</th>
-                                        <th class="text-center col-xs-4">آدرس</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{
-                                        if (Model.JobRecord1 != null)
-                                        {
-                                            <tr>
-                                                <td>1</td>
-                                                <td>@Model.JobRecord1.Company</td>
-                                                <td>@Model.JobRecord1.Title</td>
-                                                <td>@Model.JobRecord1.Duration</td>
-                                                <td>@Model.JobRecord1.Disconnection</td>
-                                                <td>@Model.JobRecord1.Address</td>
-
-                                            </tr>
-                                        }
-
-                                        if (Model.JobRecord2 != null)
-                                        {
-                                            <tr>
-                                                <td>2</td>
-                                                <td>@Model.JobRecord2.Company</td>
-                                                <td>@Model.JobRecord2.Title</td>
-                                                <td>@Model.JobRecord2.Duration</td>
-                                                <td>@Model.JobRecord2.Disconnection</td>
-                                                <td>@Model.JobRecord2.Address</td>
-                                            </tr>
-                                        }
-                                        if (Model.JobRecord3 != null)
-                                        {
-                                            <tr>
-                                                <td>2</td>
-                                                <td>@Model.JobRecord3.Company</td>
-                                                <td>@Model.JobRecord3.Title</td>
-                                                <td>@Model.JobRecord3.Duration</td>
-                                                <td>@Model.JobRecord3.Disconnection</td>
-                                                <td>@Model.JobRecord3.Address</td>
-                                            </tr>
-                                        }
-                                    }
-
-
-
-
-                                </tbody>
-                            </table>
-                        }
-                    }
 
                 </div>
-
-
-
-
-                <div class="row">
-
-                </div>
-
 
 
             </div>
 
 
-        </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title" style="font-weight: bold;">اطلاعات تحصیلی و شغلی</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
 
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h1 class="panel-title"style="font-weight: bold;">اطلاعات  و انتظارات شغلی</h1>
-            </div>
-            <div class="panel-body">
-                <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
 
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-                        <p>
-                            @Html.LabelFor(p => p.Person.JobStatus):
-                            @{
-                                if (Model.Person.JobStatus)
-                                {
-                                    <span>تمام وقت</span>
-                                }
-                                else
-                                {
-                                    <span>نیمه وقت</span>
-
-                                }
-
-
-                            }
-
-
-                        </p>
-
-
-                        @{
-                            if (!Model.Person.JobStatus)
-                            {
-                                <p>
-                                    @Html.LabelFor(p => p.Person.DaysNumber):
-                                    @{
-                                        var e = DropDown.GetDaysList();
-
-                                        if (Model.Person.DaysNumber == 0)
-                                        {
-                                            <span>@e.ElementAt(0).Text</span>
-                                        }
-                                        else if (Model.Person.DaysNumber == 1)
-                                        {
-                                            <span>@e.ElementAt(1).Text</span>
-                                        }
-                                        else if (Model.Person.DaysNumber == 2)
-                                        {
-                                            <span>@e.ElementAt(2).Text</span>
-                                        }
-                                        else if (Model.Person.DaysNumber == 3)
-                                        {
-                                            <span>@e.ElementAt(3).Text</span>
-                                        }
-                                        else if (Model.Person.DaysNumber == 4)
-                                        {
-                                            <span>@e.ElementAt(4).Text</span>
-
-                                        }
-                                        else if (Model.Person.DaysNumber == 5)
-                                        {
-                                            <span>@e.ElementAt(5).Text</span>
-                                        }
-                                        else if (Model.Person.DaysNumber == 6)
-                                        {
-                                            <span>@e.ElementAt(6).Text</span>
-
-                                        }
-
-
-
-                                    }
-
-                                </p>
-                            }
-                        }
-
-
-
-                        <p>
-                            @Html.LabelFor(p => p.Person.WorkingGuranty):
-                            @{
-                                if (Model.Person.WorkingGuranty)
-                                {
-                                    <span> بله</span>
-                                }
-                                else
-                                {
-                                    <span> خیر</span>
-
-                                }
-
-
-                            }
-
-
-                        </p>
-
-
-                        @{
-                            if (!Model.Person.WorkingGuranty)
-                            {
-                                <p>
-                                    @Html.LabelFor(p => p.Person.Duration):
-                                    @{
-                                        var ee = DropDown.GetDurationOfWorkList();
-
-                                        if (Model.Person.Duration == 0)
-                                        {
-                                            <span>@ee.ElementAt(0).Text</span>
-                                        }
-                                        else if (Model.Person.Duration == 1)
-                                        {
-                                            <span>@ee.ElementAt(1).Text</span>
-                                        }
-                                        else if (Model.Person.Duration == 2)
-                                        {
-                                            <span>@ee.ElementAt(2).Text</span>
-                                        }
-                                        else if (Model.Person.Duration == 3)
-                                        {
-                                            <span>@ee.ElementAt(3).Text</span>
-                                        }
-                                        else if (Model.Person.Duration == 4)
-                                        {
-                                            <span>@ee.ElementAt(4).Text</span>
-
-                                        }
-                                        else if (Model.Person.Duration == 5)
-                                        {
-                                            <span>@ee.ElementAt(5).Text</span>
-                                        }
-
-
-
-
-                                    }
-
-                                </p>
-                            }
-                        }
-
-                    </div>
-
-                    <div class="col-lg-6 col-md-6 col-sm-6">
-
-                        <p>
-                            @Html.LabelFor(p => p.Person.GurantyPayment):
-                            @{
-                                if (Model.Person.GurantyPayment)
-                                {
-                                    <span>بله</span>
-                                }
-                                else
-                                {
-                                    <span>خیر</span>
-
-                                }
-
-
-                            }
-
-
-                        </p>
-
-                        <p>
-                            @Html.LabelFor(p => p.RelationShip1.Moaref):
-                            @{
-                                if (Model.RelationShip1 != null)
-                                {
-                                    if (Model.RelationShip1.Moaref)
+                            <p>
+                                @Html.LabelFor(p => p.Person.Degree):
+                                @{
+                                    var ttt = DropDown.GetDegreeList();
+                                    if (Model.Person.Degree == 0)
                                     {
-                                        <span>دارد</span>
+
+                                        <span>@ttt.ElementAt(0).Text</span>
+                                    }
+                                    else if (Model.Person.Degree == 1)
+                                    {
+                                        <span>@ttt.ElementAt(1).Text</span>
+                                    }
+                                    else if (Model.Person.Degree == 2)
+                                    {
+                                        <span>@ttt.ElementAt(2).Text</span>
+                                    }
+                                    else if (Model.Person.Degree == 3)
+                                    {
+                                        <span>@ttt.ElementAt(3).Text</span>
+                                    }
+                                    else if (Model.Person.Degree == 4)
+                                    {
+                                        <span>@ttt.ElementAt(4).Text</span>
+
+                                    }
+                                    else if (Model.Person.Degree == 5)
+                                    {
+                                        <span>@ttt.ElementAt(5).Text</span>
+
+                                    }
+
+
+
+                                }
+
+                            </p>
+
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.Institute):
+                                <span>@Html.DisplayFor(p => p.Person.Institute)</span>
+
+
+                            </p>
+                            <p>
+                                @Html.LabelFor(p => p.Person.Field):
+                                <span>@Html.DisplayFor(p => p.Person.Field)</span>
+
+
+                            </p>
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.EnglishKnowledge):
+                                @{
+                                    var tttt = DropDown.GetKnowledgeList();
+                                    if (Model.Person.EnglishKnowledge == 1)
+                                    {
+
+                                        <span>@tttt.ElementAt(1).Text</span>
+                                    }
+                                    else if (Model.Person.EnglishKnowledge == 2)
+                                    {
+                                        <span>@tttt.ElementAt(2).Text</span>
+                                    }
+                                    else if (Model.Person.EnglishKnowledge == 3)
+                                    {
+                                        <span>@tttt.ElementAt(3).Text</span>
+                                    }
+                                    else if (Model.Person.EnglishKnowledge == 0)
+                                    {
+                                        <span>@tttt.ElementAt(0).Text</span>
+                                    }
+
+                                }
+
+                            </p>
+
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+
+
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.Skills):
+                                @{
+                                    if (Model.Person.Skills == null)
+                                    {
+                                        <span>ندارد</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@Html.DisplayFor(p => p.Person.Skills)</span>
+                                    }
+                                }
+
+
+
+                            </p>
+                            <p>
+                                @Html.Label("نرم افزارهای مسلط"):
+                                @{
+                                    if (Model.Person.Excel)
+                                    {
+                                        <span>Excel</span>
+                                    }
+                                    if (Model.Person.Word)
+                                    {
+                                        <span>Word</span>
+                                    }
+                                    if (Model.Person.PowerPoint)
+                                    {
+                                        <span>PowerPoint </span>
+                                    }
+                                    if (Model.Person.Outlook)
+                                    {
+                                        <span>Outlook</span>
+                                    }
+                                    if (Model.Person.Accounting)
+                                    {
+                                        <span>حسابداری</span>
+                                    }
+                                }
+
+
+
+                            </p>
+                            <p>
+                                @Html.LabelFor(p => p.Person.OtherSoftwer):
+                                @{
+                                    if (Model.Person.OtherSoftwer == null)
+                                    {
+                                        <span>ندارد</span>
+                                    }
+                                    else
+                                    {
+                                        <span>@Html.DisplayFor(p => p.Person.OtherSoftwer)</span>
+                                    }
+                                }
+
+
+
+                            </p>
+
+                        </div>
+
+                    </div>
+                    <div class="row table-responsive">
+
+                        @{
+                            if (Model.JobRecord1 != null)
+                            {
+                                <table class="table table-striped table-hover table-bordered ">
+                                    <thead>
+                                        <tr class="info">
+                                            <th>#</th>
+                                            <th class="text-center col-xs-2">نام موسسه</th>
+                                            <th class="text-center col-xs-2">سمت کاری/نوع همکاری</th>
+                                            <th class="text-center col-xs-2">مدت اشتغال</th>
+                                            <th class="text-center col-xs-2">علت قطع همکاری</th>
+                                            <th class="text-center col-xs-4">آدرس</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            if (Model.JobRecord1 != null)
+                                            {
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>@Model.JobRecord1.Company</td>
+                                                    <td>@Model.JobRecord1.Title</td>
+                                                    <td>@Model.JobRecord1.Duration</td>
+                                                    <td>@Model.JobRecord1.Disconnection</td>
+                                                    <td>@Model.JobRecord1.Address</td>
+
+                                                </tr>
+                                            }
+
+                                            if (Model.JobRecord2 != null)
+                                            {
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>@Model.JobRecord2.Company</td>
+                                                    <td>@Model.JobRecord2.Title</td>
+                                                    <td>@Model.JobRecord2.Duration</td>
+                                                    <td>@Model.JobRecord2.Disconnection</td>
+                                                    <td>@Model.JobRecord2.Address</td>
+                                                </tr>
+                                            }
+                                            if (Model.JobRecord3 != null)
+                                            {
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>@Model.JobRecord3.Company</td>
+                                                    <td>@Model.JobRecord3.Title</td>
+                                                    <td>@Model.JobRecord3.Duration</td>
+                                                    <td>@Model.JobRecord3.Disconnection</td>
+                                                    <td>@Model.JobRecord3.Address</td>
+                                                </tr>
+                                            }
+                                        }
+
+
+
+
+                                    </tbody>
+                                </table>
+                            }
+                        }
+
+                    </div>
+
+
+
+
+                    <div class="row">
+
+                    </div>
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h1 class="panel-title" style="font-weight: bold;">اطلاعات  و انتظارات شغلی</h1>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <p>
+                                @Html.LabelFor(p => p.Person.JobStatus):
+                                @{
+                                    if (Model.Person.JobStatus)
+                                    {
+                                        <span>تمام وقت</span>
+                                    }
+                                    else
+                                    {
+                                        <span>نیمه وقت</span>
+
+                                    }
+
+
+                                }
+
+
+                            </p>
+
+
+                            @{
+                                if (!Model.Person.JobStatus)
+                                {
+                                    <p>
+                                        @Html.LabelFor(p => p.Person.DaysNumber):
+                                        @{
+                                            var e = DropDown.GetDaysList();
+
+                                            if (Model.Person.DaysNumber == 0)
+                                            {
+                                                <span>@e.ElementAt(0).Text</span>
+                                            }
+                                            else if (Model.Person.DaysNumber == 1)
+                                            {
+                                                <span>@e.ElementAt(1).Text</span>
+                                            }
+                                            else if (Model.Person.DaysNumber == 2)
+                                            {
+                                                <span>@e.ElementAt(2).Text</span>
+                                            }
+                                            else if (Model.Person.DaysNumber == 3)
+                                            {
+                                                <span>@e.ElementAt(3).Text</span>
+                                            }
+                                            else if (Model.Person.DaysNumber == 4)
+                                            {
+                                                <span>@e.ElementAt(4).Text</span>
+
+                                            }
+                                            else if (Model.Person.DaysNumber == 5)
+                                            {
+                                                <span>@e.ElementAt(5).Text</span>
+                                            }
+                                            else if (Model.Person.DaysNumber == 6)
+                                            {
+                                                <span>@e.ElementAt(6).Text</span>
+
+                                            }
+
+
+
+                                        }
+
+                                    </p>
+                                }
+                            }
+
+
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.WorkingGuranty):
+                                @{
+                                    if (Model.Person.WorkingGuranty)
+                                    {
+                                        <span> بله</span>
+                                    }
+                                    else
+                                    {
+                                        <span> خیر</span>
+
+                                    }
+
+
+                                }
+
+
+                            </p>
+
+
+                            @{
+                                if (!Model.Person.WorkingGuranty)
+                                {
+                                    <p>
+                                        @Html.LabelFor(p => p.Person.Duration):
+                                        @{
+                                            var ee = DropDown.GetDurationOfWorkList();
+
+                                            if (Model.Person.Duration == 0)
+                                            {
+                                                <span>@ee.ElementAt(0).Text</span>
+                                            }
+                                            else if (Model.Person.Duration == 1)
+                                            {
+                                                <span>@ee.ElementAt(1).Text</span>
+                                            }
+                                            else if (Model.Person.Duration == 2)
+                                            {
+                                                <span>@ee.ElementAt(2).Text</span>
+                                            }
+                                            else if (Model.Person.Duration == 3)
+                                            {
+                                                <span>@ee.ElementAt(3).Text</span>
+                                            }
+                                            else if (Model.Person.Duration == 4)
+                                            {
+                                                <span>@ee.ElementAt(4).Text</span>
+
+                                            }
+                                            else if (Model.Person.Duration == 5)
+                                            {
+                                                <span>@ee.ElementAt(5).Text</span>
+                                            }
+
+
+
+
+                                        }
+
+                                    </p>
+                                }
+                            }
+
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.GurantyPayment):
+                                @{
+                                    if (Model.Person.GurantyPayment)
+                                    {
+                                        <span>بله</span>
+                                    }
+                                    else
+                                    {
+                                        <span>خیر</span>
+
+                                    }
+
+
+                                }
+
+
+                            </p>
+
+                            <p>
+                                @Html.LabelFor(p => p.RelationShip1.Moaref):
+                                @{
+                                    if (Model.RelationShip1 != null)
+                                    {
+                                        if (Model.RelationShip1.Moaref)
+                                        {
+                                            <span>دارد</span>
+                                        }
+                                        else
+                                        {
+                                            <span>ندارد</span>
+
+                                        }
                                     }
                                     else
                                     {
                                         <span>ندارد</span>
 
                                     }
-                                }
-                                else
-                                {
-                                    <span>ندارد</span>
+
 
                                 }
 
 
+                            </p>
+
+                            <p>
+                                @Html.LabelFor(p => p.Person.SalaryExpection):
+                                <span>@Html.DisplayFor(p => p.Person.SalaryExpection)</span>
+
+
+                            </p>
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="row table-responsive">
+
+                        @{
+                            if (Model.RelationShip1 != null)
+                            {
+                                <table class="table table-striped table-hover table-bordered ">
+                                    <thead>
+                                        <tr class="info">
+                                            <th>#</th>
+                                            <th class="text-center col-xs-2">نام و نام خانوادگی</th>
+                                            <th class="text-center col-xs-2">نسبت</th>
+                                            <th class="text-center col-xs-2">تلفن</th>
+                                            <th class="text-center col-xs-6">ادرس</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            if (Model.RelationShip1 != null)
+                                            {
+                                                if (Model.RelationShip1.Moaref)
+                                                {
+                                                    <tr class="success">
+                                                        <td>1</td>
+                                                        <td>@Model.RelationShip1.Name</td>
+                                                        <td>@Model.RelationShip1.Relational</td>
+                                                        <td>@Model.RelationShip1.Tell</td>
+                                                        <td>@Model.RelationShip1.Address</td>
+
+
+                                                    </tr>
+                                                }
+                                                else
+                                                {
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td>@Model.RelationShip1.Name</td>
+                                                        <td>@Model.RelationShip1.Relational</td>
+                                                        <td>@Model.RelationShip1.Tell</td>
+                                                        <td>@Model.RelationShip1.Address</td>
+
+
+                                                    </tr>
+                                                }
+
+                                            }
+
+                                            if (Model.RelationShip2 != null)
+                                            {
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>@Model.RelationShip2.Name</td>
+                                                    <td>@Model.RelationShip2.Relational</td>
+                                                    <td>@Model.RelationShip2.Tell</td>
+                                                    <td>@Model.RelationShip2.Address</td>
+                                                </tr>
+                                            }
+                                            if (Model.RelationShip3 != null)
+                                            {
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>@Model.RelationShip3.Name</td>
+                                                    <td>@Model.RelationShip3.Relational</td>
+                                                    <td>@Model.RelationShip3.Tell</td>
+                                                    <td>@Model.RelationShip3.Address</td>
+                                                </tr>
+                                            }
+                                        }
+
+
+
+
+                                    </tbody>
+                                </table>
                             }
-
-
-                        </p>
-
-                        <p>
-                            @Html.LabelFor(p => p.Person.SalaryExpection):
-                            <span>@Html.DisplayFor(p => p.Person.SalaryExpection)</span>
-
-
-                        </p>
-
-
-
+                        }
 
                     </div>
 
+
+
+
+
+
+
+
                 </div>
-                <div class="row table-responsive">
 
-                    @{
-                        if (Model.RelationShip1 != null)
+
+
+            </div>
+
+            @*<div class="row">
+                    <div class="col-xs-6" style="text-align: left;padding-left: 50px;">
+                        @Html.ActionLink("تایید صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id,status=2},new { @class= "btn btn-success" })
+                    </div>
+                    <div class="col-xs-6" style="padding-right: 50px;">
+                        @Html.ActionLink("رد صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id, status = 1 }, new { @class = "btn btn-danger" })
+                    </div>
+                </div>*@
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    @{ string add = "/Admin/uncheck/" + @Model.Person.Id + "?s=" + Model.Person.Status;}
+                    <a href="@add" style="color:white;text-decoration:none;">
+                        <h1 class="panel-title" style="font-weight: bold;">نظریه کارشناس</h1>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+
+                        @using (Html.BeginForm("SendStatus", "Admin", FormMethod.Post))
                         {
-                            <table class="table table-striped table-hover table-bordered ">
-                                <thead>
-                                    <tr class="info">
-                                        <th>#</th>
-                                        <th class="text-center col-xs-2">نام و نام خانوادگی</th>
-                                        <th class="text-center col-xs-2">نسبت</th>
-                                        <th class="text-center col-xs-2">تلفن</th>
-                                        <th class="text-center col-xs-6">ادرس</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @{
-                                        if (Model.RelationShip1 != null)
-                                        {
-                                            if (Model.RelationShip1.Moaref)
-                                            {
-                                                <tr class="success">
-                                                    <td>1</td>
-                                                    <td>@Model.RelationShip1.Name</td>
-                                                    <td>@Model.RelationShip1.Relational</td>
-                                                    <td>@Model.RelationShip1.Tell</td>
-                                                    <td>@Model.RelationShip1.Address</td>
+                            <div class="col-lg-12">
+                                @Html.TextArea("Description", new { @class = "form-control", maxlength = 200, style = "width: 100%; height: 100px;" })
+                            </div>
 
+                            <div class="col-xs-8" , style="padding:30px;">
+                                @{
+                                    if (Model.Person.Status == 1 | Model.Person.Status == 0)
+                                    {
+                                        <input type="submit" value="تایید صلاحیت" name="Confirmed" class="btn btn-success" style="margin:15px;" />
+                                    }
 
-                                                </tr>
-                                            }
-                                            else
-                                            {
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>@Model.RelationShip1.Name</td>
-                                                    <td>@Model.RelationShip1.Relational</td>
-                                                    <td>@Model.RelationShip1.Tell</td>
-                                                    <td>@Model.RelationShip1.Address</td>
-
-
-                                                </tr>
-                                            }
-
-                                        }
-
-                                        if (Model.RelationShip2 != null)
-                                        {
-                                            <tr>
-                                                <td>2</td>
-                                                <td>@Model.RelationShip2.Name</td>
-                                                <td>@Model.RelationShip2.Relational</td>
-                                                <td>@Model.RelationShip2.Tell</td>
-                                                <td>@Model.RelationShip2.Address</td>
-                                            </tr>
-                                        }
-                                        if (Model.RelationShip3 != null)
-                                        {
-                                            <tr>
-                                                <td>2</td>
-                                                <td>@Model.RelationShip3.Name</td>
-                                                <td>@Model.RelationShip3.Relational</td>
-                                                <td>@Model.RelationShip3.Tell</td>
-                                                <td>@Model.RelationShip3.Address</td>
-                                            </tr>
-                                        }
+                                    if (Model.Person.Status == 2)
+                                    {
+                                        <input type="submit" value="گزینش " name="hi" class="btn btn-info" style="margin:15px;" />
+                                    }
+                                    if (Model.Person.Status == 2 | Model.Person.Status == 0)
+                                    {
+                                        <input type="submit" value="رد صلاحیت" name="NotConfirmed" class="btn btn-danger" style="margin:15px;" />
                                     }
 
 
 
 
-                                </tbody>
-                            </table>
+
+                                }
+
+                            </div>
+                            <div class="col-xs-4">
+                                @{
+                                    if (Model.Person.Status == 2)
+                                    {
+                                        <a class="btn btn-info" href="/Admin/ListConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                    }
+                                    else if (Model.Person.Status == 1)
+                                    {
+                                        <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                    }
+                                }
+
+
+                            </div>
+
+                            @Html.Hidden("PersonId", Model.Person.Id)
+
                         }
-                    }
+                    </div>
 
                 </div>
 
 
 
-
-
-
-
-
             </div>
-
 
 
         </div>
-
-        @*<div class="row">
-                <div class="col-xs-6" style="text-align: left;padding-left: 50px;">
-                    @Html.ActionLink("تایید صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id,status=2},new { @class= "btn btn-success" })
-                </div>
-                <div class="col-xs-6" style="padding-right: 50px;">
-                    @Html.ActionLink("رد صلاحیت", "SetStatus", "Admin", new { id = Model.Person.Id, status = 1 }, new { @class = "btn btn-danger" })
-                </div>
-            </div>*@
-
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                @{ string add = "/Admin/uncheck/" + @Model.Person.Id+"?s="+Model.Person.Status;}
-                <a href="@add" style="color:white;text-decoration:none;">
-                    <h1 class="panel-title" style="font-weight: bold;">نظریه کارشناس</h1>
-                </a>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-
-                    @using (Html.BeginForm("SendStatus", "Admin", FormMethod.Post))
-                    {
-                        <div class="col-lg-12">
-                            @Html.TextArea("Description", new { @class = "form-control", maxlength = 200, style = "width: 100%; height: 100px;" })
-                        </div>
-
-                        <div class="col-xs-8" , style="padding:30px;">
-                            @{
-                                if (Model.Person.Status == 1 | Model.Person.Status == 0)
-                                {
-                                    <input type="submit" value="تایید صلاحیت" name="Confirmed" class="btn btn-success" style="margin:15px;" />
-                                }
-
-                                if (Model.Person.Status == 2)
-                                {
-                                    <input type="submit" value="گزینش " name="hi" class="btn btn-info" style="margin:15px;" />
-                                }
-                                if (Model.Person.Status == 2 | Model.Person.Status == 0)
-                                {
-                                    <input type="submit" value="رد صلاحیت" name="NotConfirmed" class="btn btn-danger" style="margin:15px;" />
-                                }
-
-
-
-
-
-                            }
-
-                        </div>
-                        <div class="col-xs-4">
-                            @{
-                                if (Model.Person.Status == 2)
-                                {
-                                    <a class="btn btn-info" href="/Admin/ListConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
-                                }
-                               else if (Model.Person.Status == 1)
-                                {
-                                    <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
-                                }
-                                else
-                                {
-                                    <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
-                                }
-                            }
-
-
-                        </div>
-
-                        @Html.Hidden("PersonId", Model.Person.Id)
-
-                    }
-                </div>
-
-            </div>
-
-
-
-        </div>
-
 
     </div>
