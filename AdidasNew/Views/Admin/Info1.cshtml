@@ -919,7 +919,10 @@
 
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h1 class="panel-title"style="font-weight: bold;">نظریه کارشناس</h1>
+                @{ string add = "/Admin/uncheck/" + @Model.Person.Id+"?s="+Model.Person.Status;}
+                <a href="@add" style="color:white;text-decoration:none;">
+                    <h1 class="panel-title" style="font-weight: bold;">نظریه کارشناس</h1>
+                </a>
             </div>
             <div class="panel-body">
                 <div class="row">

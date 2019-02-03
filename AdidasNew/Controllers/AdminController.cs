@@ -139,10 +139,10 @@ namespace AdidasNew.Controllers
             PersonRepository blPerson = new PersonRepository();
             historyOfPersonRepository blHistory = new historyOfPersonRepository();
 
-           
+
             var x = blPerson.Find(id);
             int perviousStatus = x.Status;
-           x.Checked = false;
+            x.Checked = false;
             x.Status = (byte)status;
             blPerson.Update(x);
 
@@ -176,7 +176,7 @@ namespace AdidasNew.Controllers
             PersonRepository blPerson = new PersonRepository();
 
 
-            var list = blPerson.Where(p =>  p.Status == 2).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p => p.Status == 2).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -185,7 +185,7 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p =>  p.Status == 1).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p => p.Status == 1).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -196,9 +196,9 @@ namespace AdidasNew.Controllers
         [HttpPost]
         public ActionResult Confirmed(string Description, string PersonId)
         {
-         return   SetStatus(int.Parse(PersonId), 2, Description);
+            return SetStatus(int.Parse(PersonId), 2, Description);
 
-           // return RedirectToAction("ListConfirmedPerson");
+            // return RedirectToAction("ListConfirmedPerson");
 
         }
 
@@ -206,9 +206,9 @@ namespace AdidasNew.Controllers
         [HttpPost]
         public ActionResult NotConfirmed(string Description, string PersonId)
         {
-         return   SetStatus(int.Parse(PersonId), 1, Description);
+            return SetStatus(int.Parse(PersonId), 1, Description);
 
-           // return RedirectToAction("ListNotConfirmedPerson");
+            // return RedirectToAction("ListNotConfirmedPerson");
 
         }
 
@@ -226,6 +226,28 @@ namespace AdidasNew.Controllers
             }
             return View(history);
         }
+
+        public ActionResult uncheck(int id,int s)
+        {
+            PersonRepository blPerson = new PersonRepository();
+            var t = blPerson.Find(id);
+            t.Checked = false;
+            blPerson.Update(t);
+
+            switch (s)
+            {
+                case 0:
+                    return RedirectToAction("ListNewPerson");
+                case 1:
+                    return RedirectToAction("ListNotConfirmedPerson");
+                case 2:
+                    return RedirectToAction("ListConfirmedPerson");
+                default:
+                    return RedirectToAction("ListNewPerson");
+            }
+  
+        }
+
 
         public ActionResult Print()
         {
