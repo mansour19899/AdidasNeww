@@ -1,6 +1,7 @@
 ﻿body {
 	padding-top: 50px;
 	padding-bottom: 20px;
+    font-size:16px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -147,6 +148,54 @@ label {
 	font-weight: normal;
 }
 
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
 .loginPage {
     background-image: url('../Models/Repositores/sky1.jpg');
     height: 100vh;
@@ -202,7 +251,7 @@ input.login-text:focus {
     -webkit-transition: all .2s ease;
     -o-transition: all .2s ease;
     transition: all .2s ease;
-    width: 280px;
+    width: 250px;
     z-index: 1000
 }
 
@@ -233,7 +282,7 @@ input.login-text:focus {
     .sidebar-menu > li > a {
         display:flex; 
         align-items:center;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 500;
         padding: 5px 15px;
         position: relative;
@@ -264,4 +313,104 @@ input.login-text:focus {
     display: flex;
     justify-content: center;
     font-family: 'BTitrBd';
+}
+
+.amar-container {
+    margin-top: 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+
+}
+.amar-div {
+    display: flex;
+    font-size: 20px;
+    padding: 1em;
+    background-color: gray;
+    color: white;
+    margin-right: .5em;
+    width: 30%;
+    height: 7.5em;
+    font-family: 'BMitraBold';
+}
+.amar{
+    font-size:.8em;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin:0;
+    width:70%;
+}
+.iconamar{
+    width:30%;
+    font-size:3em;
+    border-left-style:solid;
+}
+@media only screen and (max-width: 1200px) {
+.amar-div{
+    font-size:15px;
+}
+.iconamar{
+    font-size:2em;
+}
+
+    .amar {
+        font-size: 1.1em;
+    }
+    .iconamar {
+        font-size: 2em;
+    }
+
+}
+
+@media only screen and (max-width: 960px) {
+    .amar-div{
+        width:50%;
+        margin:auto;
+        margin-top:1em;
+    }
+    .amar-container{
+        display:block;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .amar-div {
+        width: 100%;
+        margin: auto;
+        margin-top: 1em;
+    }
+
+
+}
+@media only screen and (max-width: 500px) {
+    .amar-div {
+        width: 100%;
+        margin: auto;
+        margin-top: 1em;
+        font-size:14px;
+    }
+    .iconamar{
+        display:none;
+    }
+    .amar{
+        width:100%;
+        
+    }
+    .aside{
+        width:55px;
+    }
+    .sidebar{
+        width:55px;
+    }
+    .section{
+        padding-right:80px;
+    }
+
+    .sidebar:focus, .sidebar:hover {
+        width:230px;
+        
+    }
+
 }

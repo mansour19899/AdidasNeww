@@ -176,6 +176,7 @@
     <Content Include="Content\Fonts\BMitra.svg" />
     <Content Include="Content\Fonts\BMitraBold.svg" />
     <Content Include="Content\Fonts\BTitrBold.svg" />
+    <Content Include="Content\ionicons.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -219,6 +220,7 @@
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\Fonts\ionicons.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -249,6 +251,9 @@
     <Content Include="Content\Fonts\BTitrBd.eot" />
     <Content Include="Content\Fonts\BTitrBold.ttf" />
     <Content Include="Content\Fonts\BTitrBold.woff" />
+    <Content Include="Content\Fonts\ionicons.eot" />
+    <Content Include="Content\Fonts\ionicons.ttf" />
+    <Content Include="Content\Fonts\ionicons.woff" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\ionicons.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

@@ -15,6 +15,10 @@ namespace AdidasNew.Models.EntityModels
         public int ConfirmedPersonUncheck { get; set; }
         public int NotConfirmedPersonUncheck { get; set; }
 
+        public int CountRegister { get; set; }
+        public int CountUnCheck { get; set; }
+
+
         AdidasNew.Models.DomainModels.DatabaseContext db = null;
         public countLists()
         {
@@ -27,6 +31,8 @@ namespace AdidasNew.Models.EntityModels
             NotConfirmedPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == 1).ToList().Count();
             NewPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == 0).ToList().Count();
 
+            CountRegister = db.People.ToList().Count();
+            CountUnCheck= db.People.Where(p => p.Checked == false ).ToList().Count();
         }
 
     }
