@@ -290,6 +290,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MobileAppController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -404,6 +405,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Helpers\HtmlHelpers\" />
+    <Folder Include="Views\MobileApp\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations1\201806111847135_Initial.resx">

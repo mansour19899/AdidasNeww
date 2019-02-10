@@ -280,8 +280,12 @@ input.login-text:focus {
 
 
     .sidebar-menu > li > a {
-        display:flex; 
-        align-items:center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
         font-size: 14px;
         font-weight: 500;
         padding: 5px 15px;
@@ -310,19 +314,29 @@ input.login-text:focus {
     border-radius: 10em !important;
     margin-right: 5px;
     width: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     font-family: 'BTitrBd';
 }
 
 .amar-container {
     margin-top: 20px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:space-between;
-
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
 }
 .amar-div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     font-size: 20px;
     padding: 1em;
@@ -333,13 +347,19 @@ input.login-text:focus {
     height: 7.5em;
     font-family: 'BMitraBold';
 }
-.amar{
-    font-size:.8em;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    margin:0;
-    width:70%;
+.amar {
+    font-size: .8em;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0;
+    width: 70%;
 }
 .iconamar{
     width:30%;
