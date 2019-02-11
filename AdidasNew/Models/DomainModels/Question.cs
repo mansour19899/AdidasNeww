@@ -19,8 +19,8 @@ namespace AdidasNew.Models.DomainModels
 
         public int TypeQuestion { get; set; }
 
+        public bool IsChange { get; set; }
 
-
-
+        public bool IsDelete { get; set; }
     }
 }

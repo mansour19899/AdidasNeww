@@ -172,6 +172,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.min.darkly.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Fonts\BMitra.svg" />
     <Content Include="Content\Fonts\BMitraBold.svg" />
@@ -231,6 +232,7 @@
     <Content Include="Models\Repositores\adidaslogo.png" />
     <Content Include="Models\Repositores\Fail-Stamp.png" />
     <Content Include="Models\Repositores\pass.png" />
+    <Content Include="Models\Repositores\question-marks.jpg" />
     <Content Include="Models\Repositores\sky1.jpg" />
     <Content Include="Models\Repositores\sky4.jpg" />
     <Content Include="Models\Repositores\sorbino.png" />
@@ -338,10 +340,12 @@
     <Compile Include="Models\Repositores\HistoryRepository.cs" />
     <Compile Include="Models\Repositores\JobRecordRepository.cs" />
     <Compile Include="Models\Repositores\PersonRepository.cs" />
+    <Compile Include="Models\Repositores\QuestionRepository.cs" />
     <Compile Include="Models\Repositores\RelationShipRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PersonInfo.cs" />
+    <Compile Include="ViewModels\TempUser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -395,6 +399,9 @@
     <Content Include="Views\Admin\test.cshtml" />
     <Content Include="Views\Admin\History.cshtml" />
     <Content Include="Views\Admin\Print.cshtml" />
+    <Content Include="Views\MobileApp\Index.cshtml" />
+    <Content Include="Views\MobileApp\home.cshtml" />
+    <Content Include="Views\MobileApp\NewQuestion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -405,7 +412,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Helpers\HtmlHelpers\" />
-    <Folder Include="Views\MobileApp\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations1\201806111847135_Initial.resx">
