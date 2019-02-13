@@ -1,0 +1,151 @@
+﻿@model IEnumerable<AdidasNew.Models.DomainModels.Question>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Questions</title>
+    <link href="~/Content/bootstrap.min.darkly.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <style>
+        .mytable {
+            direction: rtl;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+
+    <div class="container">
+        <table class="table table-info table-hover mytable">
+            <thead>
+                <tr>
+                    <th scope="col">ردیف</th>
+                    <th scope="col">سوال</th>
+                    <th scope="col">سطح</th>
+                    <th scope="col">طراح</th>
+                    <th scope="col">ویرایش</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    int i = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr class="@(i % 2 == 0 ? " table-primary" : " table-dark ")">
+
+                            <td>@i</td>
+                            <td>@item.question</td>
+                            <td>
+                                @switch (@item.Level)
+                                {
+                                    case 1:
+                                        <span> آسان</span>
+                                        break;
+                                    case 2:
+                                        <span> متوسط</span>
+                                        break;
+                                    case 3:
+                                        <span> سخت</span>
+                                        break;
+
+                                }
+                            </td>
+                            <td>@item.Creator</td>
+                            <td>
+                                <a href="~/qu/edit/@item.Id" class="btn  btn-info"> ویرایش</a>
+                            </td>
+                        </tr>
+                        i = i + 1;
+                    }
+                }
+
+
+            </tbody>
+        </table>
+
+        @*<div class="row d-flex justify-content-around">
+                <ul class="pagination pagination-lg">
+                    <li class="page-item  @(((int)ViewBag.pageId==1)?"disabled":"")  ">
+                        <a class="page-link" href="#">&laquo;</a>
+                    </li>
+                    @{
+                        for (int ii = 1; ii <= (ViewBag.pageCount); ii++)
+                        {
+                            <li class="page-item @(((int)ViewBag.pageId==ii)?"active":"") ">
+                                <a class="page-link" href="#">@ii</a>
+                            </li>
+                        }
+                    }
+                    <li class="page-item @(((int)ViewBag.pageId==(int)ViewBag.pageCount)?"disabled":"") ">
+                        <a class="page-link" href="#">&raquo;</a>
+                    </li>
+                </ul>
+
+
+            </div>*@
+
+        <div class="row d-flex justify-content-around">
+            <ul class="pagination pagination-lg">
+                <li class="page-item  @(((int)ViewBag.pageId == 1) ? "disabled" : "")  ">
+                    <a class="page-link" href="#">&laquo;</a>
+                </li>
+                <li class="page-item @(((int)ViewBag.pageId == 1) ? "active" : "") ">
+                    <a class="page-link" href=" ~/MobileApp/Questions/1">1</a>
+                </li>
+                @{
+                    var pagenumer = (int)ViewBag.pageId;
+                    if ((int)ViewBag.pageId != 1& (int)ViewBag.pageId!=2)
+                    {
+                        <li class="page-item ">
+                            <a class="page-link" href="#">...</a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        pagenumer = 2;
+                    }
+
+                    for (int iii = pagenumer; iii < (int)ViewBag.pageId + 4 & iii < (int)ViewBag.pageCount; iii++)
+                    {
+                        <li class="page-item   @(iii==((int)ViewBag.pageId ) ? "active" : "") ">
+                            <a class="page-link" href=" ~/MobileApp/Questions/@iii">@iii</a>
+                        </li>
+                    }
+
+                    if ( (int)ViewBag.pageCount- (int)ViewBag.pageId>4)
+                    {
+                        <li class="page-item ">
+                            <a class="page-link" href="#">...</a>
+                        </li>
+                    }
+                }
+                <li class="page-item  @(((int)ViewBag.pageId==(int)ViewBag.pageCount)?"active":"") ) ">
+                    <a class="page-link" href=" ~/MobileApp/Questions/@ViewBag.pageCount">@ViewBag.pageCount</a>
+                </li>
+                <li class="page-item @(((int)ViewBag.pageId==(int)ViewBag.pageCount)?"disabled":"") ">
+                    <a class="page-link" href=" ~/MobileApp/Questions/(@ViewBag.pageCount-1)">&raquo;</a>
+                </li>
+
+            </ul>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+</html>

@@ -402,6 +402,7 @@
     <Content Include="Views\MobileApp\Index.cshtml" />
     <Content Include="Views\MobileApp\home.cshtml" />
     <Content Include="Views\MobileApp\NewQuestion.cshtml" />
+    <Content Include="Views\MobileApp\Questions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

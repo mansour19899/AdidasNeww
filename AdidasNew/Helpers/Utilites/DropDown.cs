@@ -221,7 +221,7 @@ public class DropDown
         List<SelectListItem> items = new List<SelectListItem>
             {
                 new SelectListItem{Text = "بررسی نشده", Value = "0",Selected=true},
-                new SelectListItem{Text = "رد صلاحیت", Value = "1",Selected=true},
+                new SelectListItem{Text = "رد صلاحیت", Value = "1",Selected=false},
                 new SelectListItem{Text = "تایید شد", Value = "2",Selected=false},
                 new SelectListItem{Text = "کارمند", Value = "3",Selected=false},
                 new SelectListItem{Text = "اخراج شد", Value = "4",Selected=false},
@@ -230,5 +230,16 @@ public class DropDown
         return items;
     }
 
+    public static IEnumerable<SelectListItem> GetStatusQuestion()
+    {
+        List<SelectListItem> items = new List<SelectListItem>
+            {
+             new SelectListItem{Text = "آسان", Value = "1",Selected=true},
+                new SelectListItem{Text = "متوسط", Value = "2",Selected=false},
+                new SelectListItem{Text = "سخت", Value = "3",Selected=false},
 
+
+            };
+        return items;
+    }
 }

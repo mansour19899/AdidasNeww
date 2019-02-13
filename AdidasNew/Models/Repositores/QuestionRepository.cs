@@ -122,6 +122,17 @@ namespace AdidasNew.Models.Repositores
                 return null;
             }
         }
+        public int Count()
+        {
+            try
+            {
+                return db.Questions.AsQueryable().Count();
+            }
+            catch
+            {
+                return -1;
+            }
+        }
 
         public IQueryable<TResult> Select<TResult>(System.Linq.Expressions.Expression<Func<AdidasNew.Models.DomainModels.Question, TResult>> selector)
         {

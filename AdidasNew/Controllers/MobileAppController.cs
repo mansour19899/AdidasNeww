@@ -12,6 +12,8 @@ namespace AdidasNew.Controllers
     public class MobileAppController : Controller
     {
       public static  bool isvalid = false;
+        public static string creator = "";
+        public static int tempPage =1;
         QuestionRepository db = new QuestionRepository();
         // GET: MobileApp
         [HttpGet]
@@ -25,11 +27,31 @@ namespace AdidasNew.Controllers
         [HttpPost]
         public ActionResult Index(TempUser user)
         {
+            string distnace = "home";
             if(user.Username.ToLower()=="kosar"&user.Password=="137705")
             {
                 isvalid = true;
-                return RedirectToAction("home");
+                creator = "کوثر";
+                return RedirectToAction(distnace);
                 
+            }
+            else if (user.Username.ToLower() == "ali" & user.Password == "136911")
+            {
+                isvalid = true;
+                creator = "علی";
+                return RedirectToAction(distnace);
+            }
+            else if (user.Username.ToLower() == "zohreh" & user.Password == "13623")
+            {
+                isvalid = true;
+                creator = "زهره";
+                return RedirectToAction(distnace);
+            }
+            else if (user.Username.ToLower() == "mansour" & user.Password == "136815")
+            {
+                isvalid = true;
+                creator = "منصور";
+                return RedirectToAction(distnace);
             }
             else
             {
@@ -49,19 +71,67 @@ namespace AdidasNew.Controllers
         }
 
         [HttpGet]
-        public ActionResult NewQuestion()
+        public ActionResult NewQuestion(int id=0)
         {
             if (isvalid)
-                return View();
+                if(id==0)
+                {
+                    ViewBag.back = "home";
+                    return View(new Question() { Id=0});
+
+                }
+
+            else
+                {
+                    ViewBag.back = "../../MobileApp/Questions/" + tempPage;
+                    var q = db.Find(id);
+                    return View(q);
+                }
             else
                 return RedirectToAction("Index");
         }
         [HttpPost]
         public ActionResult NewQuestion(Question q )
         {
-           if( db.Add(q))
-            ViewBag.Success = "سوال با موفقیت ثبت شد";
-            return View();
+            if(q.Id==0)
+            {
+                q.Creator = creator;
+                if (db.Add(q))
+                    ViewBag.Success = "سوال با موفقیت ثبت شد";
+                return View(new Question() { Id = 0 });
+            }
+            else
+            {
+                q.Creator = creator;
+                if (db.Update(q))
+                    ViewBag.Success = "سوال با موفقیت ویرایش شد";
+                return View(q);
+            }
+
+        }
+
+        public ActionResult Questions(int id=1)
+        {
+            tempPage = id;
+            if (isvalid)
+            {
+                int take = 10;
+                int skip = (id-1)*take;
+                int count = db.Count();
+
+                ViewBag.pageId = id;
+                if(count%3==0)
+                    ViewBag.pageCount = count / take;
+                else
+                    ViewBag.pageCount = count / take+1;
+
+
+                var list = db.Select().OrderByDescending(p=>p.Id).Skip(skip).Take(take).ToList();
+                return View(list);
+            }
+
+            else
+                return RedirectToAction("Index");
         }
 
     }

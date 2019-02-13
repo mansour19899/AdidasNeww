@@ -22,5 +22,8 @@ namespace AdidasNew.Models.DomainModels
         public bool IsChange { get; set; }
 
         public bool IsDelete { get; set; }
+        [MaxLength(20)]
+        public string Creator { get; set; }
+
     }
 }
