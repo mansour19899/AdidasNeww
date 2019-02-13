@@ -41,10 +41,16 @@ namespace AdidasNew.Controllers
                 creator = "علی";
                 return RedirectToAction(distnace);
             }
+            else if (user.Username.ToLower() == "javad" & user.Password == "13733")
+            {
+                isvalid = true;
+                creator = "جواد";
+                return RedirectToAction(distnace);
+            }
             else if (user.Username.ToLower() == "zohreh" & user.Password == "13623")
             {
                 isvalid = true;
-                creator = "زهره";
+                creator = "دیانا";
                 return RedirectToAction(distnace);
             }
             else if (user.Username.ToLower() == "mansour" & user.Password == "136815")
@@ -95,6 +101,7 @@ namespace AdidasNew.Controllers
         {
             if(q.Id==0)
             {
+                ViewBag.back = "../../MobileApp/home";
                 q.Creator = creator;
                 if (db.Add(q))
                     ViewBag.Success = "سوال با موفقیت ثبت شد";
@@ -103,6 +110,7 @@ namespace AdidasNew.Controllers
             else
             {
                 q.Creator = creator;
+                ViewBag.back = "../../MobileApp/Questions/" + tempPage;
                 if (db.Update(q))
                     ViewBag.Success = "سوال با موفقیت ویرایش شد";
                 return View(q);

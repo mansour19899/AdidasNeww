@@ -21,9 +21,6 @@
     </style>
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
 
     <div class="container">
         <table class="table table-info table-hover mytable">
@@ -75,26 +72,7 @@
             </tbody>
         </table>
 
-        @*<div class="row d-flex justify-content-around">
-                <ul class="pagination pagination-lg">
-                    <li class="page-item  @(((int)ViewBag.pageId==1)?"disabled":"")  ">
-                        <a class="page-link" href="#">&laquo;</a>
-                    </li>
-                    @{
-                        for (int ii = 1; ii <= (ViewBag.pageCount); ii++)
-                        {
-                            <li class="page-item @(((int)ViewBag.pageId==ii)?"active":"") ">
-                                <a class="page-link" href="#">@ii</a>
-                            </li>
-                        }
-                    }
-                    <li class="page-item @(((int)ViewBag.pageId==(int)ViewBag.pageCount)?"disabled":"") ">
-                        <a class="page-link" href="#">&raquo;</a>
-                    </li>
-                </ul>
 
-
-            </div>*@
 
         <div class="row d-flex justify-content-around">
             <ul class="pagination pagination-lg">
@@ -142,6 +120,9 @@
             </ul>
 
 
+        </div>
+        <div class="row d-flex justify-content-around">
+            @Html.ActionLink("بازگشت", "home",null,new { @class = "btn  btn-info" })
         </div>
 
     </div>
