@@ -19,6 +19,10 @@
                 {
                     <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
                 }
+                else if (Model.Person.Status == 3)
+                {
+                    <a class="btn btn-info" href="/Admin/ListStaffs" style="width:100px;margin-top:10px;float: left;">Back</a>
+                }
                 else
                 {
                     <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
@@ -951,7 +955,7 @@
 
                                     if (Model.Person.Status == 2)
                                     {
-                                        <input type="submit" value="استخدام " name="hi" class="btn btn-info" style="margin:15px;" />
+                                        <input type="submit" value="استخدام " name="MakeStaff" class="btn btn-info" style="margin:15px;" />
                                     }
                                     if (Model.Person.Status == 2 | Model.Person.Status == 0)
                                     {
@@ -974,6 +978,10 @@
                                     else if (Model.Person.Status == 1)
                                     {
                                         <a class="btn btn-info" href="/Admin/ListNotConfirmedPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                    }
+                                    else if (Model.Person.Status == 3)
+                                    {
+                                        <a class="btn btn-info" href="/Admin/ListStaffs" style="width:100px;margin-top:10px;float: left;">Back</a>
                                     }
                                     else
                                     {

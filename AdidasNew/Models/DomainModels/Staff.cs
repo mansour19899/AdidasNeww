@@ -21,11 +21,12 @@ namespace AdidasNew.Models.DomainModels
 
         [DisplayName("تاریخ خاتمه همکاری ")]
         [Display(Name = "تاریخ خاتمه همکاری ")]
-        [Required(ErrorMessage = "لطفا  {0}   را وارد کنید")]
-        public Nullable<System.DateTime> EndWork { get; set; }
+         public Nullable<System.DateTime> EndWork { get; set; }
 
         public int Person_FK { get; set; }
         public int? Person_PFK { get; set; }
+
+        public int? Semat { get; set; }
 
         [ForeignKey(" Person_FK")]
         public virtual Person Person { get; set; }

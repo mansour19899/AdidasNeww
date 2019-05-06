@@ -191,6 +191,10 @@ namespace AdidasNew.Models.DomainModels
         [Display(Name = "وضعیت")]
         public byte Status { get; set; }
 
+        [DisplayName("استخدام شده؟ ")]
+        [Display(Name = "استخدام شده؟ ")]
+        public bool IsStaff { get; set; }
+
         //[NotMapped]
         //public int test { get; set; }
 

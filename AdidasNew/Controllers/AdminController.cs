@@ -138,13 +138,49 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
             historyOfPersonRepository blHistory = new historyOfPersonRepository();
-
+        
 
             var x = blPerson.Find(id);
             int perviousStatus = x.Status;
             x.Checked = false;
             x.Status = (byte)status;
             blPerson.Update(x);
+
+            if(status==3)
+            {
+                x.Checked = true;
+                blPerson.Update(x);
+
+                StaffRepository BlStaff = new StaffRepository();
+                RelationShipRepository BlRelationShip = new RelationShipRepository();
+                JobRecordRepository BlJob = new JobRecordRepository();
+
+                Staff staff = new Staff();
+                staff.Person_PFK = id;
+                x.IsStaff = true;
+                x.Checked = false;
+                blPerson.Add(x);
+                int NewId= AdidasNew.Controllers.HomeController.personId;
+                staff.Person_FK = NewId;
+
+                var Job = BlJob.Where(p => p.Person_FK == id).ToList();
+                foreach (var item in Job)
+                {
+                    item.Person_FK = NewId;
+                    BlJob.Add(item);
+                }
+
+                var RelationShips = BlRelationShip.Where(p => p.Person_FK == id).ToList();
+                foreach (var item in RelationShips)
+                {
+                    item.Person_FK = NewId;
+                    BlRelationShip.Add(item);
+                }
+
+                staff.StartWork = DateTime.Now;
+                BlStaff.Add(staff);
+            }
+  
 
             HistoryOfPerson per = new HistoryOfPerson()
             {
@@ -190,6 +226,14 @@ namespace AdidasNew.Controllers
             return View(list);
         }
 
+        public ActionResult ListStaffs()
+        {
+            PersonRepository blPerson = new PersonRepository();
+
+            var list = blPerson.Where(p => p.Status == 3&p.IsStaff==true).ToList().OrderByDescending(pp => pp.Id);
+
+            return View(list);
+        }
 
 
         [SendStatusHandler]
@@ -201,7 +245,15 @@ namespace AdidasNew.Controllers
             // return RedirectToAction("ListConfirmedPerson");
 
         }
+        [SendStatusHandler]
+        [HttpPost]
+        public ActionResult MakeStaff(string Description, string PersonId)
+        {
+            return SetStatus(int.Parse(PersonId), 3, Description);
 
+            // return RedirectToAction("ListConfirmedPerson");
+
+        }
         [SendStatusHandler]
         [HttpPost]
         public ActionResult NotConfirmed(string Description, string PersonId)
