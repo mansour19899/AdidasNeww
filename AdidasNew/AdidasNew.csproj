@@ -231,6 +231,7 @@
     <Content Include="Models\Repositores\adidas.jpg" />
     <Content Include="Models\Repositores\adidaslogo.png" />
     <Content Include="Models\Repositores\Fail-Stamp.png" />
+    <Content Include="Models\Repositores\logoo.jpg" />
     <Content Include="Models\Repositores\pass.png" />
     <Content Include="Models\Repositores\question-marks.jpg" />
     <Content Include="Models\Repositores\sky1.jpg" />
