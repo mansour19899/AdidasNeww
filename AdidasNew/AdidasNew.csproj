@@ -333,6 +333,7 @@
     <Compile Include="Models\DomainModels\Person.cs" />
     <Compile Include="Models\DomainModels\Question.cs" />
     <Compile Include="Models\DomainModels\RelationShip.cs" />
+    <Compile Include="Models\DomainModels\Staff.cs" />
     <Compile Include="Models\EntityModels\countLists.cs" />
     <Compile Include="Models\EntityModels\DateOfBirth.cs" />
     <Compile Include="Models\Enums\PersonStatus.cs" />
@@ -343,6 +344,7 @@
     <Compile Include="Models\Repositores\PersonRepository.cs" />
     <Compile Include="Models\Repositores\QuestionRepository.cs" />
     <Compile Include="Models\Repositores\RelationShipRepository.cs" />
+    <Compile Include="Models\Repositores\StaffRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\PersonInfo.cs" />

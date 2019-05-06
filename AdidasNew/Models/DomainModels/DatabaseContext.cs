@@ -19,6 +19,7 @@ namespace AdidasNew.Models.DomainModels
         public DbSet<Person> People { get; set; }
         public DbSet<JobRecord> JobRecords { get; set; }
         public DbSet<RelationShip> RelationShips { get; set; }
+        public DbSet<Staff> Staffs { get; set; }
 
         public DbSet<HistoryOfPerson> historyOfPeople { get; set; }
         public DbSet<Question> Questions { get; set; }

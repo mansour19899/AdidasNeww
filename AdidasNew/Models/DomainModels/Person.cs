@@ -196,7 +196,7 @@ namespace AdidasNew.Models.DomainModels
 
         public virtual ICollection<JobRecord> JobRecord { get; set; }
         public virtual ICollection<RelationShip> RelationShip { get; set; }
-
+       
 
     }
 }
