@@ -269,6 +269,7 @@ input.login-text:focus {
     overflow: auto;
     padding: 0;
     position: relative;
+    width:300px;
 }
 
     .sidebar-menu li a {
@@ -456,4 +457,7 @@ input.login-text:focus {
 }
 .mell{
     border-color:black;
+}
+.alarmmodal{
+    padding:20px;
 }
