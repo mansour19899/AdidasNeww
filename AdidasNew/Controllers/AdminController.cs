@@ -181,7 +181,7 @@ namespace AdidasNew.Controllers
                 BlStaff.Add(staff);
             }
   
-
+            
             HistoryOfPerson per = new HistoryOfPerson()
             {
                 Person_Id_fk = id,
@@ -566,8 +566,16 @@ namespace AdidasNew.Controllers
 
             historyOfPersonRepository per = new historyOfPersonRepository();
             AdidasNew.Models.ApplicationDbContext db = new Models.ApplicationDbContext();
+            StaffRepository staff = new StaffRepository();
+            var pkk = staff.Where(p=>p.Person_FK==id).FirstOrDefault();
+            int ttt = 0;
+            if(pkk!=null)
+            {
+                ttt = pkk.Person_PFK.Value;
+            }
+
             var t = db.Users.ToList();
-            var history = per.Where(p => p.Person_Id_fk == id).ToList().OrderByDescending(p => p.RegDate);
+            var history = per.Where(p => p.Person_Id_fk == id||p.Person_Id_fk==ttt).ToList().OrderByDescending(p => p.RegDate);
             foreach (var item in history)
             {
                 item.User_Id_fk = t.Find(p => p.Id == item.User_Id_fk).FullName;

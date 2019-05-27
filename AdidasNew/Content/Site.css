@@ -441,5 +441,19 @@ input.login-text:focus {
 
         margin-right: 0px;
     }
+   
+}
+.headerlogo {
+    height: 100px;
+    background-image: url(../Models/Repositores/logooo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+}
 
+.mel{
+    background-color:black !important;
+}
+.mell{
+    border-color:black;
 }
