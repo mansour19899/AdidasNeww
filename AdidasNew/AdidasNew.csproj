@@ -407,6 +407,8 @@
     <Content Include="Views\MobileApp\NewQuestion.cshtml" />
     <Content Include="Views\MobileApp\Questions.cshtml" />
     <Content Include="Views\Admin\ListStaffs.cshtml" />
+    <Content Include="Views\Admin\ListDeportePerson.cshtml" />
+    <Content Include="Views\Admin\ListResignationPerson.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

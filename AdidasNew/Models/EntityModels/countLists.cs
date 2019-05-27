@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdidasNew.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,6 +14,8 @@ namespace AdidasNew.Models.EntityModels
 
         public int NewPersonUncheck { get; set; }
         public int ConfirmedPersonUncheck { get; set; }
+        public int DeporteUncheck { get; set; }
+        public int ResignationUncheck { get; set; }
         public int NotConfirmedPersonUncheck { get; set; }
         public int NotStaffUncheck { get; set; }
 
@@ -25,18 +28,20 @@ namespace AdidasNew.Models.EntityModels
         public countLists()
         {
             db = new DomainModels.DatabaseContext();
-            ConfirmedPerson = db.People.Where(p =>  p.Status == 2).ToList().Count();
-            NotConfirmedPerson = db.People.Where(p => p.Status == 1).ToList().Count();
-            NewPerson = db.People.Where(p => p.Status==0).ToList().Count();
+            ConfirmedPerson = db.People.Where(p =>  p.Status == (int)PersonStatus.Confirmed).ToList().Count();
+            NotConfirmedPerson = db.People.Where(p => p.Status == (int)PersonStatus.NotConfirmed).ToList().Count();
+            NewPerson = db.People.Where(p => p.Status== (int)PersonStatus.UnCheck).ToList().Count();
 
-            ConfirmedPersonUncheck = db.People.Where(p =>p.Checked==false& p.Status == 2).ToList().Count();
-            NotConfirmedPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == 1).ToList().Count();
-            NotStaffUncheck = db.People.Where(p => p.Checked == false & p.Status == 3&p.IsStaff==true).ToList().Count();
-            NewPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == 0).ToList().Count();
+            ConfirmedPersonUncheck = db.People.Where(p =>p.Checked==false& p.Status == (int)PersonStatus.Confirmed).ToList().Count();
+            NotConfirmedPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.NotConfirmed).ToList().Count();
+            NotStaffUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.Staff & p.IsStaff==true).ToList().Count();
+            NewPersonUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.UnCheck).ToList().Count();
+            DeporteUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.Deporte).ToList().Count();
+            ResignationUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.Resignation).ToList().Count();
 
             CountRegister = db.People.ToList().Count();
             CountUnCheck= db.People.Where(p => p.Checked == false ).ToList().Count();
-            CountStaff = db.People.Where(p => p.Status == 3&p.IsStaff==true).ToList().Count();
+            CountStaff = db.People.Where(p => p.Status == (int)PersonStatus.Staff & p.IsStaff==true).ToList().Count();
         }
 
     }

@@ -31,9 +31,32 @@
 
         <button type="button" id="hi" class="btn btn-primary text-center" style="position:absolute ;bottom: 10px;right: 150px;height: 75px;width: 200px;font-size: 20px;margin:10px;font-family: 'BMitraBold' !important;background-color:black;border-color:black">فرم استخدام</button>
     </div>
+   
     <div style="padding-top: 50px; padding-left: 20px; padding-right: 20px;" class="allcontentpage">
+        @{
+            string s;
+            string ss;
+            if (ViewBag.isupdate == true)
+            {
+                s = "updateInformation";
+                ss = "Admin";
+                <script>
 
-        @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
+                    $(document).ready(function () {
+                        $("._Header").fadeOut(1500);
+                        $(".allcontentpage").fadeIn(1500);
+                        $("#imagerow").remove();
+                    });
+                </script>
+            }
+            else
+            {
+                s = "Register";
+                ss = "Home";
+            }
+        }
+        <h1>@s</h1>
+        @using (Html.BeginForm(s, ss, FormMethod.Post, new { enctype = "multipart/form-data", id = "myUploadForm" }))
         {
 
             Html.EnableClientValidation(true);
@@ -177,7 +200,7 @@
                             </p>
                         </div>
 
-                        <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div id="imagerow" class="col-lg-12 col-md-12 col-sm-12">
                             <p class="_label">
                                 @Html.LabelFor(p => p.Person.image)<span class="star">*</span>
                                 <input type="file" name="UploadImage" id="fileUpload" class="input-files" onchange="return ValidateExtension()" />
@@ -681,10 +704,22 @@
 
                 </div>
             </div>
+            <div style="padding-left:100px;padding-right:100px;padding-bottom:50px;">
+                @{
+                    if (ViewBag.isupdate == true)
+                    {
+                        <input type="submit" id="BtnEdit" value="ویرایش" class="btn btn-warning" style="width: 100px;" />
+                        <a class="btn btn-info" href="/Admin/Info/@Model.Person.Id" style="width:100px;margin-top:10px;float: left;">بازگشت</a>
+                    }
+                    else
+                    {
+                        <input type="submit" id="BtnSend" value="ثبت" class="btn btn-primary" style="width: 100px;" />
+                    }
+                }
+            </div>
 
 
 
-            <input type="submit" id="BtnSend" value="ثبت" class="btn btn-primary" style="width: 100px;" />
         }
     </div>
     

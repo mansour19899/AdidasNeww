@@ -15,12 +15,12 @@ using System.IO;
 
 namespace AdidasNew.Controllers
 {
-
+    
     [Authorize(Roles = "Admin,Maneger")]
     public class AdminController : Controller
     {
         countLists count;
-
+        static int personidd = 0;
         // GET: Admin
 
         public ActionResult Index()
@@ -197,10 +197,16 @@ namespace AdidasNew.Controllers
             {
                 case 0:
                     return RedirectToAction("ListNewPerson");
-                case 1:
+                case (int)PersonStatus.NotConfirmed:
                     return RedirectToAction("ListNotConfirmedPerson");
-                case 2:
+                case (int)PersonStatus.Confirmed:
                     return RedirectToAction("ListConfirmedPerson");
+                case (int)PersonStatus.Staff:
+                    return RedirectToAction("ListStaffs");
+                case (int)PersonStatus.Deporte:
+                    return RedirectToAction("ListDeportePerson");
+                case (int)PersonStatus.Resignation:
+                    return RedirectToAction("ListResignationPerson");
                 default:
                     return RedirectToAction("ListNewPerson");
             }
@@ -212,7 +218,25 @@ namespace AdidasNew.Controllers
             PersonRepository blPerson = new PersonRepository();
 
 
-            var list = blPerson.Where(p => p.Status == 2).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p => p.Status == (int)PersonStatus.Confirmed).ToList().OrderByDescending(pp => pp.Id);
+
+            return View(list);
+        }
+        public ActionResult ListDeportePerson()
+        {
+            PersonRepository blPerson = new PersonRepository();
+
+
+            var list = blPerson.Where(p => p.Status == (int)PersonStatus.Deporte).ToList().OrderByDescending(pp => pp.Id);
+
+            return View(list);
+        }
+        public ActionResult ListResignationPerson()
+        {
+            PersonRepository blPerson = new PersonRepository();
+
+
+            var list = blPerson.Where(p => p.Status == (int)PersonStatus.Resignation).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
@@ -221,35 +245,308 @@ namespace AdidasNew.Controllers
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Status == 1).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p => p.Status == (int)PersonStatus.NotConfirmed).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
-
         public ActionResult ListStaffs()
         {
             PersonRepository blPerson = new PersonRepository();
 
-            var list = blPerson.Where(p => p.Status == 3&p.IsStaff==true).ToList().OrderByDescending(pp => pp.Id);
+            var list = blPerson.Where(p => p.Status == (int)PersonStatus.Staff & p.IsStaff == true).ToList().OrderByDescending(pp => pp.Id);
 
             return View(list);
         }
+
+        [HttpGet]
+        public ActionResult updateInformation(int id)
+        {
+            ViewBag.isupdate = true ;
+            PersonRepository blPerson = new PersonRepository();
+            JobRecordRepository blJob = new JobRecordRepository();
+            RelationShipRepository BlrelationShip = new RelationShipRepository();
+            personidd = id;
+            DateOfBirth date = new DateOfBirth();
+            ViewBag.Day = date.DayList;
+            ViewBag.Month = date.MonthList;
+            ViewBag.Year = date.YearList;
+
+            PersonInfo personInfo = new PersonInfo();
+
+            Person person = blPerson.Find(id);
+            personInfo.Person = person;
+
+            var jobs = blJob.Where(p => p.Person_FK == id).ToList();
+            if(jobs.Count==3)
+            {
+                personInfo.JobRecord1 = jobs.ElementAt(0);
+                personInfo.JobRecord2 = jobs.ElementAt(1);
+                personInfo.JobRecord3 = jobs.ElementAt(2);
+            }
+            else if(jobs.Count==2)
+            {
+                personInfo.JobRecord1 = jobs.ElementAt(0);
+                personInfo.JobRecord2 = jobs.ElementAt(1);
+            }
+            else if (jobs.Count == 1)
+            {
+                personInfo.JobRecord1 = jobs.ElementAt(0);
+             
+            }
+            else
+            {
+
+            }
+
+            var rel = BlrelationShip.Where(p => p.Person_FK == id).ToList();
+            if (rel.Count == 3)
+            {
+                personInfo.RelationShip1 = rel.ElementAt(0);
+                personInfo.RelationShip2 = rel.ElementAt(1);
+                personInfo.RelationShip3 = rel.ElementAt(2);
+            }
+            else if (rel.Count == 2)
+            {
+                personInfo.RelationShip1 = rel.ElementAt(0);
+                personInfo.RelationShip2 = rel.ElementAt(1);
+            }
+            else if (rel.Count == 1)
+            {
+                personInfo.RelationShip1 = rel.ElementAt(0);
+
+            }
+            else
+            {
+
+            }
+
+
+            return View("../Home/Register", personInfo);
+        }
+        [HttpPost]
+        public ActionResult updateInformation(PersonInfo per, HttpPostedFileBase UploadImage)
+        {
+            var yt = ModelState.IsValid;
+            PersonRepository blPerson = new PersonRepository();
+            JobRecordRepository blJob = new JobRecordRepository();
+            RelationShipRepository blRelation = new RelationShipRepository();
+
+            per.Person.Id = personidd;
+
+            var perr = blPerson.Find(per.Person.Id);
+            var job = blJob.Where(p => p.Person_FK == per.Person.Id).ToList();
+            var rel = blRelation.Where(p => p.Person_FK == per.Person.Id).ToList();
+            perr.Name = per.Person.Name;
+            perr.LastName = per.Person.LastName;
+            perr.Father = per.Person.Father;
+            perr.MilitaryService = per.Person.MilitaryService;
+            perr.Marriage = per.Person.Marriage;
+            perr.Children = per.Person.Children;
+            perr.Address = per.Person.Address;
+            perr.Email = per.Person.Email;
+            perr.Degree = per.Person.Degree;
+            perr.Institute = per.Person.Institute;
+            perr.Field = per.Person.Field;
+            perr.EnglishKnowledge = per.Person.EnglishKnowledge;
+            perr.Excel = per.Person.Excel;
+            perr.Outlook = per.Person.Outlook;
+            perr.PowerPoint = per.Person.PowerPoint;
+            perr.Accounting = per.Person.Accounting;
+            perr.OtherSoftwer = per.Person.OtherSoftwer;
+            perr.Skills = per.Person.Skills;
+            perr.SalaryExpection = per.Person.SalaryExpection;
+            perr.JobStatus = per.Person.JobStatus;
+            perr.DaysNumber = per.Person.DaysNumber;
+            perr.WorkingGuranty = per.Person.WorkingGuranty;
+            perr.Duration = per.Person.Duration;
+            perr.GurantyPayment = per.Person.GurantyPayment;
+            perr.Gender = per.Person.Gender;
+            perr.Name = per.Person.Name;
+
+
+
+
+            perr.NationalCode = per.Person.NationalCode.ConvertNumbersToEnglish();
+            perr.Mobile = per.Person.Mobile.ConvertNumbersToEnglish();
+            perr.Tell = per.Person.Tell.ConvertNumbersToEnglish();
+
+            perr.BirthDay = (per.Date.Year + "/" + per.Date.Month + "/" + per.Date.Day).ToGeorgianDateTime();
+
+            int countjob = job.Count();
+
+            if (countjob > 0 & per.JobRecord1.Company!=null)
+            {
+                job.ElementAt(0).Company = per.JobRecord1.Company;
+                job.ElementAt(0).Title = per.JobRecord1.Title;
+                job.ElementAt(0).Duration = per.JobRecord1.Duration;
+                job.ElementAt(0).Disconnection = per.JobRecord1.Disconnection;
+                job.ElementAt(0).Address = per.JobRecord1.Address;
+                job.ElementAt(0).Tell = per.JobRecord1.Tell;
+                blJob.Update(job.ElementAt(0));
+            }
+            if (countjob > 1 & per.JobRecord2.Company != null)
+            {
+                job.ElementAt(1).Company = per.JobRecord2.Company;
+                job.ElementAt(1).Title = per.JobRecord2.Title;
+                job.ElementAt(1).Duration = per.JobRecord2.Duration;
+                job.ElementAt(1).Disconnection = per.JobRecord2.Disconnection;
+                job.ElementAt(1).Address = per.JobRecord2.Address;
+                job.ElementAt(1).Tell = per.JobRecord2.Tell;
+                blJob.Update(job.ElementAt(1));
+            }
+            if (countjob > 2 & per.JobRecord3.Company != null)
+            {
+                job.ElementAt(2).Company = per.JobRecord3.Company;
+                job.ElementAt(2).Title = per.JobRecord3.Title;
+                job.ElementAt(2).Duration = per.JobRecord3.Duration;
+                job.ElementAt(2).Disconnection = per.JobRecord3.Disconnection;
+                job.ElementAt(2).Address = per.JobRecord3.Address;
+                job.ElementAt(2).Tell = per.JobRecord3.Tell;
+                blJob.Update(job.ElementAt(2));
+            }
+
+            if(per.JobRecord1.Company!=null&countjob<1)
+            {
+                per.JobRecord1.Person_FK = personidd;
+                blJob.Add(per.JobRecord1);
+            }
+            if (per.JobRecord2.Company != null & countjob <2)
+            {
+                per.JobRecord2.Person_FK = personidd;
+                blJob.Add(per.JobRecord2);
+            }
+
+            if (per.JobRecord3.Company != null & countjob<3)
+            {
+                per.JobRecord3.Person_FK = personidd;
+                blJob.Add(per.JobRecord3);
+            }
+
+            int countrel = rel.Count();
+
+            if (countrel > 0 & per.RelationShip1.Name != null)
+            {
+                rel.ElementAt(0).Name = per.RelationShip1.Name;
+                rel.ElementAt(0).Relational = per.RelationShip1.Relational;
+                rel.ElementAt(0).Tell = per.RelationShip1.Tell;
+                rel.ElementAt(0).Address = per.RelationShip1.Address;
+                rel.ElementAt(0).Moaref = per.RelationShip1.Moaref;                
+                blRelation.Update(rel.ElementAt(0));
+            }
+            if (countrel > 1 & per.RelationShip2.Name != null)
+            {
+                rel.ElementAt(1).Name = per.RelationShip2.Name;
+                rel.ElementAt(1).Relational = per.RelationShip2.Relational;
+                rel.ElementAt(1).Tell = per.RelationShip2.Tell;
+                rel.ElementAt(1).Address = per.RelationShip2.Address;
+                rel.ElementAt(1).Moaref = per.RelationShip2.Moaref;
+                blRelation.Update(rel.ElementAt(1));
+            }
+            if (countrel > 2 & per.RelationShip3.Name != null)
+            {
+                rel.ElementAt(2).Name = per.RelationShip3.Name;
+                rel.ElementAt(2).Relational = per.RelationShip3.Relational;
+                rel.ElementAt(2).Tell = per.RelationShip3.Tell;
+                rel.ElementAt(2).Address = per.RelationShip3.Address;
+                rel.ElementAt(2).Moaref = per.RelationShip3.Moaref;
+                blRelation.Update(rel.ElementAt(2));
+            }
+
+            if (per.RelationShip1.Name != null & countrel < 1)
+            {
+                per.RelationShip1.Person_FK = personidd;
+                blRelation.Add(per.RelationShip1);
+            }
+            if (per.RelationShip2.Name != null & countrel < 2)
+            {
+                per.RelationShip2.Person_FK = personidd;
+                blRelation.Add(per.RelationShip2);
+            }
+
+            if (per.RelationShip3.Name != null & countrel < 3)
+            {
+                per.RelationShip3.Person_FK = personidd;
+                blRelation.Add(per.RelationShip3);
+            }
+
+            //------------------------------------------------Image----------------------------------------------------------
+            //string AllowFormat = "image/jpeg,image/png,image/jpg,image/jpeg";
+            //if (UploadImage != null && UploadImage.ContentLength > 0)
+            //{
+            //    if (!AllowFormat.Split(',').Contains(UploadImage.ContentType))
+            //    {
+            //        return MessageBox.Show(" فرمت عکس صحیح نیست", MessageType.Warning);
+            //    }
+            //    else
+            //    {
+            //        var yy = UploadImage.InputStream.ResizeImageByHeight(700, utilty.ImageComperssion.Normal);
+            //        // UploadImage.InputStream.ResizeImageByHeight(500, @"E:\1\" + UploadImage.FileName);
+            //        per.Person.image = yy;
+            //    }
+
+            //}
+            //else
+            //{
+            //    return MessageBox.Show(" عکس انتخاب نشده است", MessageType.Warning);
+            //}
+
+            //--------------------------------------------------------------------------------------------------------------------------
+
+
+
+            //per.Person.SalaryExpection = per.Person.SalaryExpection.Replace(",", string.Empty).ConvertNumbersToEnglish();
+            //perr.SalaryExpection = per.Person.SalaryExpection.ConvertNumbersToEnglish();
+
+            if (blPerson.Update(perr))
+            {
+        
+                
+                return MessageBox.Show("با موفقیت ویراش شد", MessageType.Success);
+                
+            }
+            else
+            {
+                return MessageBox.Show(" ویراش  شد", MessageType.Error);
+            }
+
+           
+        }
+
+  
 
 
         [SendStatusHandler]
         [HttpPost]
         public ActionResult Confirmed(string Description, string PersonId)
         {
-            return SetStatus(int.Parse(PersonId), 2, Description);
+            return SetStatus(int.Parse(PersonId), (int)PersonStatus.Confirmed, Description);
 
-            // return RedirectToAction("ListConfirmedPerson");
+           
 
         }
         [SendStatusHandler]
         [HttpPost]
         public ActionResult MakeStaff(string Description, string PersonId)
         {
-            return SetStatus(int.Parse(PersonId), 3, Description);
+            return SetStatus(int.Parse(PersonId), (int)PersonStatus.Staff, Description);
+
+           
+
+        }
+        [SendStatusHandler]
+        [HttpPost]
+        public ActionResult Resignation(string Description, string PersonId)
+        {
+            return SetStatus(int.Parse(PersonId),(int)PersonStatus.Resignation, Description);
+
+            // return RedirectToAction("ListConfirmedPerson");
+
+        }
+        [SendStatusHandler]
+        [HttpPost]
+        public ActionResult Deporte(string Description, string PersonId)
+        {
+            return SetStatus(int.Parse(PersonId), (int)PersonStatus.Deporte, Description);
 
             // return RedirectToAction("ListConfirmedPerson");
 
@@ -258,7 +555,7 @@ namespace AdidasNew.Controllers
         [HttpPost]
         public ActionResult NotConfirmed(string Description, string PersonId)
         {
-            return SetStatus(int.Parse(PersonId), 1, Description);
+            return SetStatus(int.Parse(PersonId), (int)PersonStatus.NotConfirmed, Description);
 
             // return RedirectToAction("ListNotConfirmedPerson");
 
@@ -290,10 +587,16 @@ namespace AdidasNew.Controllers
             {
                 case 0:
                     return RedirectToAction("ListNewPerson");
-                case 1:
+                case (int)PersonStatus.NotConfirmed:
                     return RedirectToAction("ListNotConfirmedPerson");
-                case 2:
+                case (int)PersonStatus.Confirmed:
                     return RedirectToAction("ListConfirmedPerson");
+                case (int)PersonStatus.Staff:
+                    return RedirectToAction("ListStaffs");
+                case (int)PersonStatus.Deporte:
+                    return RedirectToAction("ListDeportePerson");
+                case (int)PersonStatus.Resignation:
+                    return RedirectToAction("ListResignationPerson");
                 default:
                     return RedirectToAction("ListNewPerson");
             }

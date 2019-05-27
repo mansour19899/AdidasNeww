@@ -56,8 +56,18 @@
                             { <span class="recheck">@Model.NotStaffUncheck </span>}}
                     </a>
                 </li>
-                <li class="nav-item"> <a href="~/Admin/listnewperson"> <ion-icon style="color:#000000" class="icon" name="walk"></ion-icon><span>اتمام همکاری </span></a></li>
-                <li class="nav-item"> <a href="~/Admin/listnewperson"><ion-icon style="color:#ea0404" class="icon" name="close-circle"></ion-icon> <span>اخراج شده ها </span></a></li>
+                <li class="nav-item">
+                    <a href="~/Admin/ListResignationPerson">
+                        <ion-icon style="color:#000000" class="icon" name="walk"></ion-icon><span>اتمام همکاری </span>@{ if (Model.ResignationUncheck != 0)
+                            { <span class="recheck">@Model.ResignationUncheck </span>}}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="~/Admin/ListDeportePerson">
+                        <ion-icon style="color:#ea0404" class="icon" name="close-circle"></ion-icon> <span>اخراج شده ها </span>@{ if (Model.DeporteUncheck != 0)
+                            { <span class="recheck">@Model.DeporteUncheck </span>}}
+                    </a>
+                </li>
                 <li class="nav-item"> <a href="~/UsersAdmin/Index"> <ion-icon style="color:#2e2368" class="icon" name="man"></ion-icon><span>ناظران </span></a></li>
             </ul>
         </div>     

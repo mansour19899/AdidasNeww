@@ -23,6 +23,14 @@
                 {
                     <a class="btn btn-info" href="/Admin/ListStaffs" style="width:100px;margin-top:10px;float: left;">Back</a>
                 }
+                else if (Model.Person.Status == 4)
+                {
+                    <a class="btn btn-info" href="/Admin/ListDeportePerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                }
+                else if (Model.Person.Status == 5)
+                {
+                    <a class="btn btn-info" href="/Admin/ListResignationPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                }
                 else
                 {
                     <a class="btn btn-info" href="/Admin/listnewperson" style="width:100px;margin-top:10px;float: left;">Back</a>
@@ -948,6 +956,12 @@
 
                             <div class="col-xs-8" , style="padding:30px;">
                                 @{
+                                    if (Model.Person.Status == 3)
+                                    {
+                                        <a class="btn btn-warning" href="/Admin/updateInformation/@Model.Person.Id" style="width:100px;margin:15px;">ویرایش</a>
+                                        <input type="submit" value="اتمام همکاری" name="Resignation" class="btn btn-success" style="margin:15px;" />
+                                        <input type="submit" value="اخراج " name="Deporte" class="btn btn-warning" style="margin:15px;" />
+                                    }
                                     if (Model.Person.Status == 1 | Model.Person.Status == 0)
                                     {
                                         <input type="submit" value="تایید صلاحیت" name="Confirmed" class="btn btn-success" style="margin:15px;" />
@@ -961,6 +975,7 @@
                                     {
                                         <input type="submit" value="رد صلاحیت" name="NotConfirmed" class="btn btn-danger" style="margin:15px;" />
                                     }
+
 
 
 
@@ -982,6 +997,14 @@
                                     else if (Model.Person.Status == 3)
                                     {
                                         <a class="btn btn-info" href="/Admin/ListStaffs" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                    }
+                                    else if (Model.Person.Status == 4)
+                                    {
+                                        <a class="btn btn-info" href="/Admin/ListDeportePerson" style="width:100px;margin-top:10px;float: left;">Back</a>
+                                    }
+                                    else if (Model.Person.Status == 5)
+                                    {
+                                        <a class="btn btn-info" href="/Admin/ListResignationPerson" style="width:100px;margin-top:10px;float: left;">Back</a>
                                     }
                                     else
                                     {
