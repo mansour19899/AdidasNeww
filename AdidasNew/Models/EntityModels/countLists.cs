@@ -39,7 +39,7 @@ namespace AdidasNew.Models.EntityModels
             DeporteUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.Deporte).ToList().Count();
             ResignationUncheck = db.People.Where(p => p.Checked == false & p.Status == (int)PersonStatus.Resignation).ToList().Count();
 
-            CountRegister = db.People.ToList().Count();
+            CountRegister = db.People.Where(p=>p.IsStaff==false).ToList().Count();
             CountUnCheck= db.People.Where(p => p.Checked == false ).ToList().Count();
             CountStaff = db.People.Where(p => p.Status == (int)PersonStatus.Staff & p.IsStaff==true).ToList().Count();
         }

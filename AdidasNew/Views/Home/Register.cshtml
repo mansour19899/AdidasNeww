@@ -293,15 +293,21 @@
                         </div>
                         <div class="col-sm-2">
                             <p>
-                                @Html.LabelFor(p => p.Person.Excel)
-                                @Html.CheckBoxFor(m => m.Person.Excel, new { @class = "form-control _checkbox", style = " display: inline;" })
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="Person.Excel" type="checkbox" value="True"> Excel
+                                    </label>
+                                </div>
                             </p>
                         </div>
 
                         <div class="col-sm-2">
                             <p>
-                                @Html.LabelFor(p => p.Person.Word)
-                                @Html.CheckBoxFor(m => m.Person.Word, new { @class = "form-control _checkbox", style = " display: inline;" })
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="Person.Word" type="checkbox" value="True"> Word
+                                    </label>
+                                </div>
                             </p>
                         </div>
 
@@ -309,22 +315,31 @@
 
                         <div class="col-sm-2">
                             <p>
-                                @Html.LabelFor(p => p.Person.Outlook)
-                                @Html.CheckBoxFor(m => m.Person.Outlook, new { @class = "form-control _checkbox", style = " display: inline;" })
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="Person.Outlook" type="checkbox" value="True"> Outlook
+                                    </label>
+                                </div>
                             </p>
                         </div>
 
                         <div class="col-sm-3">
                             <p>
-                                @Html.LabelFor(p => p.Person.PowerPoint)
-                                @Html.CheckBoxFor(m => m.Person.PowerPoint, new { @class = "form-control _checkbox", style = " display: inline;" })
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="Person.Powerpoint" type="checkbox" value="True"> Powerpoint
+                                    </label>
+                                </div>
                             </p>
                         </div>
 
                         <div class="col-sm-2">
                             <p>
-                                @Html.LabelFor(p => p.Person.Accounting)
-                                @Html.CheckBoxFor(m => m.Person.Accounting, new { @class = "form-control _checkbox", style = " display: inline;" })
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="Person.Accounting" type="checkbox" value="True"> حسابداری
+                                    </label>
+                                </div>
                             </p>
                         </div>
 
